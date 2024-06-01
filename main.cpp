@@ -17,6 +17,7 @@ public:
         instructionPointer(0),
         halted(false)
         {}
+        
 
     /// <summary>
     /// Loads a program from a file into the simulator's memory.
@@ -61,7 +62,7 @@ private:
     int fetch() {
         return memory[instructionPointer];
     }
-    
+
     /// <summary>
     /// Decodes and executes a fetched instruction.
     /// </summary>
