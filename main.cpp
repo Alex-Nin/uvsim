@@ -79,7 +79,6 @@ private:
     void execute(int instruction) {
         int opcode = instruction / 100; //YIELDS first two numbers
         int operand = instruction % 100; //YIELDS last two numbers
-        int myNum = 0;
 
         switch (opcode) { // (Created by David, mostly)
         case 10: // READ
@@ -126,3 +125,5 @@ private:
         }
     }
 };
+
+int main() {}
