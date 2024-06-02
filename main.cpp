@@ -48,6 +48,21 @@ public:
         }
     }
 
+    void dump() {
+        cout << "REGISTERS:" << endl;
+        cout << "accumulator: " << accumulator << endl;
+        cout << "instructionPointer: " << instructionPointer << endl;
+        cout << "MEMORY:" << endl;
+        for (int i = 0; i < memory.size(); i++) {
+            // Print the memory location
+            cout << setw(4) << setfill(' ') << memory[i] << " ";
+            // Print 10 numbers per line
+            if ((i + 1) % 10 == 0) {
+                cout << endl;
+            }
+        }
+    }
+
 private:
     vector<int> memory;
     int accumulator;
@@ -73,18 +88,41 @@ private:
     }
 
     /// <summary>
+    /// Read a word from the keyboard into a specific location in memory
+    /// </summary>
+    void read(int operand) {
+        int input;
+        cout << "Enter an integer:";
+
+        if (!(cin >> input)) {
+            cerr << "Invalid input detected. Halting program." << endl;
+            exit(EXIT_FAILURE);
+        }
+
+        store(operand, input);
+    }
+
+    /// <summary>
+    /// Write a word from a specific location in memory to screen.
+    /// </summary>
+    void write(int operand) {
+        cout << "Output of location: " << operand << ": " << fetch(operand) << endl;
+    }
+
+    /// <summary>
     /// Decodes and executes a fetched instruction.
     /// </summary>
     /// <param name="instruction">The instruction to execute.</param>
     void execute(int instruction) {
         int opcode = instruction / 100; //YIELDS first two numbers
         int operand = instruction % 100; //YIELDS last two numbers
-
         switch (opcode) { // (Created by David, mostly)
         case 10: // READ
-            break; // Chen TODO
+            read(operand);
+            break;
         case 11: // WRITE
-            break; // Chen TODO
+            write(operand);
+            break;
         case 20: // LOAD
             accumulator = fetch(operand);
             break;
@@ -126,4 +164,10 @@ private:
     }
 };
 
-int main() {}
+int main() {
+    UVSim simulator;
+    simulator.loadProgram("Test2.txt");
+    simulator.run();
+    simulator.dump();
+    return 0;
+}
