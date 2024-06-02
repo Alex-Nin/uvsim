@@ -1,3 +1,4 @@
+// Created by Alex
 
 #include <iostream>
 #include <fstream>
@@ -11,13 +12,12 @@ public:
     /// <summary>
     /// A simple virtual machine simulator for BasicML language.
     /// </summary>
-    UVSim() : 
+    UVSim() :
         memory(100, 0),
         accumulator(0),
         instructionPointer(0),
         halted(false)
         {}
-        
 
     /// <summary>
     /// Loads a program from a file into the simulator's memory.
@@ -43,9 +43,8 @@ public:
     /// </summary>
     void run() {
         while (!halted) {
-            int instruction = fetch();
+            int instruction = fetch(instructionPointer++);
             execute(instruction);
-            instructionPointer++;
         }
     }
 
@@ -58,9 +57,19 @@ private:
     /// <summary>
     /// Fetches the current instruction from memory.
     /// </summary>
+    /// <param name="index">The memory location.</param>
     /// <returns>The instruction at the current instruction pointer.</returns>
-    int fetch() {
-        return memory[instructionPointer];
+    int fetch(int index) {
+        return memory[index];
+    }
+
+    /// <summary> (created by David)
+    /// Stores a word (number) in memory at index.
+    /// </summary>
+    /// <param name="index">The memory location.</param>
+    /// <param name="word">The word (number) to store in memory.</param>
+    void store(int index, int word) {
+        memory[index] = word;
     }
 
     /// <summary>
@@ -70,31 +79,46 @@ private:
     void execute(int instruction) {
         int opcode = instruction / 100; //YIELDS first two numbers
         int operand = instruction % 100; //YIELDS last two numbers
+        int myNum = 0;
 
-        switch (opcode) {
+        switch (opcode) { // (Created by David, mostly)
         case 10: // READ
-            break;
+            break; // Chen TODO
         case 11: // WRITE
-            break;
+            break; // Chen TODO
         case 20: // LOAD
+            accumulator = fetch(operand);
             break;
         case 21: // STORE
+            store(operand, accumulator);
             break;
         case 30: // ADD
+            accumulator += fetch(operand);
             break;
         case 31: // SUBTRACT
+            accumulator -= fetch(operand);
             break;
         case 32: // DIVIDE
+            accumulator /= fetch(operand);
             break;
         case 33: // MULTIPLY
+            accumulator *= fetch(operand);
             break;
         case 40: // BRANCH
+            instructionPointer = operand;
             break;
         case 41: // BRANCHNEG
+            if (accumulator < 0) {
+                  instructionPointer = operand;
+            }
             break;
         case 42: // BRANCHZERO
+            if (accumulator == 0) {
+                  instructionPointer = operand;
+            }
             break;
         case 43: // HALT
+            halted = true;
             break;
         default:
             cerr << "Error: Unknown opcode " << opcode << endl;
