@@ -1,5 +1,19 @@
 # High Functionality
+UVSim is a virtual machine simulator that can execute BasicML programs. It consists of the following components:
 
+Memory: UVSim maintains a vector representing its memory, which is used to store program instructions and data.
+
+Registers: UVSim has several registers, including an accumulator, an instruction pointer, and a boolean flag indicating whether the machine has halted.
+
+Instruction Set: UVSim supports a set of basic instructions that manipulate its memory and registers. These instructions include reading from and writing to memory, performing arithmetic operations, and controlling program flow.
+
+Loading Programs: UVSim can load programs from files into its memory, allowing it to execute programs written in BasicML.
+
+Running Programs: UVSim can execute loaded programs by repeatedly fetching and executing instructions until it reaches a halting instruction or encounters an error.
+
+Input and Output: UVSim supports input and output operations, allowing it to interact with users via the terminal. It can read input from the user and display output to the terminal.
+
+Error Handling: UVSim performs basic error checking, such as detecting invalid input and division by zero, and halts execution if an error occurs.
 ---
 
 # User Stories (at least 2)
@@ -78,3 +92,18 @@ So that I can understand how conditional branching works in machine language.
 1. Load program
 2. Find address
 3. Replace current value with the value of the accumulator
+
+**Use case 9: Branch**  
+**Objective:** Give Instruction Pointer a new position  
+**Steps:**
+1. Load program
+2. Find address
+3. Replace current instruction value with operand
+
+**Use case 10: Halt**  
+**Objective:** Stop the virtual machine process  
+**Steps:**
+1. Load program
+2. Find address
+3. Halt program process and exits program
+
