@@ -8,10 +8,12 @@
 using namespace std;
 
 class UVSim {
+
 public:
-    /// <summary>
-    /// A simple virtual machine simulator for BasicML language.
-    /// </summary>
+
+    /**
+     * @brief A simple virtual machine simulator for BasicML language.
+    */
     UVSim() :
         memory(100, 0),
         accumulator(0),
@@ -19,10 +21,10 @@ public:
         halted(false)
         {}
 
-    /// <summary>
-    /// Loads a program from a file into the simulator's memory.
-    /// </summary>
-    /// <param name="filename">The name of the file containing the program to load.</param>
+    /**
+     * @brief Loads a program from a file into the simulator's memory.
+     * @param filename The string name of the file containing the program to load.
+    */
     void loadProgram(const string& filename) {
         ifstream file(filename);
         if (!file.is_open()) {
@@ -38,9 +40,63 @@ public:
         file.close();
     }
 
-    /// <summary>
-    /// Runs the loaded program using while loop with boolean variable.
-    /// </summary>
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, Retrieves the current state of the memory.
+    * @return A vector containing the values in memory.
+    */
+    vector<int> getMemory() {
+        return memory;
+    }
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, this method shall not be used anywhere in the code base
+     * @param inst Integer element to be added to the memory vector
+    */
+    void setMemory(int inst) {
+        memory.push_back(inst);
+    }
+
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, Retrieves the current value in the accumulator.
+    * @return A vector containing the values in memory.
+    */
+    int getAccumulator() {
+        return accumulator;
+    }
+
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, setter for accumulator variable
+     * @param num New value assignment for accumulator
+    */
+    void setAccumulator(int num) {
+        accumulator = num;
+    }
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, getter for halted variable
+     * @return Boolean value of halted variable
+    */
+    bool isHalted() {
+    return halted;
+   }
+    
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, setter for halted variable
+     * @param halt New halted boolean value
+    */
+    void setHalted(bool halt) {
+        halted = halt;
+    }
+    
+    /**
+     * @brief FOR TESTING PURPOSES ONLY, getter for instructionPointer variable
+     * @return Integer value of the instructionPointer variable
+    */
+    int getInstructionPointer() {
+        return instructionPointer;
+    }
+    
+    /**
+     * @brief Runs the loaded program using while loop with boolean variable.
+    */
     void run() {
         while (!halted) {
             int instruction = fetch(instructionPointer++);
@@ -69,27 +125,27 @@ private:
     int instructionPointer;
     bool halted;
 
-    /// <summary>
-    /// Fetches the current instruction from memory.
-    /// </summary>
-    /// <param name="index">The memory location.</param>
-    /// <returns>The instruction at the current instruction pointer.</returns>
+    /**
+     * @brief 
+     * @param index Integer representation of the memory location.
+     * @return The instruction at the current instruction pointer.
+    */
     int fetch(int index) {
         return memory[index];
     }
 
-    /// <summary> (created by David)
-    /// Stores a word (number) in memory at index.
-    /// </summary>
-    /// <param name="index">The memory location.</param>
-    /// <param name="word">The word (number) to store in memory.</param>
+    /**
+     * @brief Stores a word (number) in memory at index.
+     * @param index The memory location.
+     * @param word The word (number) to store in memory.
+    */
     void store(int index, int word) {
         memory[index] = word;
     }
 
-    /// <summary>
-    /// Read a word from the keyboard into a specific location in memory
-    /// </summary>
+    /**
+     * @brief Read a word from the keyboard into a specific location in memory.
+    */
     void read(int operand) {
         int input;
         cout << "Enter an integer:";
@@ -102,17 +158,17 @@ private:
         store(operand, input);
     }
 
-    /// <summary>
-    /// Write a word from a specific location in memory to screen.
-    /// </summary>
+    /**
+     * @brief Write a word from a specific location in memory to screen.
+    */
     void write(int operand) {
         cout << "Output of location: " << operand << ": " << fetch(operand) << endl;
     }
 
-    /// <summary>
-    /// Decodes and executes a fetched instruction.
-    /// </summary>
-    /// <param name="instruction">The instruction to execute.</param>
+    /**
+     * @brief Decodes and executes a fetched instruction.
+     * @param instruction The instruction to execute.
+    */
     void execute(int instruction) {
         int opcode = instruction / 100; //YIELDS first two numbers
         int operand = instruction % 100; //YIELDS last two numbers
@@ -136,7 +192,11 @@ private:
             accumulator -= fetch(operand);
             break;
         case 32: // DIVIDE
-            accumulator /= fetch(operand);
+            if (fetch(operand) != 0) {
+                accumulator /= fetch(operand);
+            } else {
+                cerr << "Error: Division by zero." << endl;
+            }
             break;
         case 33: // MULTIPLY
             accumulator *= fetch(operand);
