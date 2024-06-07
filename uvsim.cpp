@@ -55,8 +55,10 @@ std::vector<int> UVSim::getMemory() {
  * @brief FOR TESTING PURPOSES ONLY, this method shall not be used anywhere in the code base
  * @param inst Integer element to be added to the memory vector
 */
-void UVSim::setMemory(int inst) {
-    memory.push_back(inst);
+void UVSim::setMemory(int index, int value) {
+    if (index >= 0 && index < memory.size()) {
+        memory[index] = value;
+    }
 }
 
 /**

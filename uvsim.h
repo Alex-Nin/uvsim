@@ -29,7 +29,7 @@ public:
      * @brief FOR TESTING PURPOSES ONLY, this method shall not be used anywhere in the code base
      * @param inst Integer element to be added to the memory vector
     */
-    void setMemory(int inst);
+    void setMemory(int index, int value);
     /**
      * @brief FOR TESTING PURPOSES ONLY, Retrieves the current value in the accumulator.
     * @return A vector containing the values in memory.
