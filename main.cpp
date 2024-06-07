@@ -77,7 +77,7 @@ public:
     bool isHalted() {
     return halted;
    }
-    
+
     /**
      * @brief FOR TESTING PURPOSES ONLY, setter for halted variable
      * @param halt New halted boolean value
@@ -85,7 +85,7 @@ public:
     void setHalted(bool halt) {
         halted = halt;
     }
-    
+
     /**
      * @brief FOR TESTING PURPOSES ONLY, getter for instructionPointer variable
      * @return Integer value of the instructionPointer variable
@@ -93,7 +93,7 @@ public:
     int getInstructionPointer() {
         return instructionPointer;
     }
-    
+
     /**
      * @brief Runs the loaded program using while loop with boolean variable.
     */
@@ -105,11 +105,11 @@ public:
     }
 
     void dump() {
-        cout << "REGISTERS:" << endl;
+        cout << "\n\nREGISTERS:" << endl;
         cout << "accumulator: " << accumulator << endl;
         cout << "instructionPointer: " << instructionPointer << endl;
         cout << "MEMORY:" << endl;
-        for (int i = 0; i < memory.size(); i++) {
+        for (unsigned int i = 0; i < memory.size(); i++) {
             // Print the memory location
             cout << setw(4) << setfill(' ') << memory[i] << " ";
             // Print 10 numbers per line
@@ -117,6 +117,21 @@ public:
                 cout << endl;
             }
         }
+        cout << endl << endl << endl;
+    }
+
+    string promptFile() {
+        string inputFile;
+        while (true) {
+            cout << "Please input file to run on UVSim: ";
+            cin >> inputFile;
+            ifstream file(inputFile);
+            if (file.is_open()) {
+                break;
+            }
+            cout << "File can not be opened, please enter another file." << endl;
+        }
+        return inputFile;
     }
 
 private:
@@ -126,7 +141,7 @@ private:
     bool halted;
 
     /**
-     * @brief 
+     * @brief
      * @param index Integer representation of the memory location.
      * @return The instruction at the current instruction pointer.
     */
@@ -148,7 +163,7 @@ private:
     */
     void read(int operand) {
         int input;
-        cout << "Enter an integer:";
+        cout << "Enter an integer: ";
 
         if (!(cin >> input)) {
             cerr << "Invalid input detected. Halting program." << endl;
@@ -226,8 +241,10 @@ private:
 
 int main() {
     UVSim simulator;
-    simulator.loadProgram("Test2.txt");
+    string inputFile = simulator.promptFile();
+    simulator.loadProgram(inputFile);
+//    simulator.dump(); // used for debugging
     simulator.run();
-    simulator.dump();
+//    simulator.dump(); // used for debugging
     return 0;
 }
