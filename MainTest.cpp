@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN
-#include "main.cpp"
+#include "uvsim.cpp"
 #include <sstream>
 #include <catch2/catch_all.hpp>
 
@@ -260,9 +260,3 @@ TEST_CASE("TestUVSimDump") {
 
     REQUIRE()
 }
-
-
-
-
-
-
