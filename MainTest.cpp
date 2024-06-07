@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "uvsim.cpp"
 #include <sstream>
-#include "catch2/catch_all.hpp"
+#include <catch2/catch_all.hpp>
 
 using namespace std;
 
