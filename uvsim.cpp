@@ -134,7 +134,7 @@ void UVSim::dump() {
 std::string UVSim::promptFile() {
     std::string inputFile;
     while (true) {
-        std::cout << "Please enter the name of the file you would like to load: ";
+        std::cout << "Please enter the name of the file you would like to load:";
         std::cin >> inputFile;
         std::ifstream file(inputFile);
         if (file.is_open()) {
@@ -168,7 +168,7 @@ void UVSim::store(int index, int word) {
 */
 void UVSim::read(int operand) {
     int input;
-    std::cout << "Enter an integer: ";
+    std::cout << "Enter an integer:";
 
     if (!(std::cin >> input)) {
         std::cerr << "Invalid input detected. Halting program." << std::endl;

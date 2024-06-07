@@ -184,7 +184,7 @@ TEST_CASE("TestSubtract") {
     REQUIRE(simulator.getAccumulator() == 1000);
 }
 
-TEST_CASE("TestDivideSuccess") {
+TEST_CASE("TestDivide") {
     UVSim simulator;
     simulator.setMemory(3200);
     simulator.setAccumulator(10000);
@@ -257,6 +257,7 @@ TEST_CASE("TestHalt") {
 TEST_CASE("TestUVSimDump") {
     UVSim simulator;
 
+    simulator.loadProgram("test1.txt");
 
     REQUIRE();
 }

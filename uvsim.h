@@ -61,6 +61,7 @@ public:
     /**
      * @brief Runs the loaded program using while loop with boolean variable.
     */
+
     void run();
 
     void dump();
