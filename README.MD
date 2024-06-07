@@ -22,13 +22,14 @@ To compile and run UVSim, follow these steps:
    ```
 2. Compile the source code.
    ```bash
-    g++ -o uvsim main.cpp
+    g++ -o uvsim main.cpp uvsim.cpp
     ```
 3. Run the executable file.
 4. Follow the instructions to run the UVSim.
 
 ## Example Usage
 ```bash
+Please enter the name of the file you would like to load: testFile/test1.txt
 Enter an integer:7
 Enter an integer:8
 Output of location: 10: 8

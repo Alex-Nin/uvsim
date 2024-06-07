@@ -49,7 +49,7 @@ TEST_CASE("TestLoadProgramSuccess") {
 
 TEST_CASE("TestLoadProgramFail") {
     UVSim simulator;
-    
+
     // Redirect cerr to a string stream to capture the error message
     stringstream buffer;
     streambuf* old = cerr.rdbuf(buffer.rdbuf());
@@ -98,7 +98,7 @@ TEST_CASE("TestUVSimReadSuccess") {
 
     stringstream input("123\n");
     streambuf* oldCinBuf = cin.rdbuf(input.rdbuf());
-    
+
     stringstream errorStream;
     streambuf* oldCerrBuf = cerr.rdbuf(errorStream.rdbuf());
 
@@ -115,8 +115,8 @@ TEST_CASE("TestUVSimReadSuccess") {
 TEST_CASE("TestUVSimReadFail") {
     UVSim simulator;
     simulator.setMemory(1004);
-    
- 
+
+
     stringstream input("");
     streambuf* oldCinBuf = cin.rdbuf(input.rdbuf());
 
@@ -154,7 +154,7 @@ TEST_CASE("TestUVSimWrite") {
     simulator.run();
 
     cout.rdbuf(oldCoutBuf);
-    
+
     REQUIRE(output.str() == "Output of location: 0: 2000\n");
 }
 
@@ -189,7 +189,7 @@ TEST_CASE("TestDivideSuccess") {
     simulator.setMemory(3200);
     simulator.setAccumulator(10000);
     simulator.run();
-    
+
     REQUIRE(simulator.getAccumulator() == 3);
 }
 
@@ -222,7 +222,7 @@ TEST_CASE("TestBranch") {
     simulator.run();
 
     REQUIRE(simulator.getInstructionPointer() == 10);
-    
+
 }
 
 TEST_CASE("TestBranchNeg") {
@@ -232,7 +232,7 @@ TEST_CASE("TestBranchNeg") {
     simulator.run();
 
     REQUIRE(simulator.getAccumulator() == 1);
-    
+
 }
 
 TEST_CASE("TestBranchZero") {
@@ -251,12 +251,12 @@ TEST_CASE("TestHalt") {
     simulator.run();
 
     REQUIRE(simulator.isHalted() == true);
-    
+
 }
 
 TEST_CASE("TestUVSimDump") {
     UVSim simulator;
 
 
-    REQUIRE()
+    REQUIRE();
 }

@@ -16,6 +16,16 @@ UVSim::UVSim() :
     {}
 
 /**
+ * @brief Destructor for UVSim class.
+ */
+UVSim::~UVSim() {
+    memory.clear();
+    accumulator = 0;
+    instructionPointer = 0;
+    halted = false;
+}
+
+/**
  * @brief Loads a program from a file into the simulator's memory.
  * @param filename The string name of the file containing the program to load.
 */
@@ -98,6 +108,9 @@ void UVSim::run() {
     }
 }
 
+/**
+ * @brief Dumps the current state of the simulator to the console.
+ */
 void UVSim::dump() {
     std::cout << "\n\nREGISTERS:" << std::endl;
     std::cout << "accumulator: " << accumulator << std::endl;
@@ -114,10 +127,14 @@ void UVSim::dump() {
     std::cout << std::endl << std::endl << std::endl;
 }
 
+/**
+ * @brief Prompts the user for a file name to load.
+ * @return The name of the file to load.
+ */
 std::string UVSim::promptFile() {
     std::string inputFile;
     while (true) {
-        std::cout << "Please input file to run on UVSim: ";
+        std::cout << "Please enter the name of the file you would like to load: ";
         std::cin >> inputFile;
         std::ifstream file(inputFile);
         if (file.is_open()) {
