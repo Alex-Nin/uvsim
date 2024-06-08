@@ -124,7 +124,7 @@ void TestWrite(std::ofstream& ofile) {
     UVSim simulator;
 
     std::stringstream output;
-    std::streambuf* coutBuf = ofile.rdbuf();
+    std::streambuf* coutBuf = std::cout.rdbuf();
     std::cout.rdbuf(output.rdbuf());
 
     simulator.setMemory(10, 9);
