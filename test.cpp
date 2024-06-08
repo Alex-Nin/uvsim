@@ -12,7 +12,7 @@ void TestSetMemory(std::ofstream& ofile) {
     std::vector<int> memory = simulator.getMemory();
     assert(memory[0] == 1001);
 
-    ofile << "TestSetMemory,PASS" << std::endl;
+    ofile << "TestSetMemory\t,PASS" << std::endl;
 }
 
 void TestLoadProgram(std::ofstream& ofile) {
@@ -29,7 +29,7 @@ void TestLoadProgram(std::ofstream& ofile) {
     assert(memory[6] == 4300);
     assert(memory[7] == 0000);
 
-    ofile << "TestLoadProgram,PASS" << std::endl;
+    ofile << "TestLoadProgram\t,PASS" << std::endl;
 }
 
 void TestLoadProgramFail(std::ofstream& ofile) {
@@ -46,7 +46,7 @@ void TestLoadProgramFail(std::ofstream& ofile) {
     std::cerr.rdbuf(old);
     assert(buffer.str() == "Error: Unable to open file.\n");
 
-    ofile << "TestLoadProgramFail,PASS" << std::endl;
+    ofile << "TestLoadProgramFail\t,PASS" << std::endl;
 }
 
 void TestAccumulator(std::ofstream& ofile) {
@@ -54,7 +54,7 @@ void TestAccumulator(std::ofstream& ofile) {
     simulator.setAccumulator(1002);
     assert(simulator.getAccumulator() == 1002);
 
-    ofile << "TestAccumulator,PASS" << std::endl;
+    ofile << "TestAccumulator\t,PASS" << std::endl;
 }
 
 void TestHalt(std::ofstream& ofile) {
@@ -62,14 +62,14 @@ void TestHalt(std::ofstream& ofile) {
     simulator.setHalted(true);
     assert(simulator.isHalted() == true);
 
-    ofile << "TestHalt,PASS" << std::endl;
+    ofile << "TestHalt\t,PASS" << std::endl;
 }
 
 void TestInstructionPointer(std::ofstream& ofile) {
     UVSim simulator;
     assert(simulator.getInstructionPointer() == 0);
 
-    ofile << "TestInstructionPointer,PASS" << std::endl;
+    ofile << "TestInstructionPointer\t,PASS" << std::endl;
 }
 
 void TestInstructionPointerIncrement(std::ofstream& ofile) {
@@ -77,7 +77,7 @@ void TestInstructionPointerIncrement(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getInstructionPointer() == 1);
 
-    ofile << "TestInstructionPointerIncrement,PASS" << std::endl;
+    ofile << "TestInstructionPointerIncrement\t,PASS" << std::endl;
 }
 
 void TestRead(std::ofstream& ofile) {
@@ -96,7 +96,7 @@ void TestRead(std::ofstream& ofile) {
     std::vector<int> memory = simulator.getMemory();
     assert(memory[10] == 7);
 
-    ofile << "TestRead,PASS" << std::endl;
+    ofile << "TestRead\t,PASS" << std::endl;
 }
 
 void TestReadFail(std::ofstream& ofile) {
@@ -117,7 +117,7 @@ void TestReadFail(std::ofstream& ofile) {
 
     assert(errorStr == "Invalid input detected. Halting program.");
 
-    ofile << "TestReadFail,PASS" << std::endl;
+    ofile << "TestReadFail\t,PASS" << std::endl;
 }
 
 void TestWrite(std::ofstream& ofile) {
@@ -133,10 +133,9 @@ void TestWrite(std::ofstream& ofile) {
     simulator.run();
 
     std::cout.rdbuf(coutBuf);
-    std::cout << output.str() << std::endl;
     assert(output.str() == "Output of location 10: 9\n");
 
-    ofile << "TestWrite,PASS" << std::endl;
+    ofile << "TestWrite\t,PASS" << std::endl;
 }
 
 void TestLoad(std::ofstream& ofile) {
@@ -149,7 +148,7 @@ void TestLoad(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getAccumulator() == 9);
 
-    ofile << "TestLoad,PASS" << std::endl;
+    ofile << "TestLoad\t,PASS" << std::endl;
 }
 
 void TestStore(std::ofstream& ofile) {
@@ -165,7 +164,7 @@ void TestStore(std::ofstream& ofile) {
     std::vector<int> memory = simulator.getMemory();
     assert(memory[10] == 9);
 
-    ofile << "TestStore,PASS" << std::endl;
+    ofile << "TestStore\t,PASS" << std::endl;
 }
 
 void TestBranch(std::ofstream& ofile) {
@@ -181,7 +180,7 @@ void TestBranch(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 0);
 
-    ofile << "TestBranch,PASS" << std::endl;
+    ofile << "TestBranch\t,PASS" << std::endl;
 }
 
 void TestAdd(std::ofstream& ofile) {
@@ -194,7 +193,7 @@ void TestAdd(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getAccumulator() == 9);
 
-    ofile << "TestAdd,PASS" << std::endl;
+    ofile << "TestAdd\t,PASS" << std::endl;
 }
 
 void TestSubtract(std::ofstream& ofile) {
@@ -207,7 +206,7 @@ void TestSubtract(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getAccumulator() == -9);
 
-    ofile << "TestSubtract,PASS" << std::endl;
+    ofile << "TestSubtract\t,PASS" << std::endl;
 }
 
 void TestMultiply(std::ofstream& ofile) {
@@ -221,7 +220,7 @@ void TestMultiply(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 90);
 
-    ofile << "TestMultiply,PASS" << std::endl;
+    ofile << "TestMultiply\t,PASS" << std::endl;
 }
 
 void TestDivide(std::ofstream& ofile) {
@@ -235,7 +234,7 @@ void TestDivide(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 2);
 
-    ofile << "TestDivide,PASS" << std::endl;
+    ofile << "TestDivide\t,PASS" << std::endl;
 }
 
 void TestBranchNeg(std::ofstream& ofile) {
@@ -252,7 +251,7 @@ void TestBranchNeg(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == -10);
 
-    ofile << "TestBranchNeg,PASS" << std::endl;
+    ofile << "TestBranchNeg\t,PASS" << std::endl;
 }
 
 void TestBranchZero(std::ofstream& ofile) {
@@ -269,7 +268,7 @@ void TestBranchZero(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 0);
 
-    ofile << "TestBranchZero,PASS" << std::endl;
+    ofile << "TestBranchZero\t,PASS" << std::endl;
 }
 
 void TestDivideFail(std::ofstream& ofile) {
@@ -279,15 +278,16 @@ void TestDivideFail(std::ofstream& ofile) {
     simulator.setMemory(0, 3210);
     simulator.setMemory(2, 4300);
 
-    std::stringstream errorStream;
-    std::streambuf* oldCerrBuf = std::cerr.rdbuf(errorStream.rdbuf());
-    simulator.run();
+    std::string errorStr;
+    try {
+        simulator.run();
+    } catch (const std::runtime_error& e) {
+        errorStr = e.what();
+    }
 
-    std::cerr.rdbuf(oldCerrBuf);
-    std::string errorStr = errorStream.str();
-    assert(errorStr == "Error: Division by zero.\n");
+    assert(errorStr == "Error: Division by zero.");
 
-    ofile << "TestDivideFail,PASS" << std::endl;
+    ofile << "TestDivideFail\t,PASS" << std::endl;
 }
 
 int main() {
@@ -297,7 +297,7 @@ int main() {
         return 1;
     }
 
-    outfile << "Test Name,Passed" << std::endl;
+    outfile << "Test Name\t,PASSed" << std::endl;
     TestSetMemory(outfile);
     TestLoadProgram(outfile);
     TestLoadProgramFail(outfile);

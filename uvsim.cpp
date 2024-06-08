@@ -216,7 +216,7 @@ void UVSim::execute(int instruction) {
         if (fetch(operand) != 0) {
             accumulator /= fetch(operand);
         } else {
-            std::cerr << "Error: Division by zero." << std::endl;
+            throw std::runtime_error("Error: Division by zero.");
         }
         break;
     case 33: // MULTIPLY
