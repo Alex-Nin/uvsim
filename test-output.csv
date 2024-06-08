@@ -1,20 +1,42 @@
-Test Name,Passed
-TestSetMemory,PASS
-TestLoadProgram,PASS
-TestLoadProgramFail,PASS
-TestAccumulator,PASS
-TestHalt,PASS
-TestInstructionPointer,PASS
-TestInstructionPointerIncrement,PASS
-TestRead,PASS
-TestReadFail,PASS
-TestWrite,PASS
-TestLoad,PASS
-TestStore,PASS
-TestBranch,PASS
-TestAdd,PASS
-TestSubtract,PASS
-TestMultiply,PASS
-TestDivide,PASS
-TestBranchNeg,PASS
-TestBranchZero,PASS
+Test Name,Reference,Description,Inputs,Expected Outputs,PASSed
+
+Set Memory,TestSetMemory,Test if memory can be set,register 0 = 1001,register 0 = 1001,PASS
+
+Load Program,TestLoadProgram,Test if the file can be loaded successfully,test1.txt,register 0 = 1007 ... register 7 = 0000,PASS
+
+Read File Fail,TestLoadProgramFail,Test if a non-existing file reports an error,FAKE_FILE.txt,error message,PASS
+
+Accumulator,TestAccumulator,Test whether the accumulator can be set to a value,accumulator = 1002, accumulator = 1002,PASS
+
+Halt,TestHalt,Test to see if halt works,N/A,halt program,PASS
+
+Instruction Pointer,TestInstructionPointer,Test to see if the instruction pointer's value can be obtained,N/A,instructionPointer = 0,PASS
+
+Instruction Pointer Increment,TestInstructionPointerIncrement,Tests whether the value of the instruction pointer can be modified,instructionPointer = 1,instructionPointer = 1,PASS
+
+Read,TestRead,Test that the input values are stored correctly,input = 7,memory 10 = 7,PASS
+
+Read Fail,TestReadFail,Test to see if an error can be thrown if the input value is abnormal,input = a,error message,PASS
+
+Write,TestWrite,Test to see if the value in memory can be read correctly,N/A,memory 10 = 9,PASS
+
+Load,TestLoad,Tests if the value can be read and added to the accumulator,N/A,accumulator = 9,PASS
+
+Store,TestStore,Test to see if the value in the accumulator can be saved to memory,N/A,memory 10 = 9,PASS
+
+Branch,TestBranch,Test to see if function can jump to the correct address,N/A,accumulator = 0,PASS
+
+Add,TestAdd,Test that the addition works and gives the correct answer,memory 10 = 9,accumulator = 9,PASS
+
+Subtract,TestSubtract,Test that subtraction works and gives the correct answer,memory 10 = 9,accumulator = -9,PASS
+
+Multiply,TestMultiply,Test that the multiplication works and gives the correct answer,memory 10 = 9; accumulator = 10,accumulator = 90,PASS
+
+Divide,TestDivide,Test that the division works and gives the correct answer,memory 10 = 5; accumulator = 10,accumulator = 2,PASS
+
+Branch Negative,TestBranchNeg,Tests if the function can be executed when the accumulator is negative,accumulator = -10,accumulator = -10,PASS
+
+Branch Zero,TestBranchZero,Tests if the function can be executed when the accumulator is 0,accumulator = 0,accumulator = 0,PASS
+
+Divide Fail,TestDivideFail,Tests whether an error can be thrown when calculating division if the value is illegal,memory 10 = 0; accumulator = 0,error message,PASS
+

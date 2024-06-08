@@ -5,14 +5,13 @@
 #include "uvsim.h"
 
 void TestSetMemory(std::ofstream& ofile) {
-    // 1
     UVSim simulator;
     simulator.setMemory(0, 1001);
 
     std::vector<int> memory = simulator.getMemory();
     assert(memory[0] == 1001);
 
-    ofile << "TestSetMemory\t,PASS" << std::endl;
+    ofile << "Set Memory,TestSetMemory,Test if memory can be set,register 0 = 1001,register 0 = 1001,PASS\n" << std::endl;
 }
 
 void TestLoadProgram(std::ofstream& ofile) {
@@ -29,7 +28,7 @@ void TestLoadProgram(std::ofstream& ofile) {
     assert(memory[6] == 4300);
     assert(memory[7] == 0000);
 
-    ofile << "TestLoadProgram\t,PASS" << std::endl;
+    ofile << "Load Program,TestLoadProgram,Test if the file can be loaded successfully,test1.txt,register 0 = 1007 ... register 7 = 0000,PASS\n" << std::endl;
 }
 
 void TestLoadProgramFail(std::ofstream& ofile) {
@@ -46,7 +45,7 @@ void TestLoadProgramFail(std::ofstream& ofile) {
     std::cerr.rdbuf(old);
     assert(buffer.str() == "Error: Unable to open file.\n");
 
-    ofile << "TestLoadProgramFail\t,PASS" << std::endl;
+    ofile << "Read File Fail,TestLoadProgramFail,Test if a non-existing file reports an error,FAKE_FILE.txt,error message,PASS\n" << std::endl;
 }
 
 void TestAccumulator(std::ofstream& ofile) {
@@ -54,7 +53,7 @@ void TestAccumulator(std::ofstream& ofile) {
     simulator.setAccumulator(1002);
     assert(simulator.getAccumulator() == 1002);
 
-    ofile << "TestAccumulator\t,PASS" << std::endl;
+    ofile << "Accumulator,TestAccumulator,Test whether the accumulator can be set to a value,accumulator = 1002, accumulator = 1002,PASS\n" << std::endl;
 }
 
 void TestHalt(std::ofstream& ofile) {
@@ -62,14 +61,14 @@ void TestHalt(std::ofstream& ofile) {
     simulator.setHalted(true);
     assert(simulator.isHalted() == true);
 
-    ofile << "TestHalt\t,PASS" << std::endl;
+    ofile << "Halt,TestHalt,Test to see if halt works,N/A,halt program,PASS\n" << std::endl;
 }
 
 void TestInstructionPointer(std::ofstream& ofile) {
     UVSim simulator;
     assert(simulator.getInstructionPointer() == 0);
 
-    ofile << "TestInstructionPointer\t,PASS" << std::endl;
+    ofile << "Instruction Pointer,TestInstructionPointer,Test to see if the instruction pointer's value can be obtained,N/A,instructionPointer = 0,PASS\n" << std::endl;
 }
 
 void TestInstructionPointerIncrement(std::ofstream& ofile) {
@@ -77,7 +76,7 @@ void TestInstructionPointerIncrement(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getInstructionPointer() == 1);
 
-    ofile << "TestInstructionPointerIncrement\t,PASS" << std::endl;
+    ofile << "Instruction Pointer Increment,TestInstructionPointerIncrement,Tests whether the value of the instruction pointer can be modified,instructionPointer = 1,instructionPointer = 1,PASS\n" << std::endl;
 }
 
 void TestRead(std::ofstream& ofile) {
@@ -96,7 +95,7 @@ void TestRead(std::ofstream& ofile) {
     std::vector<int> memory = simulator.getMemory();
     assert(memory[10] == 7);
 
-    ofile << "TestRead\t,PASS" << std::endl;
+    ofile << "Read,TestRead,Test that the input values are stored correctly,input = 7,memory 10 = 7,PASS\n" << std::endl;
 }
 
 void TestReadFail(std::ofstream& ofile) {
@@ -117,7 +116,7 @@ void TestReadFail(std::ofstream& ofile) {
 
     assert(errorStr == "Invalid input detected. Halting program.");
 
-    ofile << "TestReadFail\t,PASS" << std::endl;
+    ofile << "Read Fail,TestReadFail,Test to see if an error can be thrown if the input value is abnormal,input = a,error message,PASS\n" << std::endl;
 }
 
 void TestWrite(std::ofstream& ofile) {
@@ -135,7 +134,7 @@ void TestWrite(std::ofstream& ofile) {
     std::cout.rdbuf(coutBuf);
     assert(output.str() == "Output of location 10: 9\n");
 
-    ofile << "TestWrite\t,PASS" << std::endl;
+    ofile << "Write,TestWrite,Test to see if the value in memory can be read correctly,N/A,memory 10 = 9,PASS\n" << std::endl;
 }
 
 void TestLoad(std::ofstream& ofile) {
@@ -148,7 +147,7 @@ void TestLoad(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getAccumulator() == 9);
 
-    ofile << "TestLoad\t,PASS" << std::endl;
+    ofile << "Load,TestLoad,Tests if the value can be read and added to the accumulator,N/A,accumulator = 9,PASS\n" << std::endl;
 }
 
 void TestStore(std::ofstream& ofile) {
@@ -164,7 +163,7 @@ void TestStore(std::ofstream& ofile) {
     std::vector<int> memory = simulator.getMemory();
     assert(memory[10] == 9);
 
-    ofile << "TestStore\t,PASS" << std::endl;
+    ofile << "Store,TestStore,Test to see if the value in the accumulator can be saved to memory,N/A,memory 10 = 9,PASS\n" << std::endl;
 }
 
 void TestBranch(std::ofstream& ofile) {
@@ -180,7 +179,7 @@ void TestBranch(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 0);
 
-    ofile << "TestBranch\t,PASS" << std::endl;
+    ofile << "Branch,TestBranch,Test to see if function can jump to the correct address,N/A,accumulator = 0,PASS\n" << std::endl;
 }
 
 void TestAdd(std::ofstream& ofile) {
@@ -193,7 +192,7 @@ void TestAdd(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getAccumulator() == 9);
 
-    ofile << "TestAdd\t,PASS" << std::endl;
+    ofile << "Add,TestAdd,Test that the addition works and gives the correct answer,memory 10 = 9,accumulator = 9,PASS\n" << std::endl;
 }
 
 void TestSubtract(std::ofstream& ofile) {
@@ -206,7 +205,7 @@ void TestSubtract(std::ofstream& ofile) {
     simulator.run();
     assert(simulator.getAccumulator() == -9);
 
-    ofile << "TestSubtract\t,PASS" << std::endl;
+    ofile << "Subtract,TestSubtract,Test that subtraction works and gives the correct answer,memory 10 = 9,accumulator = -9,PASS\n" << std::endl;
 }
 
 void TestMultiply(std::ofstream& ofile) {
@@ -220,7 +219,7 @@ void TestMultiply(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 90);
 
-    ofile << "TestMultiply\t,PASS" << std::endl;
+    ofile << "Multiply,TestMultiply,Test that the multiplication works and gives the correct answer,memory 10 = 9; accumulator = 10,accumulator = 90,PASS\n" << std::endl;
 }
 
 void TestDivide(std::ofstream& ofile) {
@@ -234,7 +233,7 @@ void TestDivide(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 2);
 
-    ofile << "TestDivide\t,PASS" << std::endl;
+    ofile << "Divide,TestDivide,Test that the division works and gives the correct answer,memory 10 = 5; accumulator = 10,accumulator = 2,PASS\n" << std::endl;
 }
 
 void TestBranchNeg(std::ofstream& ofile) {
@@ -251,7 +250,7 @@ void TestBranchNeg(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == -10);
 
-    ofile << "TestBranchNeg\t,PASS" << std::endl;
+    ofile << "Branch Negative,TestBranchNeg,Tests if the function can be executed when the accumulator is negative,accumulator = -10,accumulator = -10,PASS\n" << std::endl;
 }
 
 void TestBranchZero(std::ofstream& ofile) {
@@ -268,7 +267,7 @@ void TestBranchZero(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 0);
 
-    ofile << "TestBranchZero\t,PASS" << std::endl;
+    ofile << "Branch Zero,TestBranchZero,Tests if the function can be executed when the accumulator is 0,accumulator = 0,accumulator = 0,PASS\n" << std::endl;
 }
 
 void TestDivideFail(std::ofstream& ofile) {
@@ -287,7 +286,7 @@ void TestDivideFail(std::ofstream& ofile) {
 
     assert(errorStr == "Error: Division by zero.");
 
-    ofile << "TestDivideFail\t,PASS" << std::endl;
+    ofile << "Divide Fail,TestDivideFail,Tests whether an error can be thrown when calculating division if the value is illegal,memory 10 = 0; accumulator = 0,error message,PASS\n" << std::endl;
 }
 
 int main() {
@@ -297,7 +296,7 @@ int main() {
         return 1;
     }
 
-    outfile << "Test Name\t,PASSed" << std::endl;
+    outfile << "Test Name,Reference,Description,Inputs,Expected Outputs,PASSed\n" << std::endl;
     TestSetMemory(outfile);
     TestLoadProgram(outfile);
     TestLoadProgramFail(outfile);
