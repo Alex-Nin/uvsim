@@ -131,21 +131,22 @@ void TestWrite() {
     simulator.run();
 
     std::cout.rdbuf(coutBuf);
-    assert(output.str() == "Output of location: 10: 9\n");
+    std::cout << output.str() << std::endl;
+    assert(output.str() == "Output of location 10: 9\n");
 
     std::cout << "10. TestWrite passed!" << std::endl;
 }
 
 int main() {
-//    TestSetMemory();
-//    TestLoadProgram();
-//    TestLoadProgramFail();
-//    TestAccumulator();
-//    TestHalt();
-//    TestInstructionPointer();
-//    TestInstructionPointerIncrement();
-//    TestRead();
-//    TestReadFail();
+    TestSetMemory();
+    TestLoadProgram();
+    TestLoadProgramFail();
+    TestAccumulator();
+    TestHalt();
+    TestInstructionPointer();
+    TestInstructionPointerIncrement();
+    TestRead();
+    TestReadFail();
     TestWrite();
 
     std::cout << "All tests passed!" << std::endl;
