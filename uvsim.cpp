@@ -173,8 +173,7 @@ void UVSim::read(int operand) {
     std::cout << "Enter an integer:";
 
     if (!(std::cin >> input)) {
-        std::cerr << "Invalid input detected. Halting program." << std::endl;
-        exit(EXIT_FAILURE);
+        throw std::runtime_error("Invalid input detected. Halting program.");
     }
 
     store(operand, input);
