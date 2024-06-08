@@ -1,0 +1,22 @@
+Test Name,Passed
+TestSetMemory,PASS
+TestLoadProgram,PASS
+TestLoadProgramFail,PASS
+TestAccumulator,PASS
+TestHalt,PASS
+TestInstructionPointer,PASS
+TestInstructionPointerIncrement,PASS
+TestRead,PASS
+TestReadFail,PASS
+Output of location 10: 9
+
+TestWrite,PASS
+TestLoad,PASS
+TestStore,PASS
+TestBranch,PASS
+TestAdd,PASS
+TestSubtract,PASS
+TestMultiply,PASS
+TestDivide,PASS
+TestBranchNeg,PASS
+TestBranchZero,PASS
