@@ -49,6 +49,14 @@ MEMORY:
    0    0    0    0    0    0    0    0    0    0
 ```
 
+## Unit Tests
+To run the unit tests, follow these steps:
+```bash
+g++ -o test test.cpp uvsim.cpp
+./test
+```
+Check the output and CSV file to see if the tests passed.
+
 ## Authors
 - Alexander Nin
 - David De Leo
