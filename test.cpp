@@ -137,6 +137,157 @@ void TestWrite() {
     std::cout << "10. TestWrite passed!" << std::endl;
 }
 
+void TestLoad() {
+    UVSim simulator;
+
+    assert(simulator.getAccumulator() == 0);
+    simulator.setMemory(10, 9);
+    simulator.setMemory(0, 2010);
+    simulator.setMemory(1, 4300);
+    simulator.run();
+    assert(simulator.getAccumulator() == 9);
+
+    std::cout << "11. TestLoad passed!" << std::endl;
+}
+
+void TestStore() {
+    UVSim simulator;
+
+    assert(simulator.getAccumulator() == 0);
+    simulator.setMemory(10, 9);
+    simulator.setMemory(0, 2010);
+    simulator.setMemory(1, 2110);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+
+    std::vector<int> memory = simulator.getMemory();
+    assert(memory[10] == 9);
+
+    std::cout << "12. TestStore passed!" << std::endl;
+}
+
+void TestBranch() {
+    UVSim simulator;
+
+    simulator.setMemory(0, 4002);
+    // Branch to memory location 2
+    // ignore the next two instructions
+    simulator.setMemory(10, 9);
+    simulator.setMemory(1, 2010);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+
+    assert(simulator.getAccumulator() == 0);
+
+    std::cout << "13. TestBranch passed!" << std::endl;
+}
+
+void TestAdd() {
+    UVSim simulator;
+
+    simulator.setMemory(10, 9);
+    assert(simulator.getAccumulator() == 0);
+    simulator.setMemory(0, 3010);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+    assert(simulator.getAccumulator() == 9);
+
+    std::cout << "14. TestAdd passed!" << std::endl;
+}
+
+void TestSubtract() {
+    UVSim simulator;
+
+    simulator.setMemory(10, 9);
+    assert(simulator.getAccumulator() == 0);
+    simulator.setMemory(0, 3110);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+    assert(simulator.getAccumulator() == -9);
+
+    std::cout << "15. TestSubtract passed!" << std::endl;
+}
+
+void TestMultiply() {
+    UVSim simulator;
+
+    simulator.setMemory(10, 9);
+    simulator.setAccumulator(10);
+    simulator.setMemory(0, 3310);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+
+    assert(simulator.getAccumulator() == 90);
+
+    std::cout << "16. TestMultiply passed!" << std::endl;
+}
+
+void TestDivide() {
+    UVSim simulator;
+
+    simulator.setMemory(10, 5);
+    simulator.setAccumulator(10);
+    simulator.setMemory(0, 3210);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+
+    assert(simulator.getAccumulator() == 2);
+
+    std::cout << "17. TestDivide passed!" << std::endl;
+}
+
+void TestBranchNeg() {
+    UVSim simulator;
+
+    simulator.setAccumulator(-10);
+    simulator.setMemory(0, 4102);
+    // Branch to memory location 2
+    // ignore the next two instructions
+    simulator.setMemory(10, 9);
+    simulator.setMemory(1, 2010);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+
+    assert(simulator.getAccumulator() == -10);
+
+    std::cout << "18. TestBranchNeg passed!" << std::endl;
+}
+
+void TestBranchZero() {
+    UVSim simulator;
+
+    simulator.setAccumulator(0);
+    simulator.setMemory(0, 4202);
+    // Branch to memory location 2
+    // ignore the next two instructions
+    simulator.setMemory(10, 9);
+    simulator.setMemory(1, 2010);
+    simulator.setMemory(2, 4300);
+    simulator.run();
+
+    assert(simulator.getAccumulator() == 0);
+
+    std::cout << "19. TestBranchZero passed!" << std::endl;
+}
+
+void TestDivideFail() {
+    UVSim simulator;
+
+    simulator.setMemory(10, 0);
+    simulator.setMemory(0, 3210);
+    simulator.setMemory(2, 4300);
+
+    std::stringstream errorStream;
+    std::streambuf* oldCerrBuf = std::cerr.rdbuf(errorStream.rdbuf());
+    simulator.run();
+
+    std::cerr.rdbuf(oldCerrBuf);
+    std::string errorStr = errorStream.str();
+    assert(errorStr == "Error: Division by zero.\n");
+
+    std::cout << "20. TestDivideFail passed!" << std::endl;
+}
+
 int main() {
     TestSetMemory();
     TestLoadProgram();
@@ -148,6 +299,16 @@ int main() {
     TestRead();
     TestReadFail();
     TestWrite();
+    TestLoad();
+    TestStore();
+    TestBranch();
+    TestAdd();
+    TestSubtract();
+    TestMultiply();
+    TestDivide();
+    TestBranchNeg();
+    TestBranchZero();
+    TestDivideFail();
 
     std::cout << "All tests passed!" << std::endl;
     return 0;
