@@ -8,8 +8,6 @@ TestInstructionPointer,PASS
 TestInstructionPointerIncrement,PASS
 TestRead,PASS
 TestReadFail,PASS
-Output of location 10: 9
-
 TestWrite,PASS
 TestLoad,PASS
 TestStore,PASS
