@@ -1,0 +1,9 @@
+# ninja log v6
+9	801	7401763405704956	uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+9	801	7401763405704956	uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+9	801	7401763405704956	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+9	801	7401763405704956	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+808	2566	7401763406648744	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.obj	51b4b4eb68633549
+811	2659	7401763406668739	CMakeFiles/uvsim-qt.dir/main.cpp.obj	f56144e5a436de71
+814	2758	7401763406698722	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj	319da53cd6b6e2ce
+2759	2875	7401763426153428	uvsim-qt.exe	1b492b8f175ceaba
