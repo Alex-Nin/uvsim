@@ -7,6 +7,6 @@ int main() {
     std::string inputFile = simulator.promptFile();
     simulator.loadProgram(inputFile);
     simulator.run();
-    simulator.dump(); // used for debugging
+//    simulator.dump(); // used for debugging
     return 0;
 }

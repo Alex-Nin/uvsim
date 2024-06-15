@@ -5,19 +5,12 @@
 #include <iomanip>
 #include "uvsim.h"
 
-/**
- * @brief A simple virtual machine simulator for BasicML language.
-*/
 UVSim::UVSim() :
-    memory(100, 0),
-    accumulator(0),
-    instructionPointer(0),
-    halted(false)
-    {}
+        memory(100, 0),
+        accumulator(0),
+        instructionPointer(0),
+        halted(false) {}
 
-/**
- * @brief Destructor for UVSim class.
- */
 UVSim::~UVSim() {
     memory.clear();
     accumulator = 0;
@@ -25,11 +18,7 @@ UVSim::~UVSim() {
     halted = false;
 }
 
-/**
- * @brief Loads a program from a file into the simulator's memory.
- * @param filename The string name of the file containing the program to load.
-*/
-void UVSim::loadProgram(const std::string& filename) {
+void UVSim::loadProgram(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cerr << "Error: Unable to open file." << std::endl;
@@ -44,65 +33,36 @@ void UVSim::loadProgram(const std::string& filename) {
     file.close();
 }
 
-/**
- * @brief FOR TESTING PURPOSES ONLY, Retrieves the current state of the memory.
-* @return A vector containing the values in memory.
-*/
 std::vector<int> UVSim::getMemory() {
     return memory;
 }
-/**
- * @brief FOR TESTING PURPOSES ONLY, this method shall not be used anywhere in the code base
- * @param inst Integer element to be added to the memory vector
-*/
+
 void UVSim::setMemory(int index, int value) {
     if (index >= 0 && index < memory.size()) {
         memory[index] = value;
     }
 }
 
-/**
- * @brief FOR TESTING PURPOSES ONLY, Retrieves the current value in the accumulator.
-* @return A vector containing the values in memory.
-*/
 int UVSim::getAccumulator() {
     return accumulator;
 }
 
-/**
- * @brief FOR TESTING PURPOSES ONLY, setter for accumulator variable
- * @param num New value assignment for accumulator
-*/
 void UVSim::setAccumulator(int num) {
     accumulator = num;
 }
-/**
- * @brief FOR TESTING PURPOSES ONLY, getter for halted variable
- * @return Boolean value of halted variable
-*/
+
 bool UVSim::isHalted() {
     return halted;
 }
 
-/**
- * @brief FOR TESTING PURPOSES ONLY, setter for halted variable
- * @param halt New halted boolean value
-*/
 void UVSim::setHalted(bool halt) {
     halted = halt;
 }
 
-/**
- * @brief FOR TESTING PURPOSES ONLY, getter for instructionPointer variable
- * @return Integer value of the instructionPointer variable
-*/
 int UVSim::getInstructionPointer() {
     return instructionPointer;
 }
 
-/**
- * @brief Runs the loaded program using while loop with boolean variable.
-*/
 void UVSim::run() {
     while (!halted) {
         int instruction = fetch(instructionPointer++);
@@ -110,9 +70,6 @@ void UVSim::run() {
     }
 }
 
-/**
- * @brief Dumps the current state of the simulator to the console.
- */
 void UVSim::dump() {
     std::cout << "\n\nREGISTERS:" << std::endl;
     std::cout << "accumulator: " << accumulator << std::endl;
@@ -129,10 +86,6 @@ void UVSim::dump() {
     std::cout << std::endl << std::endl << std::endl;
 }
 
-/**
- * @brief Prompts the user for a file name to load.
- * @return The name of the file to load.
- */
 std::string UVSim::promptFile() {
     std::string inputFile;
     while (true) {
@@ -147,27 +100,18 @@ std::string UVSim::promptFile() {
     return inputFile;
 }
 
-/**
- * @brief
- * @param index Integer representation of the memory location.
- * @return The instruction at the current instruction pointer.
-*/
 int UVSim::fetch(int index) {
     return memory[index];
 }
 
-/**
- * @brief Stores a word (number) in memory at index.
- * @param index The memory location.
- * @param word The word (number) to store in memory.
-*/
+void UVSim::load(int operand) {
+    accumulator = fetch(operand);
+}
+
 void UVSim::store(int index, int word) {
     memory[index] = word;
 }
 
-/**
- * @brief Read a word from the keyboard into a specific location in memory.
-*/
 void UVSim::read(int operand) {
     int input;
     std::cout << "Enter an integer: ";
@@ -179,18 +123,46 @@ void UVSim::read(int operand) {
     store(operand, input);
 }
 
-/**
- * @brief Write a word from a specific location in memory to screen.
-*/
 void UVSim::write(int operand) {
     std::cout << "Output of location " << operand << ": " << fetch(operand) << std::endl;
 }
 
-/**
- * @brief Truncates a number to 4 digits.
- * @param num The number to truncate.
- * @return The truncated number.
-*/
+void UVSim::add(int operand) {
+    accumulator = truncate(accumulator + fetch(operand));
+}
+
+void UVSim::subtract(int operand) {
+    accumulator = truncate(accumulator - fetch(operand));
+}
+
+void UVSim::multiply(int operand) {
+    accumulator = truncate(accumulator * fetch(operand));
+}
+
+void UVSim::divide(int operand) {
+    if (fetch(operand) != 0) {
+        accumulator = truncate(accumulator / fetch(operand));
+    } else {
+        throw std::runtime_error("Error: Division by zero.");
+    }
+}
+
+void UVSim::branch(int operand) {
+    instructionPointer = operand;
+}
+
+void UVSim::branchNeg(int operand) {
+    if (accumulator < 0) {
+        branch(operand);
+    }
+}
+
+void UVSim::branchZero(int operand) {
+    if (accumulator == 0) {
+        branch(operand);
+    }
+}
+
 int UVSim::truncate(int num) {
     if (num > 9999) {
         return num % 10000;
@@ -200,60 +172,49 @@ int UVSim::truncate(int num) {
     return num;
 }
 
-/**
- * @brief Decodes and executes a fetched instruction.
- * @param instruction The instruction to execute.
-*/
 void UVSim::execute(int instruction) {
     int opcode = instruction / 100; //YIELDS first two numbers
     int operand = instruction % 100; //YIELDS last two numbers
+
     switch (opcode) { // (Created by David, mostly)
-    case 10: // READ
-        read(operand);
-        break;
-    case 11: // WRITE
-        write(operand);
-        break;
-    case 20: // LOAD
-        accumulator = fetch(operand);
-        break;
-    case 21: // STORE
-        store(operand, accumulator);
-        break;
-    case 30: // ADD
-        accumulator = truncate(accumulator + fetch(operand));
-        break;
-    case 31: // SUBTRACT
-        accumulator = truncate(accumulator - fetch(operand));
-        break;
-    case 32: // DIVIDE
-        if (fetch(operand) != 0) {
-            accumulator = truncate(accumulator / fetch(operand));
-        } else {
-            throw std::runtime_error("Error: Division by zero.");
-        }
-        break;
-    case 33: // MULTIPLY
-        accumulator = truncate(accumulator * fetch(operand));
-        break;
-    case 40: // BRANCH
-        instructionPointer = operand;
-        break;
-    case 41: // BRANCHNEG
-        if (accumulator < 0) {
-                instructionPointer = operand;
-        }
-        break;
-    case 42: // BRANCHZERO
-        if (accumulator == 0) {
-                instructionPointer = operand;
-        }
-        break;
-    case 43: // HALT
-        halted = true;
-        break;
-    default:
-        std::cerr << "Error: Unknown opcode " << opcode << std::endl;
-        halted = true;
+        case 10: // READ
+            read(operand);
+            break;
+        case 11: // WRITE
+            write(operand);
+            break;
+        case 20: // LOAD
+            load(operand);
+            break;
+        case 21: // STORE
+            store(operand, accumulator);
+            break;
+        case 30: // ADD
+            add(operand);
+            break;
+        case 31: // SUBTRACT
+            subtract(operand);
+            break;
+        case 32: // DIVIDE
+            divide(operand);
+            break;
+        case 33: // MULTIPLY
+            multiply(operand);
+            break;
+        case 40: // BRANCH
+            branch(operand);
+            break;
+        case 41: // BRANCHNEG
+            branchNeg(operand);
+            break;
+        case 42: // BRANCHZERO
+            branchZero(operand);
+            break;
+        case 43: // HALT
+            halted = true;
+            break;
+        default:
+            std::cerr << "Error: Unknown opcode " << opcode << std::endl;
+            halted = true;
     }
 }
