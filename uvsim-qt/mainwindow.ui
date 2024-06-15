@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QToolButton" name="toolButton">
+   <widget class="QToolButton" name="loadButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -27,7 +27,7 @@
      <string>LOAD FILE</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="exeButton">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -53,7 +53,7 @@
      <string>Type...</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="enterButton">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -66,7 +66,7 @@
      <string>Enter</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="clearButton">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -79,7 +79,7 @@
      <string>Clear Output</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="instructsBrowser">
     <property name="geometry">
      <rect>
       <x>465</x>
@@ -89,7 +89,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="terminalEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
