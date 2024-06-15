@@ -1,5 +1,7 @@
 *.exe
+*.out
 .idea
 cmake-build-debug
 /CMakeLists.txt
 .vscode
+.DS_Store
