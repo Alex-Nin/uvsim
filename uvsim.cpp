@@ -187,6 +187,20 @@ void UVSim::write(int operand) {
 }
 
 /**
+ * @brief Truncates a number to 4 digits.
+ * @param num The number to truncate.
+ * @return The truncated number.
+*/
+int UVSim::truncate(int num) {
+    if (num > 9999) {
+        return num % 10000;
+    } else if (num < -9999) {
+        return -(-num % 10000);
+    }
+    return num;
+}
+
+/**
  * @brief Decodes and executes a fetched instruction.
  * @param instruction The instruction to execute.
 */
@@ -207,20 +221,20 @@ void UVSim::execute(int instruction) {
         store(operand, accumulator);
         break;
     case 30: // ADD
-        accumulator += fetch(operand);
+        accumulator = truncate(accumulator + fetch(operand));
         break;
     case 31: // SUBTRACT
-        accumulator -= fetch(operand);
+        accumulator = truncate(accumulator - fetch(operand));
         break;
     case 32: // DIVIDE
         if (fetch(operand) != 0) {
-            accumulator /= fetch(operand);
+            accumulator = truncate(accumulator / fetch(operand));
         } else {
             throw std::runtime_error("Error: Division by zero.");
         }
         break;
     case 33: // MULTIPLY
-        accumulator *= fetch(operand);
+        accumulator = truncate(accumulator * fetch(operand));
         break;
     case 40: // BRANCH
         instructionPointer = operand;

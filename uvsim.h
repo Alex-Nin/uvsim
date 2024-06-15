@@ -103,6 +103,13 @@ private:
      * @param instruction The instruction to execute.
     */
     void execute(int instruction);
+
+    /**
+     * @brief Truncates a number to 4 digits.
+     * @param num The number to truncate.
+     * @return The truncated number.
+    */
+    int truncate(int num);
 };
 
 #endif // UVSIM_H
