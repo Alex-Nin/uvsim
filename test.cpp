@@ -3,6 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include "uvsim.h"
+#include "uvsimArithmetic.h"
+#include "uvsimControl.h"
+#include "uvsimIO.h"
 
 void TestSetMemory(std::ofstream& ofile) {
     UVSim simulator;

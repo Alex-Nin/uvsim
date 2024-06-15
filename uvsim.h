@@ -1,5 +1,8 @@
 // Created by Jess, adapted from Alex's "main.cpp"
 
+#include "uvsimArithmetic.h"
+#include "uvsimControl.h"
+#include "uvsimIO.h"
 #include <vector>
 #include <string>
 
@@ -77,13 +80,13 @@ public:
      */
     void dump();
 
-    /**
-     * @brief Prompts the user for a file name to load.
-     * @return The name of the file to load.
-     */
-    std::string promptFile();
-
 private:
+    // The arithmetic operations of the UVSim.
+    Arithmetic arithmetic;
+    // The control operations of the UVSim.
+    Control control;
+    // The input/output operations of the UVSim.
+    IO io;
     // The memory of the UVSim.
     std::vector<int> memory;
     // The accumulator of the UVSim.
@@ -92,16 +95,6 @@ private:
     int instructionPointer;
     // The halted state of the UVSim.
     bool halted;
-
-    /**
-     * @brief I/O operation. Read a word from the keyboard into a specific location in memory.
-     */
-    void read(int operand);
-
-    /**
-     * @brief I/O operation. Write a word from a specific location in memory to screen.
-     */
-    void write(int operand);
 
     /**
      * @brief Load/store operations. Loads a word (number) from memory into the accumulator.
@@ -117,48 +110,6 @@ private:
     void store(int index, int word);
 
     /**
-     * @brief Arithmetic operation. Add the value at the operand location to the accumulator.
-     * @param operand The memory location to add to the accumulator.
-     */
-    void add(int operand);
-
-    /**
-     * @brief Arithmetic operation. Subtract the value at the operand location from the accumulator.
-     * @param operand The memory location to subtract from the accumulator.
-     */
-    void subtract(int operand);
-
-    /**
-     * @brief Arithmetic operation. Multiply the value at the operand location with the accumulator.
-     * @param operand The memory location to multiply with the accumulator.
-     */
-    void multiply(int operand);
-
-    /**
-     * @brief Arithmetic operation. Divide the value at the operand location from the accumulator.
-     * @param operand The memory location to divide the accumulator by.
-     */
-    void divide(int operand);
-
-    /**
-     * @brief Branch operation. Set the instruction pointer to the operand.
-     * @param operand The memory location to branch to.
-     */
-    void branch(int operand);
-
-    /**
-     * @brief Branch operation. Set the instruction pointer to the operand if the accumulator is negative.
-     * @param operand The memory location to branch to.
-     */
-    void branchNeg(int operand);
-
-    /**
-     * @brief Branch operation. Set the instruction pointer to the operand if the accumulator is zero.
-     * @param operand The memory location to branch to.
-     */
-    void branchZero(int operand);
-
-    /**
      * @brief
      * @param index Integer representation of the memory location.
      * @return The instruction at the current instruction pointer.
@@ -170,13 +121,6 @@ private:
      * @param instruction The instruction to execute.
      */
     void execute(int instruction);
-
-    /**
-     * @brief Truncates a number to 4 digits.
-     * @param num The number to truncate.
-     * @return The truncated number.
-     */
-    int truncate(int num);
 };
 
 #endif // UVSIM_H

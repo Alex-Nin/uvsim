@@ -86,20 +86,6 @@ void UVSim::dump() {
     std::cout << std::endl << std::endl << std::endl;
 }
 
-std::string UVSim::promptFile() {
-    std::string inputFile;
-    while (true) {
-        std::cout << "Please enter the name of the file you would like to load: ";
-        std::cin >> inputFile;
-        std::ifstream file(inputFile);
-        if (file.is_open()) {
-            break;
-        }
-        std::cout << "File can not be opened, please enter another file." << std::endl;
-    }
-    return inputFile;
-}
-
 int UVSim::fetch(int index) {
     return memory[index];
 }
@@ -112,76 +98,16 @@ void UVSim::store(int index, int word) {
     memory[index] = word;
 }
 
-void UVSim::read(int operand) {
-    int input;
-    std::cout << "Enter an integer: ";
-
-    if (!(std::cin >> input)) {
-        throw std::runtime_error("Invalid input detected. Halting program.");
-    }
-
-    store(operand, input);
-}
-
-void UVSim::write(int operand) {
-    std::cout << "Output of location " << operand << ": " << fetch(operand) << std::endl;
-}
-
-void UVSim::add(int operand) {
-    accumulator = truncate(accumulator + fetch(operand));
-}
-
-void UVSim::subtract(int operand) {
-    accumulator = truncate(accumulator - fetch(operand));
-}
-
-void UVSim::multiply(int operand) {
-    accumulator = truncate(accumulator * fetch(operand));
-}
-
-void UVSim::divide(int operand) {
-    if (fetch(operand) != 0) {
-        accumulator = truncate(accumulator / fetch(operand));
-    } else {
-        throw std::runtime_error("Error: Division by zero.");
-    }
-}
-
-void UVSim::branch(int operand) {
-    instructionPointer = operand;
-}
-
-void UVSim::branchNeg(int operand) {
-    if (accumulator < 0) {
-        branch(operand);
-    }
-}
-
-void UVSim::branchZero(int operand) {
-    if (accumulator == 0) {
-        branch(operand);
-    }
-}
-
-int UVSim::truncate(int num) {
-    if (num > 9999) {
-        return num % 10000;
-    } else if (num < -9999) {
-        return -(-num % 10000);
-    }
-    return num;
-}
-
 void UVSim::execute(int instruction) {
     int opcode = instruction / 100; //YIELDS first two numbers
     int operand = instruction % 100; //YIELDS last two numbers
 
     switch (opcode) { // (Created by David, mostly)
         case 10: // READ
-            read(operand);
+            memory[operand] = io.read(operand);
             break;
         case 11: // WRITE
-            write(operand);
+            io.write(operand, memory[operand]);
             break;
         case 20: // LOAD
             load(operand);
@@ -190,25 +116,25 @@ void UVSim::execute(int instruction) {
             store(operand, accumulator);
             break;
         case 30: // ADD
-            add(operand);
+            accumulator = arithmetic.add(accumulator, fetch(operand));
             break;
         case 31: // SUBTRACT
-            subtract(operand);
+            accumulator = arithmetic.subtract(accumulator, fetch(operand));
             break;
         case 32: // DIVIDE
-            divide(operand);
+            accumulator = arithmetic.divide(accumulator, fetch(operand));
             break;
         case 33: // MULTIPLY
-            multiply(operand);
+            accumulator = arithmetic.multiply(accumulator, fetch(operand));
             break;
         case 40: // BRANCH
-            branch(operand);
+            instructionPointer = control.branch(operand);
             break;
         case 41: // BRANCHNEG
-            branchNeg(operand);
+            instructionPointer = control.branchNeg(operand, instructionPointer, accumulator);
             break;
         case 42: // BRANCHZERO
-            branchZero(operand);
+            instructionPointer = control.branchZero(operand, instructionPointer, accumulator);
             break;
         case 43: // HALT
             halted = true;

@@ -22,7 +22,7 @@ To compile and run UVSim, follow these steps:
    ```
 2. Compile the source code.
    ```bash
-    g++ -o uvsim main.cpp uvsim.cpp
+    g++ -o uvsim main.cpp uvsim.cpp uvsimArithmetic.cpp uvsimControl.cpp uvsimIO.cpp
     ```
 3. Run the executable file.
 4. Follow the instructions to run the UVSim.
@@ -52,7 +52,7 @@ MEMORY:
 ## Unit Tests
 To run the unit tests, follow these steps:
 ```bash
-g++ -o test test.cpp uvsim.cpp
+g++ -o test uvsim.cpp uvsimArithmetic.cpp uvsimControl.cpp uvsimIO.cpp test.cpp
 ./test
 ```
 Check the output and CSV file to see if the tests passed.
