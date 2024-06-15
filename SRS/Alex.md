@@ -20,5 +20,8 @@ The GUI must allow users to start, pause, and reset the simulation of BasicML pr
 Non-Functional Requirements:
 
 The system must execute instructions within 100 milliseconds, ensuring the simulation process runs efficiently, otherwise display a please wait message till the execution is complete.
+
 The GUI must include clearly labeled controls, tooltips, and a structured layout to facilitate program input and output viewing.
+
 The system must display error messages and continue running without crashing when invalid operations are performed.
+
