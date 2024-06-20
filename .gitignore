@@ -5,3 +5,4 @@ cmake-build-debug
 /CMakeLists.txt
 .vscode
 .DS_Store
+uvsim-qt/mainwindow.ui.old

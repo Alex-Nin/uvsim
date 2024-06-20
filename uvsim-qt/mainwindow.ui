@@ -50,7 +50,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Type...</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="enterButton">
@@ -94,8 +94,8 @@
      <rect>
       <x>10</x>
       <y>110</y>
-      <width>341</width>
-      <height>421</height>
+      <width>256</width>
+      <height>192</height>
      </rect>
     </property>
    </widget>
