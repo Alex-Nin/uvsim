@@ -9,6 +9,15 @@ The UVSim is a simple virtual machine, but powerful. The UVSim can only interpre
 - **Arithmetic Operations**: Supports addition, subtraction, multiplication, and division.
 - **Control Flow**: Includes operations like branch, branch-if-negative, and branch-if-zero.
 
+## GUI Interface
+The UVSim includes a graphical user interface for enhanced usability. The GUI features buttons for loading and executing files, entering input, and clearing the output. Below is a description of the GUI components:
+
+- **Load File**: Button to load a file into the UVSim.
+- **Execute File**: Button to execute the loaded file.
+- **Enter**: Button to input integers into the UVSim.
+- **Clear**: Button to clear the output display.
+- **OutputType**: Dropdown menu to select the type of output display.
+
 ## Prerequisites
 - C++ Compiler
 
@@ -25,9 +34,20 @@ To compile and run UVSim, follow these steps:
     g++ -o uvsim main.cpp uvsim.cpp uvsimArithmetic.cpp uvsimControl.cpp uvsimIO.cpp
     ```
 3. Run the executable file.
-4. Follow the instructions to run the UVSim.
 
-## Example Usage
+## Usage
+1. Loading a Program
+   - **Open the File Menu**: Click on Load File in the top lefthand corner.
+   - **Select Load Program**: When prompted, enter the name of the file you wish to load into the UVSim program and hit Enter.
+
+2. Running the Program
+   - **Run Button**: Click the Execute File button to run the program.
+   - **Instruments Panel**: Reference Instruments righthand panel for program instructions and steps.
+   - **Output Window**: Follow the prompts in the Output window.
+
+
+
+## Output Example
 ```bash
 Please enter the name of the file you would like to load: testFile/test1.txt
 Enter an integer:7
