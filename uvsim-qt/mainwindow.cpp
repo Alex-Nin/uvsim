@@ -7,6 +7,12 @@
 #include <QTextStream>
 #include <QDebug>
 
+#include "../uvsim.h"
+#include "../uvsimIO.h"
+#include "../uvsimControl.h"
+#include "../uvsimArithmetic.h"
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -55,6 +61,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::onButton1Clicked()
 {
+    loadTextFile();
     console->append("Load button clicked");
 }
 
@@ -85,17 +92,17 @@ void MainWindow::onConsoleInput()
     }
 }
 
-void MainWindow::loadTextFile(const QString &filePath)
+void MainWindow::loadTextFile()
 {
-    QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    QString filepath = QFileDialog::getOpenFileName(this, "Open Text File", "", "Text Files (*.txt)");
+    if (!filepath.isEmpty())
     {
-        console->append("Failed to open file");
-        return;
+        QFile file(filepath);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            QTextStream in(&file);
+            textViewer->setPlainText(in.readAll());
+            file.close();
+        }
     }
-
-    QTextStream in(&file);
-    textViewer->setPlainText(in.readAll());
-    file.close();
 }
-

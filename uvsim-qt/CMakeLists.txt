@@ -16,6 +16,15 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
+        ../uvsim.cpp
+        ../uvsim.h
+        ../uvsimIO.cpp
+        ../uvsimIO.h
+        ../uvsimArithmetic.cpp
+        ../uvsimArithmetic.h
+        ../uvsimControl.cpp
+        ../uvsimControl.h
+
 
 )
 

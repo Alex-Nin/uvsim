@@ -55,7 +55,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 23,
+				"line" : 32,
 				"parent" : 0
 			},
 			{
@@ -79,13 +79,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 62,
+				"line" : 72,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 45,
+				"line" : 55,
 				"parent" : 0
 			},
 			{
@@ -424,18 +424,22 @@
 			[
 				0,
 				1,
-				2
+				2,
+				4,
+				6,
+				8,
+				10
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df"
+			"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
@@ -552,28 +556,38 @@
 			[
 				0,
 				1,
-				2
+				2,
+				4,
+				6,
+				8,
+				10
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				3
+				3,
+				5,
+				7,
+				9,
+				11,
+				13
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				4
+				12,
+				14
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				5
+				15
 			]
 		}
 	],
@@ -601,6 +615,61 @@
 		{
 			"backtrace" : 4,
 			"path" : "mainwindow.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "mainwindow.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/include/ui_mainwindow.h",
 			"sourceGroupIndex" : 1
 		},
 		{

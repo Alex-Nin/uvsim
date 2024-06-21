@@ -27,7 +27,7 @@ private slots:
     void onButton4Clicked();
     void onConsoleInput();
 
-    void loadTextFile(const QString &filePath);
+    void loadTextFile();
 
 private:
     Ui::MainWindow *ui;

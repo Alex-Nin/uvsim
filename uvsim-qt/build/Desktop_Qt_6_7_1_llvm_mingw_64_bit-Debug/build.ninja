@@ -73,6 +73,38 @@ build CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj: CXX_COMPILER__uvsim-qt_unscann
   OBJECT_DIR = CMakeFiles\uvsim-qt.dir
   OBJECT_FILE_DIR = CMakeFiles\uvsim-qt.dir
 
+build CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp.obj: CXX_COMPILER__uvsim-qt_unscanned_Debug C$:/Users/Jess$ Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp || cmake_object_order_depends_target_uvsim-qt
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
+  DEP_FILE = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450\uvsim.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -pthread
+  INCLUDES = -I"C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/include" -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtCore -isystem C:/Qt/6.7.1/llvm-mingw_64/include -isystem C:/Qt/6.7.1/llvm-mingw_64/mkspecs/win32-clang-g++ -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\uvsim-qt.dir
+  OBJECT_FILE_DIR = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450
+
+build CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp.obj: CXX_COMPILER__uvsim-qt_unscanned_Debug C$:/Users/Jess$ Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp || cmake_object_order_depends_target_uvsim-qt
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
+  DEP_FILE = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450\uvsimIO.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -pthread
+  INCLUDES = -I"C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/include" -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtCore -isystem C:/Qt/6.7.1/llvm-mingw_64/include -isystem C:/Qt/6.7.1/llvm-mingw_64/mkspecs/win32-clang-g++ -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\uvsim-qt.dir
+  OBJECT_FILE_DIR = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450
+
+build CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.cpp.obj: CXX_COMPILER__uvsim-qt_unscanned_Debug C$:/Users/Jess$ Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.cpp || cmake_object_order_depends_target_uvsim-qt
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
+  DEP_FILE = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450\uvsimArithmetic.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -pthread
+  INCLUDES = -I"C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/include" -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtCore -isystem C:/Qt/6.7.1/llvm-mingw_64/include -isystem C:/Qt/6.7.1/llvm-mingw_64/mkspecs/win32-clang-g++ -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\uvsim-qt.dir
+  OBJECT_FILE_DIR = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450
+
+build CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.cpp.obj: CXX_COMPILER__uvsim-qt_unscanned_Debug C$:/Users/Jess$ Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.cpp || cmake_object_order_depends_target_uvsim-qt
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
+  DEP_FILE = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450\uvsimControl.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -pthread
+  INCLUDES = -I"C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/include" -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtCore -isystem C:/Qt/6.7.1/llvm-mingw_64/include -isystem C:/Qt/6.7.1/llvm-mingw_64/mkspecs/win32-clang-g++ -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets -isystem C:/Qt/6.7.1/llvm-mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\uvsim-qt.dir
+  OBJECT_FILE_DIR = CMakeFiles\uvsim-qt.dir\C_\Users\Jess_Smith\src\cs2450-2024\CS2450\CS2450
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target uvsim-qt
@@ -81,7 +113,7 @@ build CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj: CXX_COMPILER__uvsim-qt_unscann
 #############################################
 # Link the executable uvsim-qt.exe
 
-build uvsim-qt.exe: CXX_EXECUTABLE_LINKER__uvsim-qt_Debug CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.obj CMakeFiles/uvsim-qt.dir/main.cpp.obj CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj | C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Widgets.a C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Gui.a C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Core.a C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6EntryPoint.a || uvsim-qt_autogen uvsim-qt_autogen_timestamp_deps
+build uvsim-qt.exe: CXX_EXECUTABLE_LINKER__uvsim-qt_Debug CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.obj CMakeFiles/uvsim-qt.dir/main.cpp.obj CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp.obj CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp.obj CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.cpp.obj CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.cpp.obj | C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Widgets.a C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Gui.a C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Core.a C$:/Qt/6.7.1/llvm-mingw_64/lib/libQt6EntryPoint.a || uvsim-qt_autogen uvsim-qt_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Widgets.a  C:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Gui.a  C:/Qt/6.7.1/llvm-mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.7.1/llvm-mingw_64/lib/libQt6EntryPoint.a  -pthread  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

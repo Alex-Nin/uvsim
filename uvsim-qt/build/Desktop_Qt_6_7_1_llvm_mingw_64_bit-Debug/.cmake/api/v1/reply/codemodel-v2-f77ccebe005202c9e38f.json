@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-1e699a44deb3941c3261.json",
+					"jsonFile" : "directory-.-Debug-8ec8b8db339d4244803c.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-uvsim-qt-Debug-66071f3e2eb30359e566.json",
+					"jsonFile" : "target-uvsim-qt-Debug-33075f6a895aae532333.json",
 					"name" : "uvsim-qt",
 					"projectIndex" : 0
 				},
