@@ -14,8 +14,11 @@ The UVSim includes a graphical user interface for enhanced usability. The GUI fe
 
 - **Load File**: Button to load a file into the UVSim.
 - **Execute File**: Button to execute the loaded file.
+- **Type**: Text field to enter input for the UVSim.
 - **Enter**: Button to input integers into the UVSim.
-- **Clear**: Button to clear the output display.
+- **Clear Output**: Button to clear the output display.
+- **Output**: Text area to display the output of the UVSim.
+- **Instruments**: Text area to display instructions.
 
 ## Prerequisites
 - C++ Compiler
