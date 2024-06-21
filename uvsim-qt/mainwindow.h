@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTextEdit>
+#include <QPushButton>
+#include <QTextBrowser>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +20,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onButton1Clicked();
+    void onButton2Clicked();
+    void onButton3Clicked();
+    void onButton4Clicked();
+    void onConsoleInput();
+
+    void loadTextFile(const QString &filePath);
+
 private:
     Ui::MainWindow *ui;
+    QTextEdit *console;
+    QPushButton *button1, *button2, *button3, *button4;
+    QTextBrowser *textViewer;
 };
 #endif // MAINWINDOW_H

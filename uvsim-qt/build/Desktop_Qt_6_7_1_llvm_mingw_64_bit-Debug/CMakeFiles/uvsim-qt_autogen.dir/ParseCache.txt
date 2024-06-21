@@ -112,6 +112,7 @@ C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qtversionchecks.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qtypeinfo.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qtypes.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qurl.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qutf8stringview.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qvariant.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtCore/qvarlengtharray.h
@@ -131,12 +132,17 @@ C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qkeysequence.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qpaintdevice.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qpalette.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qpen.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qpixelformat.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qpixmap.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qpolygon.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qregion.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qrgb.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qrgba64.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtextcursor.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtextdocument.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtextformat.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtextoption.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtgui-config.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtguiexports.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qtguiglobal.h
@@ -144,9 +150,18 @@ C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qwindowdefs.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/QMainWindow
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/QPushButton
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/QTextBrowser
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/QTextEdit
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qabstractbutton.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qabstractscrollarea.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qframe.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qmainwindow.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qpushbutton.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qtabwidget.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qtextbrowser.h
+ mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qtextedit.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qtwidgetsexports.h
  mdp:C:/Qt/6.7.1/llvm-mingw_64/include/QtWidgets/qtwidgetsglobal.h
@@ -907,5 +922,5 @@ C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
  mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/moc_predefs.h
  mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
 C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.cpp
- uic:./ui_mainwindow.h
+ uic:ui_mainwindow.h
 C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/main.cpp
