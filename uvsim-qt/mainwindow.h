@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QTextBrowser>
 
+#include "../uvsim.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -27,9 +29,12 @@ private slots:
     void onButton4Clicked();
     void onConsoleInput();
 
+    // Extra slot functionality
     void loadTextFile();
+    void setTextFileTitle(QString title);
 
 private:
+    QString WindowTitle;
     Ui::MainWindow *ui;
     QTextEdit *console;
     QPushButton *button1, *button2, *button3, *button4;

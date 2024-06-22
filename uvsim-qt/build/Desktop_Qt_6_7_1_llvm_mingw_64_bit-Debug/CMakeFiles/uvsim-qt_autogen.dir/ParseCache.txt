@@ -921,6 +921,18 @@ C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
  mdp:C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include/vadefs.h
  mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/moc_predefs.h
  mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.h
+ mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim.h
+ mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.h
+ mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.h
+ mdp:C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.h
 C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/mainwindow.cpp
  uic:ui_mainwindow.h
 C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/main.cpp
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.h
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim.h
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.h
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.h
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.cpp
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.cpp
+C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp

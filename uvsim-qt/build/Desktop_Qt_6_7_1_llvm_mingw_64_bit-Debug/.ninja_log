@@ -1,9 +1,29 @@
 # ninja log v6
-179	2216	7407119397134955	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj	319da53cd6b6e2ce
-29	178	7407119395631759	uvsim-qt_autogen/timestamp	4c1355a15a46c85b
-29	178	7407119395631759	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/timestamp	4c1355a15a46c85b
-29	178	7407119395631759	uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
-29	178	7407119395631759	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
-876	2930	7407119055502068	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.obj	51b4b4eb68633549
-879	2892	7407119055532068	CMakeFiles/uvsim-qt.dir/main.cpp.obj	f56144e5a436de71
-2216	2310	7407119417506119	uvsim-qt.exe	1b492b8f175ceaba
+191	2390	7407162242159675	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj	319da53cd6b6e2ce
+29	187	7407162240543145	uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+29	187	7407162240543145	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+29	187	7407162240543145	uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+29	187	7407162240543145	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+828	2733	7407160432400109	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.obj	51b4b4eb68633549
+188	2060	7407162242134526	CMakeFiles/uvsim-qt.dir/main.cpp.obj	f56144e5a436de71
+2390	2488	7407162264151807	uvsim-qt.exe	1d3486513fbd4f44
+200	243	7407123021565839	CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.cpp.obj	3b67d6ace87ff529
+197	329	7407123021525815	CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.cpp.obj	ce6fcde69b7fcf2e
+194	1078	7407123021495836	CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp.obj	9bd449c7b75ef1e9
+191	1164	7407123021475822	CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp.obj	cffab01b76e4ad34
+29	809	7407184553982565	uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+29	809	7407184553982565	uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+29	809	7407184553982565	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+29	809	7407184553982565	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+822	1797	7407184555074392	CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.cpp.obj	9bd449c7b75ef1e9
+819	1823	7407184555040622	CMakeFiles/uvsim-qt.dir/C_/Users/Jess_Smith/src/cs2450-2024/CS2450/CS2450/uvsim.cpp.obj	cffab01b76e4ad34
+813	2795	7407184554980656	CMakeFiles/uvsim-qt.dir/main.cpp.obj	f56144e5a436de71
+810	2865	7407184554950669	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.obj	51b4b4eb68633549
+816	3101	7407184555010654	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj	319da53cd6b6e2ce
+3101	3227	7407184577870574	uvsim-qt.exe	1d3486513fbd4f44
+30	190	7407185882902905	uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+30	190	7407185882902905	uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+30	190	7407185882902905	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/timestamp	4c1355a15a46c85b
+30	190	7407185882902905	C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/uvsim-qt_autogen/mocs_compilation.cpp	4c1355a15a46c85b
+191	2340	7407185884513169	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.obj	319da53cd6b6e2ce
+2340	2457	7407185906004138	uvsim-qt.exe	1d3486513fbd4f44

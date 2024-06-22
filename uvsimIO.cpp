@@ -2,8 +2,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 int IO::read(int operand) {
     int input;
     std::cout << "Enter an integer: ";

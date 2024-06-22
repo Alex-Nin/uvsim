@@ -917,4 +917,8 @@ C:/Users/Jess\ Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7
   C:/Qt/Tools/llvm-mingw1706_64/include/crtdefs.h \
   C:/Qt/Tools/llvm-mingw1706_64/include/sdks/_mingw_ddk.h \
   C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include/stdarg.h \
-  C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include/vadefs.h
+  C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include/vadefs.h \
+  C:/Users/Jess\ Smith/src/cs2450-2024/CS2450/CS2450/uvsim.h \
+  C:/Users/Jess\ Smith/src/cs2450-2024/CS2450/CS2450/uvsimArithmetic.h \
+  C:/Users/Jess\ Smith/src/cs2450-2024/CS2450/CS2450/uvsimControl.h \
+  C:/Users/Jess\ Smith/src/cs2450-2024/CS2450/CS2450/uvsimIO.h

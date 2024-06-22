@@ -9,9 +9,6 @@
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
-#include "../uvsimControl.h"
-#include "../uvsimArithmetic.h"
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -46,8 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(button2, 0, 1);
     layout->addWidget(button3, 0, 2);
     layout->addWidget(button4, 0, 3);
-    layout->addWidget(console, 1, 0, 3, 2); // Span 1 row, 4 columns
-    layout->addWidget(textViewer, 1, 2, 3, 2); // Span 1 row, 4 columns
+    layout->addWidget(console, 1, 0, 9, 2); // Span 0 rows, 2 columns
+    layout->addWidget(textViewer, 1, 2, 10, 2); // Span 0 rows, 2 columns
 
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(layout);
@@ -59,6 +56,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// TODO Slots wiring
 void MainWindow::onButton1Clicked()
 {
     loadTextFile();
@@ -68,11 +66,13 @@ void MainWindow::onButton1Clicked()
 void MainWindow::onButton2Clicked()
 {
     console->append("Execute button clicked");
+    QString txtExport = console->toPlainText(); // Loads text-editor's content as program
+    //TODO
 }
 
 void MainWindow::onButton3Clicked()
 {
-    console->append("Enter button clicked");
+    console->append("Enter button clicked"); // At the moment, a useless button.
 }
 
 void MainWindow::onButton4Clicked()
@@ -105,4 +105,11 @@ void MainWindow::loadTextFile()
             file.close();
         }
     }
+    this->setTextFileTitle(filepath);
+}
+
+void MainWindow::setTextFileTitle(QString title)
+{
+    title.append(" - UVSim");
+    QMainWindow::setWindowTitle(title);
 }
