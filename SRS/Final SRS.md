@@ -1,6 +1,3 @@
-### David, Chen, Jess (6--2024) - Three Round
-
-
 #### Functional Requirements
 
 1. The system shall verify that input file has correct format.
