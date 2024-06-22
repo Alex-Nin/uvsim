@@ -22,6 +22,7 @@ The UVSim includes a graphical user interface for enhanced usability. The GUI fe
 
 ## Prerequisites
 - C++ Compiler
+- QT6 (currently using latest 6.7.1)
 
 ## Installation
 To compile and run UVSim, follow these steps:
