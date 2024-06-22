@@ -33,6 +33,7 @@ private slots:
     void loadTextFile();
     void setTextFileTitle(QString title);
     QVector<QString> extractText();
+    void run();
 
 private:
     Ui::MainWindow *ui;

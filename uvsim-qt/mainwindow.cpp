@@ -10,6 +10,8 @@
 #include "../uvsim.h"
 #include "../uvsimIO.h"
 
+UVSim simulator;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -67,6 +69,8 @@ void MainWindow::onButton2Clicked()
 {
     console->append("Execute button clicked");
     QVector<QString> txtExtract = extractText();
+    //todo
+    run();
 
 }
 
@@ -98,10 +102,15 @@ void MainWindow::loadTextFile()
     if (!filepath.isEmpty())
     {
         QFile file(filepath);
+        int i = 0;
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QTextStream in(&file);
-            textViewer->setPlainText(in.readAll());
+            while (!in.atEnd()) {
+                QString temp = in.readLine();
+                textViewer->append(temp);
+                simulator.setMemory(i++, temp.toInt());
+            }
             file.close();
         }
     }
@@ -119,4 +128,27 @@ QVector<QString> MainWindow::extractText()
     QString text = textViewer->toPlainText();
     QStringList lines = text.split('\n');
     return lines.toVector();
+}
+
+void MainWindow::run() {
+    simulator.setInstructionPointer(0);
+    simulator.setHalted(false);
+    while (!simulator.isHalted()) {
+        int instruction = simulator.fetch(simulator.getInstructionPointer());
+        simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
+
+        int opcode = instruction / 100; //YIELDS first two numbers
+        int operand = instruction % 100; //YIELDS last two numbers
+
+        switch (opcode) {
+        case 10: // READ
+            simulator.setMemory(operand, 1234); // TODO
+            break;
+        case 11: // WRITE
+            console->append(QString::number(simulator.getMemoryAdd(operand)));
+            break;
+        default:
+            simulator.execute(instruction);
+        }
+    }
 }
