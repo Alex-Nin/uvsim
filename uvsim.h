@@ -32,6 +32,7 @@ public:
      * @return A vector containing the values in memory.
      */
     std::vector<int> getMemory();
+    int getMemoryAdd(int index);
 
     /**
      * @brief FOR TESTING PURPOSES ONLY, this method shall not be used anywhere in the code base
@@ -69,6 +70,7 @@ public:
      * @return Integer value of the instructionPointer variable
      */
     int getInstructionPointer();
+    void setInstructionPointer(int ip);
 
     /**
      * @brief Runs the loaded program using while loop with boolean variable.
@@ -79,6 +81,19 @@ public:
      * @brief FOR TESTING PURPOSES ONLY, dumps the contents of the memory to the screen.
      */
     void dump();
+
+    /**
+     * @brief
+     * @param index Integer representation of the memory location.
+     * @return The instruction at the current instruction pointer.
+     */
+    int fetch(int index);
+
+    /**
+     * @brief Decodes and executes a fetched instruction.
+     * @param instruction The instruction to execute.
+     */
+    void execute(int instruction);
 
 private:
     // The arithmetic operations of the UVSim.
@@ -108,19 +123,6 @@ private:
      * @param word The word (number) to store in memory.
      */
     void store(int index, int word);
-
-    /**
-     * @brief
-     * @param index Integer representation of the memory location.
-     * @return The instruction at the current instruction pointer.
-     */
-    int fetch(int index);
-
-    /**
-     * @brief Decodes and executes a fetched instruction.
-     * @param instruction The instruction to execute.
-     */
-    void execute(int instruction);
 };
 
 #endif // UVSIM_H

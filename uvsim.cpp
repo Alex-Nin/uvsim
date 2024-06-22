@@ -37,6 +37,10 @@ std::vector<int> UVSim::getMemory() {
     return memory;
 }
 
+int UVSim::getMemoryAdd(int index) {
+    return memory[index];
+}
+
 void UVSim::setMemory(int index, int value) {
     if (index >= 0 && index < memory.size()) {
         memory[index] = value;
@@ -61,6 +65,10 @@ void UVSim::setHalted(bool halt) {
 
 int UVSim::getInstructionPointer() {
     return instructionPointer;
+}
+
+void UVSim::setInstructionPointer(int ip) {
+    instructionPointer = ip;
 }
 
 void UVSim::run() {
