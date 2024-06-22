@@ -1,0 +1,205 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-6cfff6a0d17f397f3917.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "uvsim-qt",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt-Debug-71de8fdeae0053d9b726.json",
+					"name" : "uvsim-qt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt_autogen-Debug-e91666c3168ad087b56d.json",
+					"name" : "uvsim-qt_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt_autogen_timestamp_deps-Debug-6dd3a8238a3ebeb7245a.json",
+					"name" : "uvsim-qt_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-341c15560ead82e709d8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "uvsim-qt",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt-Release-6cc447e265425f314902.json",
+					"name" : "uvsim-qt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt_autogen-Release-70ae4ad43b1c7710d486.json",
+					"name" : "uvsim-qt_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt_autogen_timestamp_deps-Release-6dd3a8238a3ebeb7245a.json",
+					"name" : "uvsim-qt_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-92e1180e96dfd7bc1711.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "uvsim-qt",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt-RelWithDebInfo-42910b3c7746e730d996.json",
+					"name" : "uvsim-qt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt_autogen-RelWithDebInfo-3f1ee0aa29d3fa263e44.json",
+					"name" : "uvsim-qt_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uvsim-qt_autogen_timestamp_deps-RelWithDebInfo-6dd3a8238a3ebeb7245a.json",
+					"name" : "uvsim-qt_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build",
+		"source" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

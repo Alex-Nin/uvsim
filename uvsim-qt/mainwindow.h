@@ -32,9 +32,9 @@ private slots:
     // Extra slot functionality
     void loadTextFile();
     void setTextFileTitle(QString title);
+    QVector<QString> extractText();
 
 private:
-    QString WindowTitle;
     Ui::MainWindow *ui;
     QTextEdit *console;
     QPushButton *button1, *button2, *button3, *button4;

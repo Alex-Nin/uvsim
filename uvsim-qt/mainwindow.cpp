@@ -66,8 +66,8 @@ void MainWindow::onButton1Clicked()
 void MainWindow::onButton2Clicked()
 {
     console->append("Execute button clicked");
-    QString txtExport = console->toPlainText(); // Loads text-editor's content as program
-    //TODO
+    QVector<QString> txtExtract = extractText();
+
 }
 
 void MainWindow::onButton3Clicked()
@@ -112,4 +112,11 @@ void MainWindow::setTextFileTitle(QString title)
 {
     title.append(" - UVSim");
     QMainWindow::setWindowTitle(title);
+}
+
+QVector<QString> MainWindow::extractText()
+{
+    QString text = textViewer->toPlainText();
+    QStringList lines = text.split('\n');
+    return lines.toVector();
 }

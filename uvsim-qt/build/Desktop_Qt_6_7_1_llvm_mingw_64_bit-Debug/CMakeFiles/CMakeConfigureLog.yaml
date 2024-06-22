@@ -39,8 +39,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r"
-      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r"
+      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q"
+      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
@@ -50,16 +50,16 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r'
+        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q'
         
-        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_123b5
-        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe   -DQT_QML_DEBUG  -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_123b5.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -c C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_8fa44
+        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe   -DQT_QML_DEBUG  -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_8fa44.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -c C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
         clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/Qt/Tools/llvm-mingw1706_64/bin
          (in-process)
-         "C:/Qt/Tools/llvm-mingw1706_64/bin/clang-17.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v "-fcoverage-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r" -resource-dir C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17 -dependency-file "CMakeFiles\\\\cmTC_123b5.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -D QT_QML_DEBUG -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/usr/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include -fdeprecated-macro "-fdebug-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+         "C:/Qt/Tools/llvm-mingw1706_64/bin/clang-17.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v "-fcoverage-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q" -resource-dir C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17 -dependency-file "CMakeFiles\\\\cmTC_8fa44.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -D QT_QML_DEBUG -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/usr/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include -fdeprecated-macro "-fdebug-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 17.0.6 based upon LLVM 17.0.6 default target x86_64-w64-mingw32
         ignoring nonexistent directory "C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include/c++/v1"
         ignoring nonexistent directory "C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include"
@@ -70,12 +70,12 @@ events:
          C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include
          C:/Qt/Tools/llvm-mingw1706_64/include\x0d
         End of search list.\x0d
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG -v -Wl,-v CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_123b5.exe -Wl,--out-implib,libcmTC_123b5.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG -v -Wl,-v CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_8fa44.exe -Wl,--out-implib,libcmTC_8fa44.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/Qt/Tools/llvm-mingw1706_64/bin
-         "C:/Qt/Tools/llvm-mingw1706_64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_123b5.exe C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crt2.o C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/mingw/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows -v CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_123b5.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtend.o\x0d
+         "C:/Qt/Tools/llvm-mingw1706_64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_8fa44.exe C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crt2.o C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/mingw/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows -v CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_8fa44.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtend.o\x0d
         LLD 17.0.6 (compatible with GNU linkers)
         
       exitCode: 0
@@ -109,16 +109,16 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r']
+        ignore line: [Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q']
         ignore line: []
-        ignore line: [Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_123b5]
-        ignore line: [[1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe   -DQT_QML_DEBUG  -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_123b5.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -c C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_8fa44]
+        ignore line: [[1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe   -DQT_QML_DEBUG  -fansi-escape-codes -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_8fa44.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -c C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/Qt/Tools/llvm-mingw1706_64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/Qt/Tools/llvm-mingw1706_64/bin/clang-17.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v "-fcoverage-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r" -resource-dir C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17 -dependency-file "CMakeFiles\\\\cmTC_123b5.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -D QT_QML_DEBUG -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/usr/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include -fdeprecated-macro "-fdebug-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7jyy7r" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "C:/Qt/Tools/llvm-mingw1706_64/bin/clang-17.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v "-fcoverage-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q" -resource-dir C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17 -dependency-file "CMakeFiles\\\\cmTC_8fa44.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -D QT_QML_DEBUG -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include/c++/v1 -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/usr/include -internal-isystem C:/Qt/Tools/llvm-mingw1706_64/include -fdeprecated-macro "-fdebug-compilation-dir=C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ixks5q" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -fcolor-diagnostics -fansi-escape-codes -faddrsig -o CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 17.0.6 based upon LLVM 17.0.6 default target x86_64-w64-mingw32]
         ignore line: [ignoring nonexistent directory "C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include/c++/v1"]
         ignore line: [ignoring nonexistent directory "C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/include"]
@@ -129,18 +129,18 @@ events:
         ignore line: [ C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include]
         ignore line: [ C:/Qt/Tools/llvm-mingw1706_64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG -v -Wl -v CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_123b5.exe -Wl --out-implib libcmTC_123b5.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG -v -Wl -v CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_8fa44.exe -Wl --out-implib libcmTC_8fa44.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [clang version 17.0.6 (https://github.com/llvm/llvm-project.git 6009708b4367171ccdbf4b5905cb6a803753fe18)]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/Qt/Tools/llvm-mingw1706_64/bin]
-        link line: [ "C:/Qt/Tools/llvm-mingw1706_64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_123b5.exe C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crt2.o C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/mingw/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows -v CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_123b5.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtend.o\x0d]
+        link line: [ "C:/Qt/Tools/llvm-mingw1706_64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_8fa44.exe C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crt2.o C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib -LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/mingw/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib -LC:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows -v CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_8fa44.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtend.o\x0d]
           arg [C:/Qt/Tools/llvm-mingw1706_64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_123b5.exe] ==> ignore
+          arg [cmTC_8fa44.exe] ==> ignore
           arg [C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crt2.o] ==> obj [C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crt2.o]
           arg [C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtbegin.o] ==> obj [C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib/crtbegin.o]
           arg [-LC:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib] ==> dir [C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib]
@@ -148,9 +148,9 @@ events:
           arg [-LC:/Qt/Tools/llvm-mingw1706_64/lib] ==> dir [C:/Qt/Tools/llvm-mingw1706_64/lib]
           arg [-LC:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows] ==> dir [C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/lib/windows]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_123b5.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_8fa44.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_123b5.dll.a] ==> ignore
+          arg [libcmTC_8fa44.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -214,8 +214,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ns2lib"
-      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ns2lib"
+      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-9jpzma"
+      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-9jpzma"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
@@ -226,27 +226,27 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ns2lib'
+        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-9jpzma'
         
-        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_62dfe
-        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DCMAKE_HAVE_LIBC_PTHREAD  -DQT_QML_DEBUG  -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_62dfe.dir/src.cxx.obj -MF CMakeFiles\\cmTC_62dfe.dir\\src.cxx.obj.d -o CMakeFiles/cmTC_62dfe.dir/src.cxx.obj -c "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-ns2lib/src.cxx"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_62dfe.dir/src.cxx.obj -o cmTC_62dfe.exe -Wl,--out-implib,libcmTC_62dfe.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
-        \x1b[31mFAILED: \x1b[0mcmTC_62dfe.exe 
-        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_62dfe.dir/src.cxx.obj -o cmTC_62dfe.exe -Wl,--out-implib,libcmTC_62dfe.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_f80a6
+        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DCMAKE_HAVE_LIBC_PTHREAD  -DQT_QML_DEBUG  -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_f80a6.dir/src.cxx.obj -MF CMakeFiles\\cmTC_f80a6.dir\\src.cxx.obj.d -o CMakeFiles/cmTC_f80a6.dir/src.cxx.obj -c "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-9jpzma/src.cxx"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_f80a6.dir/src.cxx.obj -o cmTC_f80a6.exe -Wl,--out-implib,libcmTC_f80a6.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        \x1b[31mFAILED: \x1b[0mcmTC_f80a6.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_f80a6.dir/src.cxx.obj -o cmTC_f80a6.exe -Wl,--out-implib,libcmTC_f80a6.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         ld.lld: error: undefined symbol: pthread_create
-        >>> referenced by CMakeFiles/cmTC_62dfe.dir/src.cxx.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_f80a6.dir/src.cxx.obj:(main)
         
         ld.lld: error: undefined symbol: pthread_detach
-        >>> referenced by CMakeFiles/cmTC_62dfe.dir/src.cxx.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_f80a6.dir/src.cxx.obj:(main)
         
         ld.lld: error: undefined symbol: pthread_cancel
-        >>> referenced by CMakeFiles/cmTC_62dfe.dir/src.cxx.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_f80a6.dir/src.cxx.obj:(main)
         
         ld.lld: error: undefined symbol: pthread_join
-        >>> referenced by CMakeFiles/cmTC_62dfe.dir/src.cxx.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_f80a6.dir/src.cxx.obj:(main)
         
         ld.lld: error: undefined symbol: pthread_exit
-        >>> referenced by CMakeFiles/cmTC_62dfe.dir/src.cxx.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_f80a6.dir/src.cxx.obj:(main)
         clang-17: error: linker command failed with exit code 1 (use -v to see invocation)\x0d
         ninja: build stopped: subcommand failed.
         
@@ -264,8 +264,8 @@ events:
     checks:
       - "Check if compiler accepts -pthread"
     directories:
-      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-igu0k1"
-      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-igu0k1"
+      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7lf9w8"
+      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7lf9w8"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
@@ -276,11 +276,11 @@ events:
       variable: "THREADS_HAVE_PTHREAD_ARG"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-igu0k1'
+        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7lf9w8'
         
-        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_062b1
-        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe   -DQT_QML_DEBUG  -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_062b1.dir/CheckForPthreads.cxx.obj -MF CMakeFiles\\cmTC_062b1.dir\\CheckForPthreads.cxx.obj.d -o CMakeFiles/cmTC_062b1.dir/CheckForPthreads.cxx.obj -c "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-igu0k1/CheckForPthreads.cxx"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_062b1.dir/CheckForPthreads.cxx.obj -o cmTC_062b1.exe -Wl,--out-implib,libcmTC_062b1.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -pthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_4b1f8
+        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe   -DQT_QML_DEBUG  -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_4b1f8.dir/CheckForPthreads.cxx.obj -MF CMakeFiles\\cmTC_4b1f8.dir\\CheckForPthreads.cxx.obj.d -o CMakeFiles/cmTC_4b1f8.dir/CheckForPthreads.cxx.obj -c "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-7lf9w8/CheckForPthreads.cxx"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_4b1f8.dir/CheckForPthreads.cxx.obj -o cmTC_4b1f8.exe -Wl,--out-implib,libcmTC_4b1f8.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -pthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         
       exitCode: 0
   -
@@ -302,8 +302,8 @@ events:
     checks:
       - "Performing Test HAVE_STDATOMIC"
     directories:
-      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-yamzhj"
-      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-yamzhj"
+      source: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-xv4vmp"
+      binary: "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-xv4vmp"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
@@ -314,11 +314,11 @@ events:
       variable: "HAVE_STDATOMIC"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-yamzhj'
+        Change Dir: 'C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-xv4vmp'
         
-        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_5cfdf
-        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DHAVE_STDATOMIC  -DQT_QML_DEBUG  -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_5cfdf.dir/src.cxx.obj -MF CMakeFiles\\cmTC_5cfdf.dir\\src.cxx.obj.d -o CMakeFiles/cmTC_5cfdf.dir/src.cxx.obj -c "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-yamzhj/src.cxx"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_5cfdf.dir/src.cxx.obj -o cmTC_5cfdf.exe -Wl,--out-implib,libcmTC_5cfdf.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s): C:/Qt/Tools/Ninja/ninja.exe -v cmTC_1a5c5
+        [1/2] C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DHAVE_STDATOMIC  -DQT_QML_DEBUG  -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_1a5c5.dir/src.cxx.obj -MF CMakeFiles\\cmTC_1a5c5.dir\\src.cxx.obj.d -o CMakeFiles/cmTC_1a5c5.dir/src.cxx.obj -c "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/Desktop_Qt_6_7_1_llvm_mingw_64_bit-Debug/CMakeFiles/CMakeScratch/TryCompile-xv4vmp/src.cxx"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Qt\\Tools\\llvm-mingw1706_64\\bin\\clang++.exe -DQT_QML_DEBUG  CMakeFiles/cmTC_1a5c5.dir/src.cxx.obj -o cmTC_1a5c5.exe -Wl,--out-implib,libcmTC_1a5c5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         
       exitCode: 0
 ...
