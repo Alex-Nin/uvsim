@@ -38,7 +38,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTextEdit *console;
-    QPushButton *button1, *button2, *button3, *button4;
+    QPushButton *button1, *button2, *button3, *button4, *button5;
     QTextBrowser *textViewer;
 };
 #endif // MAINWINDOW_H

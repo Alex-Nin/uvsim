@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     button2 = new QPushButton("Execute File", this);
     button3 = new QPushButton("Enter", this);
     button4 = new QPushButton("Clear output", this);
+    button5 = new QPushButton("Color Scheme", this);
     console = new QTextEdit(this);
 
     // Set console to read-only for output part
@@ -47,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(button4, 0, 3);
     layout->addWidget(console, 1, 0, 9, 2); // Span 0 rows, 2 columns
     layout->addWidget(textViewer, 1, 2, 10, 2); // Span 0 rows, 2 columns
+    layout->addWidget(button5, 10, 1);
 
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(layout);
