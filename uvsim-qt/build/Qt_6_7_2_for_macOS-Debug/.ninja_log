@@ -1,0 +1,27 @@
+# ninja log v6
+1	135	1720449243196290394	uvsim-qt_autogen/timestamp	f2bfd67d4a90244b
+1	135	1720449243196290394	uvsim-qt_autogen/mocs_compilation.cpp	f2bfd67d4a90244b
+1	135	1720449243196290394	/Users/alexandernin/Documents/GitHub/CS2450/uvsim-qt/build/Qt_6_7_2_for_macOS-Debug/uvsim-qt_autogen/timestamp	f2bfd67d4a90244b
+1	135	1720449243196290394	/Users/alexandernin/Documents/GitHub/CS2450/uvsim-qt/build/Qt_6_7_2_for_macOS-Debug/uvsim-qt_autogen/mocs_compilation.cpp	f2bfd67d4a90244b
+137	163	1720449243205434100	CMakeFiles/uvsim-qt.dir/Users/alexandernin/Documents/GitHub/CS2450/uvsimControl.cpp.o	5bda400eed5dfb4e
+137	187	1720449243204985892	CMakeFiles/uvsim-qt.dir/Users/alexandernin/Documents/GitHub/CS2450/uvsimArithmetic.cpp.o	c45181f6c47fc87e
+137	425	1720449243204874975	CMakeFiles/uvsim-qt.dir/Users/alexandernin/Documents/GitHub/CS2450/uvsimIO.cpp.o	34740b53e5ce3cb1
+137	451	1720449243204777267	CMakeFiles/uvsim-qt.dir/Users/alexandernin/Documents/GitHub/CS2450/uvsim.cpp.o	b00b654e4cb1ea62
+136	773	1720449243204384350	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.o	3c5eba220c42dbbe
+136	780	1720449243204558475	CMakeFiles/uvsim-qt.dir/main.cpp.o	e1bdada9ff8b0f05
+137	882	1720449243204669225	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.o	173d1cb157a9834b
+882	969	1720449243950050166	uvsim-qt.app/Contents/MacOS/uvsim-qt	387584bdfc90025f
+8	150	1720449838137072000	uvsim-qt_autogen/timestamp	f2bfd67d4a90244b
+8	150	1720449838137072000	uvsim-qt_autogen/mocs_compilation.cpp	f2bfd67d4a90244b
+8	150	1720449838137072000	/Users/alexandernin/Documents/GitHub/CS2450/uvsim-qt/build/Qt_6_7_2_for_macOS-Debug/uvsim-qt_autogen/timestamp	f2bfd67d4a90244b
+8	150	1720449838137072000	/Users/alexandernin/Documents/GitHub/CS2450/uvsim-qt/build/Qt_6_7_2_for_macOS-Debug/uvsim-qt_autogen/mocs_compilation.cpp	f2bfd67d4a90244b
+150	798	1720449838145327483	CMakeFiles/uvsim-qt.dir/main.cpp.o	e1bdada9ff8b0f05
+150	801	1720449838145133692	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.o	3c5eba220c42dbbe
+150	895	1720449838145443608	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.o	173d1cb157a9834b
+10	127	1720449899798696000	uvsim-qt_autogen/timestamp	f2bfd67d4a90244b
+10	127	1720449899798696000	uvsim-qt_autogen/mocs_compilation.cpp	f2bfd67d4a90244b
+10	127	1720449899798696000	/Users/alexandernin/Documents/GitHub/CS2450/uvsim-qt/build/Qt_6_7_2_for_macOS-Debug/uvsim-qt_autogen/timestamp	f2bfd67d4a90244b
+10	127	1720449899798696000	/Users/alexandernin/Documents/GitHub/CS2450/uvsim-qt/build/Qt_6_7_2_for_macOS-Debug/uvsim-qt_autogen/mocs_compilation.cpp	f2bfd67d4a90244b
+128	751	1720449899805501249	CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.o	3c5eba220c42dbbe
+128	759	1720449899805656457	CMakeFiles/uvsim-qt.dir/main.cpp.o	e1bdada9ff8b0f05
+128	856	1720449899805757540	CMakeFiles/uvsim-qt.dir/mainwindow.cpp.o	173d1cb157a9834b

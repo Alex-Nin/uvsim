@@ -28,6 +28,8 @@ private slots:
     void onButton3Clicked();
     void onButton4Clicked();
     void onConsoleInput();
+    void setDefaultColors();
+    void changeColors();
 
     // Extra slot functionality
     void loadTextFile();
@@ -38,7 +40,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTextEdit *console;
-    QPushButton *button1, *button2, *button3, *button4, *button5;
+    QPushButton *button1, *button2, *button3, *button4;
     QTextBrowser *textViewer;
 };
 #endif // MAINWINDOW_H
