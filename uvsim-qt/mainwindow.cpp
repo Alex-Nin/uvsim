@@ -15,6 +15,8 @@ UVSim simulator;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , defaultPrimaryColor("#4C721D")
+    , defaultSecondaryColor("#FFFFFF")
     , currentPrimaryColor(defaultPrimaryColor)
     , currentSecondaryColor(defaultSecondaryColor)
 {
@@ -29,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     console = new QTextEdit(this);
 
     //Toolbar for Colors
-    QToolBar *toolbar = addToolBar("Toolbar");
+    toolbar = addToolBar("Toolbar");
     QAction *viewDefaultColors = new QAction("Set Default Colors", this);
     QAction *changeColorsAction = new QAction("Change Colors", this);
     toolbar->addAction(viewDefaultColors);
@@ -37,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
     connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
 
-    applyColors(defaultPrimaryColor, defaultSecondaryColor);
+
 
     // Set console to read-only for output part
     console->setReadOnly(true);
@@ -64,6 +66,8 @@ MainWindow::MainWindow(QWidget *parent)
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
+
+    applyColors(defaultPrimaryColor, defaultSecondaryColor); //Goes after centralWidget to ensure color layout upon openning
 }
 
 MainWindow::~MainWindow()
@@ -220,8 +224,16 @@ void MainWindow::changeColors()
 void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
 {
     QPalette palette = centralWidget()->palette();
+
     palette.setColor(QPalette::Window, primary);
-    palette.setColor(QPalette::WindowText, secondary);
+    palette.setColor(QPalette::Button, secondary);
+    QString buttonStyle = QString(
+        "QPushButton {background-color: %1; color: %2}"
+        ).arg(secondary.name(), primary.name());
+    button1->setStyleSheet(buttonStyle);
+    button2->setStyleSheet(buttonStyle);
+    button3->setStyleSheet(buttonStyle);
+    button4->setStyleSheet(buttonStyle);
     centralWidget()->setPalette(palette);
     centralWidget()->setAutoFillBackground(true);
 }
