@@ -32,6 +32,7 @@ private slots:
     // Extra slot functionality
     void loadTextFile();
     void setTextFileTitle(QString title);
+    int getUserInput();
     void run();
 
 private:
