@@ -45,10 +45,11 @@ private:
     QTextEdit *console;
     QPushButton *button1, *button2, *button3, *button4;
     QTextBrowser *textViewer;
-    QColor currentPrimaryColor;
-    QColor currentSecondaryColor;
     const QColor defaultPrimaryColor = QColor("#4C721D");
     const QColor defaultSecondaryColor = QColor("#FFFFFF");
+    QColor currentPrimaryColor;
+    QColor currentSecondaryColor;
+
 
     void applyColors(const QColor &primary, const QColor &secondary);
 };

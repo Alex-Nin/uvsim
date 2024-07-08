@@ -37,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
     connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
 
+    applyColors(defaultPrimaryColor, defaultSecondaryColor);
+
     // Set console to read-only for output part
     console->setReadOnly(true);
     textViewer->setReadOnly(false);
