@@ -32,7 +32,7 @@ private slots:
     // Extra slot functionality
     void loadTextFile();
     void setTextFileTitle(QString title);
-    QVector<QString> extractText();
+    int getUserInput();
     void run();
 
 private:

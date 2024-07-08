@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     textViewer = new QTextBrowser(this);
     button1 = new QPushButton("Load File", this);
     button2 = new QPushButton("Execute File", this);
-    button3 = new QPushButton("Enter", this);
+    button3 = new QPushButton("Save As", this);
     button4 = new QPushButton("Clear output", this);
     button5 = new QPushButton("Color Scheme", this);
     console = new QTextEdit(this);
@@ -60,7 +60,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// TODO Slots wiring
 void MainWindow::onButton1Clicked()
 {
     loadTextFile();
@@ -70,15 +69,43 @@ void MainWindow::onButton1Clicked()
 void MainWindow::onButton2Clicked()
 {
     console->append("Execute button clicked");
-    QVector<QString> txtExtract = extractText();
-    //todo
+    QString txtExport = console->toPlainText(); // Loads text-editor's content as program
     run();
-
 }
 
 void MainWindow::onButton3Clicked()
 {
-    console->append("Enter button clicked"); // At the moment, a useless button.
+    QString fileName = QFileDialog::getSaveFileName(
+        nullptr,
+        "Select File",
+        "",
+        "Text Files (*.txt);;All Files (*)"
+    );
+
+    QFile file(fileName);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+
+    QTextStream out(&file);
+    std::vector<int> memory = simulator.getMemory();
+
+    int lastIndex = -1;
+    for (int i = 0; i < memory.size(); ++i) {
+        if (memory[i] != 0) {
+            lastIndex = i;
+        }
+    }
+
+    for (int i = 0; i <= lastIndex; ++i) {
+        if (memory[i] > 0) {
+            out << "+";
+        }
+        else if (memory[i] == 0) {
+            out << "+000";
+        }
+        out <<memory[i] << '\n';
+    }
+
+    file.close();
 }
 
 void MainWindow::onButton4Clicked()
@@ -100,6 +127,8 @@ void MainWindow::onConsoleInput()
 
 void MainWindow::loadTextFile()
 {
+    textViewer->clear();
+    simulator.clearMemory();
     QString filepath = QFileDialog::getOpenFileName(this, "Open Text File", "", "Text Files (*.txt)");
     if (!filepath.isEmpty())
     {
@@ -125,14 +154,12 @@ void MainWindow::setTextFileTitle(QString title)
     QMainWindow::setWindowTitle(title);
 }
 
-QVector<QString> MainWindow::extractText()
-{
-    QString text = textViewer->toPlainText();
-    QStringList lines = text.split('\n');
-    return lines.toVector();
+int MainWindow::getUserInput() { // Jess TODO
+    return 1234;
 }
 
 void MainWindow::run() {
+    simulator.setAccumulator(0);
     simulator.setInstructionPointer(0);
     simulator.setHalted(false);
     while (!simulator.isHalted()) {
@@ -143,14 +170,14 @@ void MainWindow::run() {
         int operand = instruction % 100; //YIELDS last two numbers
 
         switch (opcode) {
-        case 10: // READ
-            simulator.setMemory(operand, 1234); // TODO
-            break;
-        case 11: // WRITE
-            console->append(QString::number(simulator.getMemoryAdd(operand)));
-            break;
-        default:
-            simulator.execute(instruction);
+            case 10: // READ
+                simulator.setMemory(operand, getUserInput());
+                break;
+            case 11: // WRITE
+                console->append(QString::number(simulator.getMemoryAdd(operand)));
+                break;
+            default:
+                simulator.execute(instruction);
         }
     }
 }
