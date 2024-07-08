@@ -253,12 +253,16 @@ uvsim-qt_autogen/timestamp: \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qtguiglobal.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QColorDialog \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QTextBrowser \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QTextEdit \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QToolBar \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractscrollarea.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qcolordialog.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qdialog.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
@@ -266,6 +270,7 @@ uvsim-qt_autogen/timestamp: \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtextbrowser.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtextedit.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtoolbar.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsexports.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsglobal.h \

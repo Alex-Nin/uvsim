@@ -15,6 +15,8 @@ UVSim simulator;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , currentPrimaryColor(defaultPrimaryColor)
+    , currentSecondaryColor(defaultSecondaryColor)
 {
     ui->setupUi(this);
 
@@ -25,6 +27,15 @@ MainWindow::MainWindow(QWidget *parent)
     button3 = new QPushButton("Save As", this);
     button4 = new QPushButton("Clear output", this);
     console = new QTextEdit(this);
+
+    //Toolbar for Colors
+    QToolBar *toolbar = addToolBar("Toolbar");
+    QAction *viewDefaultColors = new QAction("Set Default Colors", this);
+    QAction *changeColorsAction = new QAction("Change Colors", this);
+    toolbar->addAction(viewDefaultColors);
+    toolbar->addAction(changeColorsAction);
+    connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
+    connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
 
     // Set console to read-only for output part
     console->setReadOnly(true);
@@ -178,4 +189,37 @@ void MainWindow::run() {
                 simulator.execute(instruction);
         }
     }
+}
+
+void MainWindow::setDefaultColors()
+{
+    currentPrimaryColor = defaultPrimaryColor;
+    currentSecondaryColor = defaultSecondaryColor;
+    applyColors(defaultPrimaryColor, defaultSecondaryColor);
+}
+
+void MainWindow::changeColors()
+{
+    QColor newPrimaryColor = QColorDialog::getColor(currentPrimaryColor, this, "Select Primary Color");
+    if (newPrimaryColor.isValid())
+    {
+        currentPrimaryColor = newPrimaryColor;
+    }
+
+    QColor newSecondaryColor = QColorDialog::getColor(currentSecondaryColor, this, "Select Secondary Color");
+    if (newSecondaryColor.isValid())
+    {
+        currentSecondaryColor = newSecondaryColor;
+    }
+
+    applyColors(currentPrimaryColor, currentSecondaryColor);
+}
+
+void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
+{
+    QPalette palette = centralWidget()->palette();
+    palette.setColor(QPalette::Window, primary);
+    palette.setColor(QPalette::WindowText, secondary);
+    centralWidget()->setPalette(palette);
+    centralWidget()->setAutoFillBackground(true);
 }
