@@ -1,4 +1,3 @@
-// Created by Alex
 
 #include "uvsim.h"
 #include "uvsimIO.h"

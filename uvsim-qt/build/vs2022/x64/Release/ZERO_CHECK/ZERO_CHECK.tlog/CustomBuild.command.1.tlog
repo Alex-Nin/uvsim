@@ -1,0 +1,10 @@
+^C:\USERS\JESS SMITH\SRC\CS2450-2024\CS2450\CS2450\UVSIM-QT\BUILD\VS2022\CMAKEFILES\9AA40870ECF7BC36172A922DD7B9A1C7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt" "-BC:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/vs2022" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/uvsim-qt/build/vs2022/uvsim-qt.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

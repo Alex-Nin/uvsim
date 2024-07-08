@@ -6,10 +6,10 @@
 #include "uvsim.h"
 
 UVSim::UVSim() :
-        memory(100, 0),
-        accumulator(0),
-        instructionPointer(0),
-        halted(false) {}
+    memory(100, 0),
+    accumulator(0),
+    instructionPointer(0),
+    halted(false) {}
 
 UVSim::~UVSim() {
     memory.clear();
@@ -117,44 +117,44 @@ void UVSim::execute(int instruction) {
     int operand = instruction % 100; //YIELDS last two numbers
 
     switch (opcode) { // (Created by David, mostly)
-        case 10: // READ
-            memory[operand] = io.read(operand);
-            break;
-        case 11: // WRITE
-            io.write(operand, memory[operand]);
-            break;
-        case 20: // LOAD
-            load(operand);
-            break;
-        case 21: // STORE
-            store(operand, accumulator);
-            break;
-        case 30: // ADD
-            accumulator = arithmetic.add(accumulator, fetch(operand));
-            break;
-        case 31: // SUBTRACT
-            accumulator = arithmetic.subtract(accumulator, fetch(operand));
-            break;
-        case 32: // DIVIDE
-            accumulator = arithmetic.divide(accumulator, fetch(operand));
-            break;
-        case 33: // MULTIPLY
-            accumulator = arithmetic.multiply(accumulator, fetch(operand));
-            break;
-        case 40: // BRANCH
-            instructionPointer = control.branch(operand);
-            break;
-        case 41: // BRANCHNEG
-            instructionPointer = control.branchNeg(operand, instructionPointer, accumulator);
-            break;
-        case 42: // BRANCHZERO
-            instructionPointer = control.branchZero(operand, instructionPointer, accumulator);
-            break;
-        case 43: // HALT
-            halted = true;
-            break;
-        default:
-            std::cerr << "Error: Unknown opcode " << opcode << std::endl;
-            halted = true;
+    case 10: // READ
+        memory[operand] = io.read(operand);
+        break;
+    case 11: // WRITE
+        io.write(operand, memory[operand]);
+        break;
+    case 20: // LOAD
+        load(operand);
+        break;
+    case 21: // STORE
+        store(operand, accumulator);
+        break;
+    case 30: // ADD
+        accumulator = arithmetic.add(accumulator, fetch(operand));
+        break;
+    case 31: // SUBTRACT
+        accumulator = arithmetic.subtract(accumulator, fetch(operand));
+        break;
+    case 32: // DIVIDE
+        accumulator = arithmetic.divide(accumulator, fetch(operand));
+        break;
+    case 33: // MULTIPLY
+        accumulator = arithmetic.multiply(accumulator, fetch(operand));
+        break;
+    case 40: // BRANCH
+        instructionPointer = control.branch(operand);
+        break;
+    case 41: // BRANCHNEG
+        instructionPointer = control.branchNeg(operand, instructionPointer, accumulator);
+        break;
+    case 42: // BRANCHZERO
+        instructionPointer = control.branchZero(operand, instructionPointer, accumulator);
+        break;
+    case 43: // HALT
+        halted = true;
+        break;
+    default:
+        std::cerr << "Error: Unknown opcode " << opcode << std::endl;
+        halted = true;
     }
 }
