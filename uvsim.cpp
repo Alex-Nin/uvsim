@@ -47,6 +47,12 @@ void UVSim::setMemory(int index, int value) {
     }
 }
 
+void UVSim::clearMemory() {
+  for (int i = 0; i < memory.size(); i++) {
+    memory[i] = 0;
+  }
+}
+
 int UVSim::getAccumulator() {
     return accumulator;
 }
