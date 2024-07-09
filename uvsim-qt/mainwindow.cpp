@@ -5,7 +5,6 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
-#include <QDebug>
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
@@ -23,12 +22,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // Create widgets
-    textViewer = new QTextBrowser(this);
+    textViewer = new QTextEdit(this);
     button1 = new QPushButton("Load File", this);
     button2 = new QPushButton("Execute File", this);
     button3 = new QPushButton("Save As", this);
     button4 = new QPushButton("Clear output", this);
     console = new QTextEdit(this);
+    statusLabel = new QLabel("Lines: 0 / 100");
 
     //Toolbar for Colors
     toolbar = addToolBar("Toolbar");
@@ -38,8 +38,6 @@ MainWindow::MainWindow(QWidget *parent)
     toolbar->addAction(changeColorsAction);
     connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
     connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
-
-
 
     // Set console to read-only for output part
     console->setReadOnly(true);
@@ -54,6 +52,9 @@ MainWindow::MainWindow(QWidget *parent)
     // Connect console input
     connect(console, &QTextEdit::textChanged, this, &MainWindow::onConsoleInput);
 
+    // Connect user input
+    connect(textViewer, &QTextEdit::textChanged, this, &MainWindow::onTextViewerTextChanged);
+
     // Layout setup
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(button1, 0, 0);
@@ -61,7 +62,8 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(button3, 0, 2);
     layout->addWidget(button4, 0, 3);
     layout->addWidget(console, 1, 0, 9, 2); // Span 0 rows, 2 columns
-    layout->addWidget(textViewer, 1, 2, 10, 2); // Span 0 rows, 2 columns
+    layout->addWidget(textViewer, 1, 2, 8, 2); // Span 0 rows, 2 columns
+    layout->addWidget(statusLabel);
 
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(layout);
@@ -234,6 +236,41 @@ void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
     button2->setStyleSheet(buttonStyle);
     button3->setStyleSheet(buttonStyle);
     button4->setStyleSheet(buttonStyle);
+    statusLabel->setStyleSheet(QString("QLabel {color: %2}").arg(secondary.name()));
     centralWidget()->setPalette(palette);
     centralWidget()->setAutoFillBackground(true);
+}
+
+void MainWindow::onTextViewerTextChanged()
+{
+    static bool isUpdating = false;
+    if (isUpdating) return;
+
+    isUpdating = true;
+    simulator.clearMemory();
+
+    QStringList lines = textViewer->toPlainText().split('\n');
+    int lineCount = lines.size();
+
+    // Only keep first 100 lines
+    if (lineCount > 100) {
+        QString trimmedText = lines.mid(0, 100).join('\n');
+        textViewer->setPlainText(trimmedText);
+        // Move the cursor to the end of the text
+        QTextCursor cursor = textViewer->textCursor();
+        cursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
+        textViewer->setTextCursor(cursor);
+
+        lines = trimmedText.split('\n');
+        lineCount = lines.size();
+    }
+
+    statusLabel->setText(QString("Lines: %1 / 100").arg(lineCount));
+
+    for (int i = 0; i < lineCount; ++i) {
+        int value = lines[i].toInt();
+        simulator.setMemory(i, value);
+    }
+
+    isUpdating = false;
 }

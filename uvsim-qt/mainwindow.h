@@ -7,7 +7,7 @@
 #include <QTextBrowser>
 #include <QToolBar>
 #include <QColorDialog>
-
+#include <QLabel>
 
 #include "../uvsim.h"
 
@@ -33,6 +33,7 @@ private slots:
     void onConsoleInput();
     void setDefaultColors();
     void changeColors();
+    void onTextViewerTextChanged();
 
     // Extra slot functionality
     void loadTextFile();
@@ -44,7 +45,8 @@ private:
     Ui::MainWindow *ui;
     QTextEdit *console;
     QPushButton *button1, *button2, *button3, *button4;
-    QTextBrowser *textViewer;
+    QTextEdit *textViewer;
+    QLabel *statusLabel;
     QToolBar *toolbar;
     const QColor defaultPrimaryColor;
     const QColor defaultSecondaryColor;
