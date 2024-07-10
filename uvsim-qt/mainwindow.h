@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTextEdit>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QTextBrowser>
 #include <QToolBar>
@@ -47,6 +48,9 @@ private:
     QPushButton *button1, *button2, *button3, *button4;
     QTextEdit *textViewer;
     QLabel *statusLabel;
+    QLabel *consoleLabel;
+    QLabel *editorLabel;
+    QLineEdit *consoleField;
     QToolBar *toolbar;
     const QColor defaultPrimaryColor;
     const QColor defaultSecondaryColor;

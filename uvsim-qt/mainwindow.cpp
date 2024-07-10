@@ -28,7 +28,13 @@ MainWindow::MainWindow(QWidget *parent)
     button3 = new QPushButton("Save As", this);
     button4 = new QPushButton("Clear output", this);
     console = new QTextEdit(this);
+
+    consoleField = new QLineEdit(this);
+    consoleField->setPlaceholderText("Enter data here...");
+
     statusLabel = new QLabel("Lines: 0 / 100");
+    consoleLabel = new QLabel("Console");
+    editorLabel = new QLabel("Editor");
 
     //Toolbar for Colors
     toolbar = addToolBar("Toolbar");
@@ -61,9 +67,12 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(button2, 0, 1);
     layout->addWidget(button3, 0, 2);
     layout->addWidget(button4, 0, 3);
-    layout->addWidget(console, 1, 0, 9, 2); // Span 0 rows, 2 columns
-    layout->addWidget(textViewer, 1, 2, 8, 2); // Span 0 rows, 2 columns
-    layout->addWidget(statusLabel);
+    layout->addWidget(consoleLabel, 1, 0, 1, 2);
+    layout->addWidget(editorLabel, 1, 2, 1, 2);
+    layout->addWidget(console, 2, 0, 8, 2); // Span 0 rows, 2 columns
+    layout->addWidget(textViewer, 2, 2, 8, 2); // Span 0 rows, 2 columns
+    layout->addWidget(consoleField, 10, 0, 1, 2);
+    layout->addWidget(statusLabel, 10, 2, 1, 2);
 
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(layout);
