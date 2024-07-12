@@ -348,6 +348,8 @@ CMakeFiles/uvsim-qt.dir/uvsim-qt_autogen/mocs_compilation.cpp.o: \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtGui.framework/Headers/qtextcursor.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtGui.framework/Headers/qtextformat.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtGui.framework/Headers/qpen.h \
+  /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+  /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \

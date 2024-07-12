@@ -242,6 +242,7 @@
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QColorDialog \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
+  /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QTextBrowser \
@@ -253,6 +254,7 @@
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qdialog.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
+  /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
   /Users/zhihuichen/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
