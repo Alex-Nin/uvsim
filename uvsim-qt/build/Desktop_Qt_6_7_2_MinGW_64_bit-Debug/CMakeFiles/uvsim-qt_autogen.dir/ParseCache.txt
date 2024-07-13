@@ -45,6 +45,7 @@ C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineer
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qglobalstatic.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qhash.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qhashfunctions.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiodevice.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiodevicebase.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiterable.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiterator.h
@@ -133,6 +134,7 @@ C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineer
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpaintdevice.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpalette.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpen.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpicture.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpixelformat.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpixmap.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpolygon.h
@@ -149,19 +151,28 @@ C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineer
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtransform.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QColorDialog
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QLabel
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QLineEdit
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QMainWindow
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QPushButton
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QTextBrowser
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QTextEdit
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QToolBar
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractbutton.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractscrollarea.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qcolordialog.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialog.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qframe.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlabel.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlineedit.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qmainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qpushbutton.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtabwidget.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtextbrowser.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtextedit.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtoolbar.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h
