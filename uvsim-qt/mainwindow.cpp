@@ -98,7 +98,6 @@ void MainWindow::onButton1Clicked()
 void MainWindow::onButton2Clicked()
 {
     console->append("Execute button clicked");
-    QString txtExport = console->toPlainText(); // Loads text-editor's content as program
     run();
 }
 
@@ -211,13 +210,13 @@ void MainWindow::run() {
                 simulator.setMemory(operand, getUserInput());
                 break;
             case 11: // WRITE
-                console->append(QString::number(simulator.getMemoryAdd(operand)));
+                console->append(QString("Output of location %1: %2").arg(operand).arg(simulator.getMemoryAdd(operand)));
                 break;
             default:
                 simulator.execute(instruction);
         }
     }
-        console->append("Simulator halted");
+        console->append("Simulator halted.");
 }
 
 void MainWindow::setDefaultColors()
