@@ -10,6 +10,8 @@
 #include "../uvsimIO.h"
 
 UVSim simulator;
+QEventLoop inputLoop;
+int userInput;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -114,20 +116,9 @@ void MainWindow::onButton4Clicked()
 
 void MainWindow::onConsoleFieldInput()
 {
-    bool ok;
-    int value = consoleField->text().toInt(&ok);
-    if (ok)
-    {
-        // Assuming we want to write the integer value to the console
-        console->append(QString::number(value));
-        consoleField->clear();
-        if (waitingForInput)
-        {
-            simulator.setMemory(inputOperand, value);
-            waitingForInput = false;
-            run(); // Resume execution
-        }
-    }
+    userInput = consoleField->text().toInt();
+    consoleField->clear();
+    inputLoop.exit();
 }
 
 void MainWindow::loadTextFile()
@@ -193,17 +184,18 @@ void MainWindow::setTextFileTitle(QString title)
     QMainWindow::setWindowTitle(title);
 }
 
+int MainWindow::getUserInput() {
+    inputLoop.exec();
+    console->insertPlainText(QString::number(userInput));
+    return userInput;
+}
+
 void MainWindow::run() {
     simulator.setAccumulator(0);
     simulator.setInstructionPointer(0);
     simulator.setHalted(false);
 
     while (!simulator.isHalted()) {
-        // if (waitingForInput)
-        // {
-        //     //wait
-        //     return;
-        // }
         int instruction = simulator.fetch(simulator.getInstructionPointer());
         simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
 
@@ -215,9 +207,8 @@ void MainWindow::run() {
                 // Do nothing.
                 break;
             case 10: // READ
-                console->append("Enter an integer: ");
-                waitingForInput = true;
-                // onConsoleFieldInput();
+                console->append("Enter an integer below: ");
+                simulator.setMemory(operand, getUserInput());
                 break;
             case 11: // WRITE
                 console->append(QString::number(simulator.getMemoryAdd(operand)));

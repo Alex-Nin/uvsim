@@ -60,6 +60,7 @@ private:
     void saveTextFile();
     void setTextFileTitle(QString title);
     void run();
+    int getUserInput();
 
     bool waitingForInput;
     int inputOperand;
