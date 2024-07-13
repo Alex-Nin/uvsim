@@ -40,6 +40,7 @@ public:
      * @param value Integer value to be added to the memory vector
      */
     void setMemory(int index, int value);
+    void clearMemory();
 
     /**
      * @brief FOR TESTING PURPOSES ONLY, Retrieves the current value in the accumulator.
