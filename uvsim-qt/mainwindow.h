@@ -60,5 +60,8 @@ private:
     void saveTextFile();
     void setTextFileTitle(QString title);
     void run();
+
+    bool waitingForInput;
+    int inputOperand;
 };
 #endif // MAINWINDOW_H

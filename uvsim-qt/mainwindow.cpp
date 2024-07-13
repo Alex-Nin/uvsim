@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     , currentSecondaryColor(defaultSecondaryColor)
 {
     ui->setupUi(this);
+    bool waitingForInput = false;
 
     // Create widgets
     textViewer = new QTextEdit(this);
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     console = new QTextEdit(this);
 
     consoleField = new QLineEdit(this);
-    consoleField->setPlaceholderText("Enter data here...");
+    consoleField->setPlaceholderText("Enter integer here...");
 
     statusLabel = new QLabel("Lines: 0 / 100");
     consoleLabel = new QLabel("Console");
@@ -127,10 +128,6 @@ void MainWindow::onConsoleFieldInput()
             run(); // Resume execution
         }
     }
-    else
-    {
-        console->append("Invalid input. Please enter an integer.");
-    }
 }
 
 void MainWindow::loadTextFile()
@@ -162,7 +159,7 @@ void MainWindow::saveTextFile()
         nullptr,
         "Select File",
         "",
-        "Text Files (*.txt);;All Files (*)"
+        "Text Files (*.txt);"
         );
 
     QFile file(fileName);
@@ -201,14 +198,12 @@ void MainWindow::run() {
     simulator.setInstructionPointer(0);
     simulator.setHalted(false);
 
-    bool waitingForInput = false;
-    int inputOperand;
     while (!simulator.isHalted()) {
-        if (waitingForInput) {
-            // Wait for input to be processed
-            return;
-        }
-
+        // if (waitingForInput)
+        // {
+        //     //wait
+        //     return;
+        // }
         int instruction = simulator.fetch(simulator.getInstructionPointer());
         simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
 
@@ -222,8 +217,8 @@ void MainWindow::run() {
             case 10: // READ
                 console->append("Enter an integer: ");
                 waitingForInput = true;
-                inputOperand = operand;
-                break; // Exit the loop and wait for input
+                // onConsoleFieldInput();
+                break;
             case 11: // WRITE
                 console->append(QString::number(simulator.getMemoryAdd(operand)));
                 break;
@@ -231,6 +226,7 @@ void MainWindow::run() {
                 simulator.execute(instruction);
         }
     }
+        console->append("Simulator halted");
 }
 
 void MainWindow::setDefaultColors()
