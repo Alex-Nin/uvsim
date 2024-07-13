@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Release/uvsim-qt.exe"
+			"path" : "Debug/uvsim-qt.exe"
 		},
 		{
-			"path" : "Release/uvsim-qt.pdb"
+			"path" : "Debug/uvsim-qt.pdb"
 		}
 	],
 	"backtrace" : 4,
@@ -268,7 +268,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG -std=gnu++17"
+					"fragment" : "-g -std=gnu++17"
 				}
 			],
 			"defines" : 
@@ -288,10 +288,6 @@
 				{
 					"backtrace" : 14,
 					"define" : "QT_NEEDS_QMAIN"
-				},
-				{
-					"backtrace" : 14,
-					"define" : "QT_NO_DEBUG"
 				},
 				{
 					"backtrace" : 6,
@@ -326,7 +322,7 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_Release"
+					"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_Debug"
 				},
 				{
 					"backtrace" : 14,
@@ -379,11 +375,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
@@ -406,7 +402,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-O3 -DNDEBUG",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
@@ -536,7 +532,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/mocs_compilation_Release.cpp",
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/mocs_compilation_Debug.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -608,7 +604,7 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_Release/ui_mainwindow.h",
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_Debug/ui_mainwindow.h",
 			"sourceGroupIndex" : 1
 		},
 		{

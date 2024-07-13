@@ -23,7 +23,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -31,19 +31,14 @@ private slots:
     void onButton2Clicked();
     void onButton3Clicked();
     void onButton4Clicked();
-    void onConsoleInput();
     void setDefaultColors();
     void changeColors();
     void onTextViewerTextChanged();
-
-    // Extra slot functionality
-    void loadTextFile();
-    void setTextFileTitle(QString title);
-    int getUserInput();
-    void run();
+    void onConsoleFieldInput();
 
 private:
     Ui::MainWindow *ui;
+
     QTextEdit *console;
     QPushButton *button1, *button2, *button3, *button4;
     QTextEdit *textViewer;
@@ -52,12 +47,18 @@ private:
     QLabel *editorLabel;
     QLineEdit *consoleField;
     QToolBar *toolbar;
-    const QColor defaultPrimaryColor;
-    const QColor defaultSecondaryColor;
+
+    QColor defaultPrimaryColor;
+    QColor defaultSecondaryColor;
     QColor currentPrimaryColor;
     QColor currentSecondaryColor;
 
-
+    int fieldOutput;
     void applyColors(const QColor &primary, const QColor &secondary);
+
+    void loadTextFile();
+    void saveTextFile();
+    void setTextFileTitle(QString title);
+    void run();
 };
 #endif // MAINWINDOW_H

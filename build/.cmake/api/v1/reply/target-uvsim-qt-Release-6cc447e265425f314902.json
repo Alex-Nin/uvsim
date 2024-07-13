@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/uvsim-qt.exe"
+			"path" : "Release/uvsim-qt.exe"
 		},
 		{
-			"path" : "RelWithDebInfo/uvsim-qt.pdb"
+			"path" : "Release/uvsim-qt.pdb"
 		}
 	],
 	"backtrace" : 4,
@@ -268,7 +268,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O2 -g -DNDEBUG -std=gnu++17"
+					"fragment" : "-O3 -DNDEBUG -std=gnu++17"
 				}
 			],
 			"defines" : 
@@ -326,7 +326,7 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_RelWithDebInfo"
+					"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_Release"
 				},
 				{
 					"backtrace" : 14,
@@ -379,11 +379,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "uvsim-qt_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "uvsim-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "uvsim-qt::@6890427a1f51a3e7e1df",
@@ -406,7 +406,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-O2 -g -DNDEBUG",
+				"fragment" : "-O3 -DNDEBUG",
 				"role" : "flags"
 			},
 			{
@@ -536,7 +536,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/mocs_compilation_RelWithDebInfo.cpp",
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/mocs_compilation_Release.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -608,7 +608,7 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_RelWithDebInfo/ui_mainwindow.h",
+			"path" : "C:/Users/Jess Smith/src/cs2450-2024/CS2450/CS2450/build/uvsim-qt_autogen/include_Release/ui_mainwindow.h",
 			"sourceGroupIndex" : 1
 		},
 		{

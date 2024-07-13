@@ -55,8 +55,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(button3, &QPushButton::clicked, this, &MainWindow::onButton3Clicked);
     connect(button4, &QPushButton::clicked, this, &MainWindow::onButton4Clicked);
 
-    // Connect console input
-    connect(console, &QTextEdit::textChanged, this, &MainWindow::onConsoleInput);
+    // Connect consoleField returnPressed signal to slot
+    connect(consoleField, &QLineEdit::returnPressed, this, &MainWindow::onConsoleFieldInput);
 
     // Connect user input
     connect(textViewer, &QTextEdit::textChanged, this, &MainWindow::onTextViewerTextChanged);
@@ -101,37 +101,8 @@ void MainWindow::onButton2Clicked()
 
 void MainWindow::onButton3Clicked()
 {
-    QString fileName = QFileDialog::getSaveFileName(
-        nullptr,
-        "Select File",
-        "",
-        "Text Files (*.txt);;All Files (*)"
-    );
-
-    QFile file(fileName);
-    file.open(QIODevice::WriteOnly | QIODevice::Text);
-
-    QTextStream out(&file);
-    std::vector<int> memory = simulator.getMemory();
-
-    int lastIndex = -1;
-    for (int i = 0; i < memory.size(); ++i) {
-        if (memory[i] != 0) {
-            lastIndex = i;
-        }
-    }
-
-    for (int i = 0; i <= lastIndex; ++i) {
-        if (memory[i] > 0) {
-            out << "+";
-        }
-        else if (memory[i] == 0) {
-            out << "+000";
-        }
-        out <<memory[i] << '\n';
-    }
-
-    file.close();
+    saveTextFile();
+    console->append("Save button clicked");
 }
 
 void MainWindow::onButton4Clicked()
@@ -140,14 +111,25 @@ void MainWindow::onButton4Clicked()
     console->append("Console cleared");
 }
 
-void MainWindow::onConsoleInput()
+void MainWindow::onConsoleFieldInput()
 {
-    QString input = console->toPlainText();
-    // Process console input (e.g., clear console)
-    if (input.endsWith("\n"))
+    bool ok;
+    int value = consoleField->text().toInt(&ok);
+    if (ok)
     {
-        // For example, clear the console
-        console->clear();
+        // Assuming we want to write the integer value to the console
+        console->append(QString::number(value));
+        consoleField->clear();
+        if (waitingForInput)
+        {
+            simulator.setMemory(inputOperand, value);
+            waitingForInput = false;
+            run(); // Resume execution
+        }
+    }
+    else
+    {
+        console->append("Invalid input. Please enter an integer.");
     }
 }
 
@@ -174,21 +156,59 @@ void MainWindow::loadTextFile()
     this->setTextFileTitle(filepath);
 }
 
+void MainWindow::saveTextFile()
+{
+    QString fileName = QFileDialog::getSaveFileName(
+        nullptr,
+        "Select File",
+        "",
+        "Text Files (*.txt);;All Files (*)"
+        );
+
+    QFile file(fileName);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+
+    QTextStream out(&file);
+    std::vector<int> memory = simulator.getMemory();
+
+    int lastIndex = -1;
+    for (int i = 0; i < memory.size(); ++i) {
+        if (memory[i] != 0) {
+            lastIndex = i;
+        }
+    }
+
+    for (int i = 0; i <= lastIndex; ++i) {
+        if (memory[i] > 0) {
+            out << "+";
+        }
+        else if (memory[i] == 0) {
+            out << "+000";
+        }
+        out <<memory[i] << '\n';
+    }
+
+    file.close();
+}
 void MainWindow::setTextFileTitle(QString title)
 {
     title.append(" - UVSim");
     QMainWindow::setWindowTitle(title);
 }
 
-int MainWindow::getUserInput() { // Jess TODO
-    return 1234;
-}
-
 void MainWindow::run() {
     simulator.setAccumulator(0);
     simulator.setInstructionPointer(0);
     simulator.setHalted(false);
+
+    bool waitingForInput = false;
+    int inputOperand;
     while (!simulator.isHalted()) {
+        if (waitingForInput) {
+            // Wait for input to be processed
+            return;
+        }
+
         int instruction = simulator.fetch(simulator.getInstructionPointer());
         simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
 
@@ -196,9 +216,14 @@ void MainWindow::run() {
         int operand = instruction % 100; //YIELDS last two numbers
 
         switch (opcode) {
-            case 10: // READ
-                simulator.setMemory(operand, getUserInput());
+            case 0:
+                // Do nothing.
                 break;
+            case 10: // READ
+                console->append("Enter an integer: ");
+                waitingForInput = true;
+                inputOperand = operand;
+                break; // Exit the loop and wait for input
             case 11: // WRITE
                 console->append(QString::number(simulator.getMemoryAdd(operand)));
                 break;
