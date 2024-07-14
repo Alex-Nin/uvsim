@@ -9,12 +9,12 @@
 
 void TestSetMemory(std::ofstream& ofile) {
     UVSim simulator;
-    simulator.setMemory(0, 1001);
+    simulator.setMemory(0, 010001);
 
     std::vector<int> memory = simulator.getMemory();
-    assert(memory[0] == 1001);
+    assert(memory[0] == 010001);
 
-    ofile << "Set Memory,TestSetMemory,Test if memory can be set,register 0 = 1001,register 0 = 1001,PASS" << std::endl;
+    ofile << "Set Memory,TestSetMemory,Test if memory can be set,register 0 = 010001,register 0 = 010001,PASS" << std::endl;
 }
 
 void TestLoadProgram(std::ofstream& ofile) {
@@ -22,16 +22,16 @@ void TestLoadProgram(std::ofstream& ofile) {
     simulator.loadProgram("testFiles/test1.txt");
 
     std::vector<int> memory = simulator.getMemory();
-    assert(memory[0] == 1007);
-    assert(memory[1] == 1008);
-    assert(memory[2] == 2007);
-    assert(memory[3] == 2008);
-    assert(memory[4] == 2109);
-    assert(memory[5] == 1109);
-    assert(memory[6] == 4300);
-    assert(memory[7] == 0000);
+    assert(memory[0] == 010007);
+    assert(memory[1] == 010008);
+    assert(memory[2] == 020007);
+    assert(memory[3] == 020008);
+    assert(memory[4] == 021009);
+    assert(memory[5] == 011009);
+    assert(memory[6] == 043000);
+    assert(memory[7] == 000000);
 
-    ofile << "Load Program,TestLoadProgram,Test if the file can be loaded successfully,test1.txt,register 0 = 1007 ... register 7 = 0000,PASS" << std::endl;
+    ofile << "Load Program,TestLoadProgram,Test if the file can be loaded successfully,test1.txt,register 0 = 010007 ... register 7 = 000000,PASS" << std::endl;
 }
 
 void TestLoadProgramFail(std::ofstream& ofile) {
@@ -53,10 +53,10 @@ void TestLoadProgramFail(std::ofstream& ofile) {
 
 void TestAccumulator(std::ofstream& ofile) {
     UVSim simulator;
-    simulator.setAccumulator(1002);
-    assert(simulator.getAccumulator() == 1002);
+    simulator.setAccumulator(010002);
+    assert(simulator.getAccumulator() == 010002);
 
-    ofile << "Accumulator,TestAccumulator,Test whether the accumulator can be set to a value,accumulator = 1002, accumulator = 1002,PASS" << std::endl;
+    ofile << "Accumulator,TestAccumulator,Test whether the accumulator can be set to a value,accumulator = 010002, accumulator = 010002,PASS" << std::endl;
 }
 
 void TestHalt(std::ofstream& ofile) {
@@ -89,8 +89,8 @@ void TestRead(std::ofstream& ofile) {
     std::streambuf* cinBuf = std::cin.rdbuf();
     std::cin.rdbuf(input.rdbuf());
 
-    simulator.setMemory(0, 1010);
-    simulator.setMemory(1, 4300);
+    simulator.setMemory(0, 010010);
+    simulator.setMemory(1, 043000);
     simulator.run();
 
     std::cin.rdbuf(cinBuf);
@@ -107,8 +107,8 @@ void TestReadFail(std::ofstream& ofile) {
     std::stringstream input("a\n");
     std::cin.rdbuf(input.rdbuf());
 
-    simulator.setMemory(0, 1010);
-    simulator.setMemory(1, 4300);
+    simulator.setMemory(0, 010010);
+    simulator.setMemory(1, 043000);
 
     std::string errorStr;
     try {
@@ -130,8 +130,8 @@ void TestWrite(std::ofstream& ofile) {
     std::cout.rdbuf(output.rdbuf());
 
     simulator.setMemory(10, 9);
-    simulator.setMemory(0, 1110);
-    simulator.setMemory(1, 4300);
+    simulator.setMemory(0, 011010);
+    simulator.setMemory(1, 043000);
     simulator.run();
 
     std::cout.rdbuf(coutBuf);
@@ -145,8 +145,8 @@ void TestLoad(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 0);
     simulator.setMemory(10, 9);
-    simulator.setMemory(0, 2010);
-    simulator.setMemory(1, 4300);
+    simulator.setMemory(0, 020010);
+    simulator.setMemory(1, 043000);
     simulator.run();
     assert(simulator.getAccumulator() == 9);
 
@@ -158,9 +158,9 @@ void TestStore(std::ofstream& ofile) {
 
     assert(simulator.getAccumulator() == 0);
     simulator.setMemory(10, 9);
-    simulator.setMemory(0, 2010);
-    simulator.setMemory(1, 2110);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(0, 020010);
+    simulator.setMemory(1, 021010);
+    simulator.setMemory(2, 043000);
     simulator.run();
 
     std::vector<int> memory = simulator.getMemory();
@@ -172,12 +172,12 @@ void TestStore(std::ofstream& ofile) {
 void TestBranch(std::ofstream& ofile) {
     UVSim simulator;
 
-    simulator.setMemory(0, 4002);
+    simulator.setMemory(0, 040002);
     // Branch to memory location 2
     // ignore the next two instructions
     simulator.setMemory(10, 9);
-    simulator.setMemory(1, 2010);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(1, 020010);
+    simulator.setMemory(2, 043000);
     simulator.run();
 
     assert(simulator.getAccumulator() == 0);
@@ -190,8 +190,8 @@ void TestAdd(std::ofstream& ofile) {
 
     simulator.setMemory(10, 9);
     assert(simulator.getAccumulator() == 0);
-    simulator.setMemory(0, 3010);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(0, 030010);
+    simulator.setMemory(2, 043000);
     simulator.run();
     assert(simulator.getAccumulator() == 9);
 
@@ -203,8 +203,8 @@ void TestSubtract(std::ofstream& ofile) {
 
     simulator.setMemory(10, 9);
     assert(simulator.getAccumulator() == 0);
-    simulator.setMemory(0, 3110);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(0, 031010);
+    simulator.setMemory(2, 043000);
     simulator.run();
     assert(simulator.getAccumulator() == -9);
 
@@ -216,8 +216,8 @@ void TestMultiply(std::ofstream& ofile) {
 
     simulator.setMemory(10, 9);
     simulator.setAccumulator(10);
-    simulator.setMemory(0, 3310);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(0, 033010);
+    simulator.setMemory(2, 043000);
     simulator.run();
 
     assert(simulator.getAccumulator() == 90);
@@ -230,8 +230,8 @@ void TestDivide(std::ofstream& ofile) {
 
     simulator.setMemory(10, 5);
     simulator.setAccumulator(10);
-    simulator.setMemory(0, 3210);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(0, 032010);
+    simulator.setMemory(2, 043000);
     simulator.run();
 
     assert(simulator.getAccumulator() == 2);
@@ -243,12 +243,12 @@ void TestBranchNeg(std::ofstream& ofile) {
     UVSim simulator;
 
     simulator.setAccumulator(-10);
-    simulator.setMemory(0, 4102);
+    simulator.setMemory(0, 041002);
     // Branch to memory location 2
     // ignore the next two instructions
     simulator.setMemory(10, 9);
-    simulator.setMemory(1, 2010);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(1, 020010);
+    simulator.setMemory(2, 043000);
     simulator.run();
 
     assert(simulator.getAccumulator() == -10);
@@ -260,12 +260,12 @@ void TestBranchZero(std::ofstream& ofile) {
     UVSim simulator;
 
     simulator.setAccumulator(0);
-    simulator.setMemory(0, 4202);
+    simulator.setMemory(0, 042002);
     // Branch to memory location 2
     // ignore the next two instructions
     simulator.setMemory(10, 9);
-    simulator.setMemory(1, 2010);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(1, 020010);
+    simulator.setMemory(2, 043000);
     simulator.run();
 
     assert(simulator.getAccumulator() == 0);
@@ -277,8 +277,8 @@ void TestDivideFail(std::ofstream& ofile) {
     UVSim simulator;
 
     simulator.setMemory(10, 0);
-    simulator.setMemory(0, 3210);
-    simulator.setMemory(2, 4300);
+    simulator.setMemory(0, 032010);
+    simulator.setMemory(2, 043000);
 
     std::string errorStr;
     try {

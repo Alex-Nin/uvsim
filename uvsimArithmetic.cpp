@@ -2,10 +2,10 @@
 #include <stdexcept>
 
 int Arithmetic::truncate(int num) {
-    if (num > 9999) {
-        return num % 10000;
-    } else if (num < -9999) {
-        return -(-num % 10000);
+    if (num > 999999) {
+        return num % 1000000;
+    } else if (num < -999999) {
+        return -(-num % 1000000);
     }
     return num;
 }
