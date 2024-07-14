@@ -34,7 +34,7 @@ void UVSim::loadProgram(const std::string &filename) {
     bool isSixDigit = false;
 
     std::string line;
-    int index = 0
+    int index = 0;
     while (std::getline(file, line)) {
         std::regex regex("[+-](\\d{4}|\\d{6})");
         if (!std::regex_match(line, regex)) {
@@ -62,7 +62,7 @@ void UVSim::loadProgram(const std::string &filename) {
                 return;
             }
         }
-        memory[i++] = line
+        memory[index++] = stoi(line);
     }
     file.close();
 }
