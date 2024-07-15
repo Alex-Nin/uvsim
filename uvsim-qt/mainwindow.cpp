@@ -6,11 +6,8 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
-<<<<<<< HEAD
-=======
 #include <QRegularExpression>
 #include <regex>
->>>>>>> aeb0476028dc878a70e5af9bf25e4d30065b74c0
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
