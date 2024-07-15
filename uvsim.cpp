@@ -3,7 +3,13 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <vector>
+#include <string>
+#include <regex>
+#include <algorithm>
 #include "uvsim.h"
+
+std::vector<std::string> instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
 
 UVSim::UVSim() :
     memory(250, 0),
@@ -24,12 +30,40 @@ void UVSim::loadProgram(const std::string &filename) {
         std::cerr << "Error: Unable to open file." << std::endl;
         return;
     }
+    bool isFourDigit = false;
+    bool isSixDigit = false;
 
-    int address = 0;
-    while (file >> memory[address]) {
-        address++;
+    std::string line;
+    int index = 0;
+    while (std::getline(file, line)) {
+        std::regex regex("[+-](\\d{4}|\\d{6})");
+        if (!std::regex_match(line, regex)) {
+            std::cerr << "Error: File contains invalid format." << std::endl;
+            return;
+        }
+
+        if (line.length() == 5) {
+            isFourDigit = true;
+            if (isSixDigit) {
+                std::cerr << "Error: File contains both 4-digit and 6-digit numbers." << std::endl;
+                return;
+            }
+
+        if (std::find(instructionList.begin(), instructionList.end(), line.substr(1, 2)) != instructionList.end()) {
+                line.insert(1, "0");
+                line.insert(4, "0");
+            } else {
+                line.insert(1, "00");
+            }
+        } else if (line.length() == 7) {
+            isSixDigit = true;
+            if (isFourDigit) {
+                std::cerr << "Error: File contains both 4-digit and 6-digit numbers." << std::endl;
+                return;
+            }
+        }
+        memory[index++] = stoi(line);
     }
-
     file.close();
 }
 
@@ -113,8 +147,8 @@ void UVSim::store(int index, int word) {
 }
 
 void UVSim::execute(int instruction) {
-    int opcode = instruction / 100; //YIELDS first two numbers
-    int operand = instruction % 100; //YIELDS last two numbers
+    int opcode = instruction / 1000; //YIELDS first two numbers
+    int operand = instruction % 1000; //YIELDS last two numbers
 
     switch (opcode) { // (Created by David, mostly)
     case 10: // READ

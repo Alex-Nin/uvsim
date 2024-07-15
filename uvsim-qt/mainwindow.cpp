@@ -6,6 +6,11 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+<<<<<<< HEAD
+=======
+#include <QRegularExpression>
+#include <regex>
+>>>>>>> aeb0476028dc878a70e5af9bf25e4d30065b74c0
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
@@ -13,6 +18,7 @@
 UVSim simulator;
 QEventLoop inputLoop;
 int userInput;
+QStringList instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -133,10 +139,43 @@ void MainWindow::loadTextFile()
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QTextStream in(&file);
+            bool isFourDigit = false;
+            bool isSixDigit = false;
+
             while (!in.atEnd()) {
-                QString temp = in.readLine();
-                textViewer->append(temp);
-                simulator.setMemory(i++, temp.toInt());
+                QString line = in.readLine();
+
+                QRegularExpression regex(R"([+-](\d{4}|\d{6}))");
+                if (!regex.match(line).hasMatch()) {
+                    QMessageBox::critical(this, "Error", "File contains invalid format.");
+                    return;
+                }
+
+                if (line.length() == 5) {
+                    isFourDigit = true;
+                    if (isSixDigit) {
+                        QMessageBox::critical(this, "Error", "File contains both 4-digit and 6-digit numbers.");
+                        return;
+                    }
+
+                    if (instructionList.contains(line.mid(1, 2))) {
+                        line.insert(1, "0");
+                        line.insert(4, "0");
+                    }
+                    else {
+                        line.insert(1, "00");
+                    }
+                }
+                else if (line.length() == 7) {
+                    isSixDigit = true;
+                    if (isFourDigit) {
+                        QMessageBox::critical(this, "Error", "File contains both 4-digit and 6-digit numbers.");
+                        return;
+                    }
+                }
+
+                textViewer->append(line);
+                simulator.setMemory(i++, line.toInt());
             }
             QStringList lines = textViewer->toPlainText().split('\n');
             if (lines.size() >= 250) {
@@ -174,10 +213,7 @@ void MainWindow::saveTextFile()
         if (memory[i] > 0) {
             out << "+";
         }
-        else if (memory[i] == 0) {
-            out << "+000";
-        }
-        out <<memory[i] << '\n';
+        out << QString("%1").arg(memory[i], 6, 10, QChar('0')) << '\n';
     }
 
     file.close();
@@ -189,7 +225,18 @@ void MainWindow::setTextFileTitle(QString title)
 }
 
 int MainWindow::getUserInput() {
-    inputLoop.exec();
+    while (true) {
+        inputLoop.exec();
+
+        QRegularExpression pattern("^[+-]?\\d{1,6}$");
+        if (!pattern.match(QString::number(userInput)).hasMatch()) {
+            QMessageBox::critical(this, "Error", "User input is invalid: " + QString::number(userInput));
+            consoleField->clear();
+        }
+        else {
+            break;
+        }
+    }
     console->insertPlainText(QString::number(userInput));
     return userInput;
 }
@@ -203,8 +250,8 @@ void MainWindow::run() {
         int instruction = simulator.fetch(simulator.getInstructionPointer());
         simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
 
-        int opcode = instruction / 100; //YIELDS first two numbers
-        int operand = instruction % 100; //YIELDS last two numbers
+        int opcode = instruction / 1000; //YIELDS first two numbers
+        int operand = instruction % 1000; //YIELDS last two numbers
 
         switch (opcode) {
             case 0:
