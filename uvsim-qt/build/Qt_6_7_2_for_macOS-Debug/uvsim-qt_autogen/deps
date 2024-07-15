@@ -150,6 +150,7 @@ uvsim-qt_autogen/timestamp: \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qglobalstatic.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qhash.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qhashfunctions.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qiodevice.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qiodevicebase.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qiterable.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtCore.framework/Versions/A/Headers/qiterator.h \
@@ -238,6 +239,7 @@ uvsim-qt_autogen/timestamp: \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpaintdevice.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpalette.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpen.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpicture.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpixelformat.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpixmap.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qpolygon.h \
@@ -254,6 +256,8 @@ uvsim-qt_autogen/timestamp: \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QColorDialog \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QTextBrowser \
@@ -264,6 +268,8 @@ uvsim-qt_autogen/timestamp: \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qcolordialog.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qdialog.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
+	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
 	/Users/alexandernin/Qt/6.7.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \

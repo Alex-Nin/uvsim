@@ -6,7 +6,7 @@
 #include "uvsim.h"
 
 UVSim::UVSim() :
-    memory(100, 0),
+    memory(250, 0),
     accumulator(0),
     instructionPointer(0),
     halted(false) {}

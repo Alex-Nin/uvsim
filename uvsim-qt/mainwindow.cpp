@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QMessageBox>
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
@@ -29,13 +30,13 @@ MainWindow::MainWindow(QWidget *parent)
     button1 = new QPushButton("Load File", this);
     button2 = new QPushButton("Execute File", this);
     button3 = new QPushButton("Save As", this);
-    button4 = new QPushButton("Clear output", this);
+    button4 = new QPushButton("Clear console", this);
     console = new QTextEdit(this);
 
     consoleField = new QLineEdit(this);
     consoleField->setPlaceholderText("Enter integer here...");
 
-    statusLabel = new QLabel("Lines: 0 / 100");
+    statusLabel = new QLabel("Lines: 0 / 250");
     consoleLabel = new QLabel("Console");
     editorLabel = new QLabel("Editor");
 
@@ -81,7 +82,7 @@ MainWindow::MainWindow(QWidget *parent)
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
 
-    applyColors(defaultPrimaryColor, defaultSecondaryColor); //Goes after centralWidget to ensure color layout upon openning
+    applyColors(defaultPrimaryColor, defaultSecondaryColor); //Goes after centralWidget to ensure color layout upon opening
 }
 
 MainWindow::~MainWindow()
@@ -136,6 +137,10 @@ void MainWindow::loadTextFile()
                 QString temp = in.readLine();
                 textViewer->append(temp);
                 simulator.setMemory(i++, temp.toInt());
+            }
+            QStringList lines = textViewer->toPlainText().split('\n');
+            if (lines.size() >= 250) {
+                console->append("Warning: Exceeded line limit! Operations beyond line 250 will not be processed.");
             }
             file.close();
         }
@@ -260,7 +265,7 @@ void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
     centralWidget()->setPalette(palette);
     centralWidget()->setAutoFillBackground(true);
 }
-
+//
 void MainWindow::onTextViewerTextChanged()
 {
     static bool isUpdating = false;
@@ -272,9 +277,9 @@ void MainWindow::onTextViewerTextChanged()
     QStringList lines = textViewer->toPlainText().split('\n');
     int lineCount = lines.size();
 
-    // Only keep first 100 lines
-    if (lineCount > 100) {
-        QString trimmedText = lines.mid(0, 100).join('\n');
+    // Only keep first 250 lines
+    if (lineCount > 250) {
+        QString trimmedText = lines.mid(0, 250).join('\n');
         textViewer->setPlainText(trimmedText);
         // Move the cursor to the end of the text
         QTextCursor cursor = textViewer->textCursor();
@@ -285,7 +290,7 @@ void MainWindow::onTextViewerTextChanged()
         lineCount = lines.size();
     }
 
-    statusLabel->setText(QString("Lines: %1 / 100").arg(lineCount));
+    statusLabel->setText(QString("Lines: %1 / 250").arg(lineCount));
 
     for (int i = 0; i < lineCount; ++i) {
         int value = lines[i].toInt();
