@@ -40,6 +40,10 @@ public:
      * @param value Integer value to be added to the memory vector
      */
     void setMemory(int index, int value);
+
+    /**
+     * @brief Clears the memory vector
+     */
     void clearMemory();
 
     /**
@@ -71,6 +75,11 @@ public:
      * @return Integer value of the instructionPointer variable
      */
     int getInstructionPointer();
+
+    /**
+     * @brief Setter for instructionPointer variable
+     * @param ip New value assignment for instructionPointer
+     */
     void setInstructionPointer(int ip);
 
     /**

@@ -118,3 +118,71 @@ Steps:
 1. Load program
 2. Find address
 3. Halt program process and exits program
+
+**Use Case 11: Edit Instruction**  
+**Actor**: User  
+**System**: Instruction Editor  
+**Goal**: To modify an existing instruction in the program's memory.  
+**Steps**:  
+1. User selects the instruction to be edited.
+2. User modified instruction.
+3. System updates the instruction in the memory.
+
+**Use Case 12: Save Edited Instructions**  
+**Actor**: User  
+**System**: File Management System  
+**Goal**: To save the current set of instructions in the memory to a new file.  
+**Steps**:  
+1. User edits the instructions.
+2. User initiates the *Save As* operation.
+3. System prompts the user to enter a filename for the new file.
+4. User enters the filename and confirms the save operation.
+5. System writes the instructions from memory to the new file.
+
+**Use Case 13: Change Color Theme**  
+**Actor**: User  
+**System**: User Interface  
+**Goal**: To change the color theme of the program's GUI.  
+**Steps**:
+1. User clicks the *Change Color Theme* option in the menu.
+2. System displays the color palette for the user to choose a new color theme.
+3. User selects a desired color theme.
+4. System applies the new color theme to the GUI.
+
+**Use Case 14: Clear Output**  
+**Actor**: User  
+**System**: User Interface  
+**Goal**: To clear the previous output in console.  
+**Steps**:  
+1. User clicks the *Clear Output* option.
+2. System clears all text and data previously displayed in the console.
+
+**Use Case 15: Support GUI**  
+**Actor**: User  
+**System**: Graphical User Interface  
+**Goal**: To interact with the program through a GUI.  
+**Steps**:
+1. User launches the program, which starts with the GUI.
+2. User interacts with the GUI elements such as buttons and input fields to perform operations (e.g., load, edit, save instructions).
+3. System responds to each interaction by updating the GUI accordingly (e.g., displaying data, updating status).
+4. User closes the GUI to end the session.
+
+**Use Case 16: Manage Multiple Files Simultaneously**  
+**Actor**: User  
+**System**: User Interface and File Management System  
+**Goal**: To open, edit, and manage multiple files simultaneously within a single application instance.  
+**Steps**:
+1. User opens multiple files using the menu.
+2. System displays each file in a separate tab within the main application window.
+3. User switches between tabs or windows to edit different files. 
+4. System keeps track of changes in each file independently. 
+5. User executes or saves files individually.
+
+**Use Case 17: Support Different Format**  
+**Actor**: System  
+**System**: File and Memory Management System  
+**Goal**: To handle data files and internal memory with a new six-digit word format.  
+**Steps**:
+1. System detects the format of the file being loaded (four or six digits) based on file metadata or initial inspection. 
+2. System processes file operations, ensuring all memory addresses and operations codes are valid and conform to the six-digit requirement. 
+3. System checks for overflow conditions and handles them as per the six-digit operation limits.
