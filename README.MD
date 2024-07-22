@@ -10,6 +10,7 @@ The UVSim is a simple virtual machine, but powerful. The UVSim can only interpre
 - **I/O Operations**: Allows reading from the user and writing to the graphical user interface.
 - **Arithmetic Operations**: Supports addition, subtraction, multiplication, and division.
 - **Control Flow**: Includes operations like branch, branch-if-negative, and branch-if-zero.
+- **Multi-File Support**: Load and execute multiple files.
 
 ## GUI Interface
 The UVSim includes a graphical user interface for enhanced usability.  
