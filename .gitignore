@@ -1,3 +1,4 @@
+uvsim-qt/build/
 *.exe
 *.out
 .idea
