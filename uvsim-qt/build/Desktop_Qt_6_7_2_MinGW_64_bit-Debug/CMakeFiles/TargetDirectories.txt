@@ -1,9 +1,0 @@
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/uvsim-qt.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/uvsim-qt_autogen_timestamp_deps.dir
-C:/Users/eliza/OneDrive/Desktop/Documents/UVU Classes/CS2450 - Software Engineering/CS2450/uvsim-qt/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/uvsim-qt_autogen.dir
