@@ -15,7 +15,6 @@
 UVSim simulator;
 QEventLoop inputLoop;
 int userInput;
-QStringList instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -155,6 +154,7 @@ void MainWindow::loadTextFile()
                         return;
                     }
 
+                    QStringList instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
                     if (instructionList.contains(line.mid(1, 2))) {
                         line.insert(1, "0");
                         line.insert(4, "0");

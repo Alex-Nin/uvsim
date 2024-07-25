@@ -9,8 +9,6 @@
 #include <algorithm>
 #include "uvsim.h"
 
-std::vector<std::string> instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
-
 UVSim::UVSim() :
     memory(250, 0),
     accumulator(0),
@@ -49,6 +47,7 @@ void UVSim::loadProgram(const std::string &filename) {
                 return;
             }
 
+        std::vector<std::string> instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
         if (std::find(instructionList.begin(), instructionList.end(), line.substr(1, 2)) != instructionList.end()) {
                 line.insert(1, "0");
                 line.insert(4, "0");
