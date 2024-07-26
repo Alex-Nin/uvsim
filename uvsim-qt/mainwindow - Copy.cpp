@@ -7,8 +7,6 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QRegularExpression>
-#include <QColorDialog>
-#include <QTabBar>
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
@@ -24,10 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // De-globalized
-    int userInput;
+    std::vector<UVSim> uvsimList;
     QEventLoop inputLoop;
-    std::vector<UVSim*> uvsimList;
-
+    int userInput;
     // Create widgets
     console = new QTextEdit(this);
     textViewer = new QTextEdit(this);
@@ -39,11 +36,16 @@ MainWindow::MainWindow(QWidget *parent)
     statusLabel = new QLabel("Lines: 0 / 250", this);
     tabWidget = new QTabWidget(this);
 
-    // Set central widget to tabWidget
-    setCentralWidget(tabWidget);
-
     // Create the first tab
     createTab();
+
+    // Tab toolbar
+    tabToolbar = addToolBar("Tab Bar");
+
+    // Find the button and connect it to the addNewTab slot
+    QPushButton *addTabButton = new QPushButton("+", this);
+    tabToolbar->addWidget(addTabButton); // Add button to toolbar
+    connect(addTabButton, &QPushButton::clicked, this, &MainWindow::addNewTab);
 
     // Toolbar for Colors
     colorToolbar = addToolBar("Toolbar");
@@ -53,6 +55,10 @@ MainWindow::MainWindow(QWidget *parent)
     colorToolbar->addAction(changeColorsAction);
     connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
     connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
+
+    // // Set console to read-only for output part
+    // console->setReadOnly(true);
+    // textViewer->setReadOnly(false);
 
     // Connect buttons to slots
     connect(button1, &QPushButton::clicked, this, &MainWindow::onButton1Clicked);
@@ -67,6 +73,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(textViewer, &QTextEdit::textChanged, this, &MainWindow::onTextViewerTextChanged);
 
     // Connect a signal to add new tabs (e.g., from a menu action or button)
+    connect(addTabButton, &QPushButton::clicked, this, &MainWindow::addNewTab);
+
+    // // Layout setup
+    QGridLayout *layout = new QGridLayout;
+    QWidget *centralWidget = new QWidget(this);
+    centralWidget->setLayout(layout);
+    setCentralWidget(centralWidget);
     applyColors(defaultPrimaryColor, defaultSecondaryColor);
     // Goes after centralWidget to ensure color layout upon opening
 }
@@ -201,7 +214,6 @@ void MainWindow::saveTextFile()
 
     file.close();
 }
-
 void MainWindow::setTextFileTitle(QString title)
 {
     title.append(" - UVSim");
@@ -238,21 +250,21 @@ void MainWindow::run() {
         int operand = instruction % 1000; //YIELDS last two numbers
 
         switch (opcode) {
-        case 0:
-            // Do nothing.
-            break;
-        case 10: // READ
-            console->append("Enter an integer below: ");
-            simulator.setMemory(operand, getUserInput());
-            break;
-        case 11: // WRITE
-            console->append(QString("Output of location %1: %2").arg(operand).arg(simulator.getMemoryAdd(operand)));
-            break;
-        default:
-            simulator.execute(instruction);
+            case 0:
+                // Do nothing.
+                break;
+            case 10: // READ
+                console->append("Enter an integer below: ");
+                simulator.setMemory(operand, getUserInput());
+                break;
+            case 11: // WRITE
+                console->append(QString("Output of location %1: %2").arg(operand).arg(simulator.getMemoryAdd(operand)));
+                break;
+            default:
+                simulator.execute(instruction);
         }
     }
-    console->append("Simulator halted.");
+        console->append("Simulator halted.");
 }
 
 void MainWindow::setDefaultColors()
@@ -286,8 +298,8 @@ void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
     palette.setColor(QPalette::Window, primary);
     palette.setColor(QPalette::Button, secondary);
     QString buttonStyle = QString(
-                              "QPushButton {background-color: %1; color: %2}"
-                              ).arg(secondary.name(), primary.name());
+        "QPushButton {background-color: %1; color: %2}"
+        ).arg(secondary.name(), primary.name());
     button1->setStyleSheet(buttonStyle);
     button2->setStyleSheet(buttonStyle);
     button3->setStyleSheet(buttonStyle);
@@ -296,7 +308,7 @@ void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
     centralWidget()->setPalette(palette);
     centralWidget()->setAutoFillBackground(true);
 }
-
+//
 void MainWindow::onTextViewerTextChanged()
 {
     static bool isUpdating = false;
@@ -339,7 +351,8 @@ void MainWindow::createTab()
     // Create a QWidget to hold the UVSim interface (customize as needed)
     QWidget *tab = new QWidget();
     QVBoxLayout *tabLayout = new QVBoxLayout(tab);
-    tb = new QPushButton("+", this);
+
+    tabLayout->addWidget(textViewer);
 
     // Button Layout
     QHBoxLayout *buttonLayout = new QHBoxLayout();
@@ -349,37 +362,28 @@ void MainWindow::createTab()
     buttonLayout->addWidget(button4);
     tabLayout->addLayout(buttonLayout);
 
-    // Combo text/console horizontal layout.
-    QHBoxLayout *appLayout = new QHBoxLayout();
     // Console Layout
     QVBoxLayout *consoleLayout = new QVBoxLayout();
+    consoleLayout->addWidget(consoleLabel);
     consoleLayout->addWidget(console);
     consoleLayout->addWidget(consoleField);
     consoleField->setPlaceholderText("Enter integer here...");
-    appLayout->addLayout(consoleLayout);
+    tabLayout->addLayout(consoleLayout);
 
-    // textViewerLayout
+    // TextViewer Layout
     QVBoxLayout *textViewerLayout = new QVBoxLayout();
+    textViewerLayout->addWidget(editorLabel);
     textViewerLayout->addWidget(textViewer);
     textViewerLayout->addWidget(statusLabel);
-    appLayout->addLayout(textViewerLayout);
-
-    // Combine
-    tabLayout->addLayout(appLayout);
-
-    // Set layout to tab
-    tab->setLayout(tabLayout);
+    tabLayout->addLayout(textViewerLayout);
 
     // Add the tab to the QTabWidget
     tabWidget->addTab(tab, tr("Simulator %1").arg(tabWidget->count() + 1));
-    tabWidget->tabBar()->setTabButton(0, QTabBar::RightSide, tb);
 
     // Set console to read-only for output part
     console->setReadOnly(true);
     textViewer->setReadOnly(false);
 
-    // Connect
-    connect(tb, &QPushButton::clicked, this, &MainWindow::addNewTab);
     // Store the UVSim object
     uvsimList.push_back(newUVSim);
 }
