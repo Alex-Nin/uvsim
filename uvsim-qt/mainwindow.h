@@ -53,6 +53,9 @@ private:
     // Tabs
     QTabWidget *tabWidget;
     std::vector<UVSim*> uvsimList;
+    QMap<int, UVSim*> uvsimMap; // Maps tab index to UVSim instances
+    QMap<int, QTextEdit*> textViewerMap; // Maps tab index to QTextEdit for textViewer
+    QMap<int, QTextEdit*> consoleMap; // Maps tab index to QTextEdit for textViewer
 
     void createTab();
     // Toolbar for Colors
@@ -61,10 +64,10 @@ private:
     void applyColors(const QColor &primary, const QColor &secondary);
 
     // Buttons and LineEdit
-    void loadTextFile();
+    void loadTextFile(UVSim *simulator, QTextEdit *textViewer);
     void saveTextFile();
     void setTextFileTitle(QString title);
-    void run();
+    void run(UVSim *simulator, QTextEdit *console);
     int getUserInput();
 
     // De-globalized

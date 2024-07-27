@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
     int userInput;
     QEventLoop inputLoop;
     std::vector<UVSim*> uvsimList;
+    QMap<int, UVSim*> uvsimMap;
+    QMap<int, QTextEdit*> textViewerMap;
+    QMap<int, QTextEdit*> consoleMap;
 
     // Create widgets
     console = new QTextEdit(this);
@@ -66,12 +69,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
     connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
 
-    // Connect buttons to slots
-    connect(button1, &QPushButton::clicked, this, &MainWindow::onButton1Clicked);
-    connect(button2, &QPushButton::clicked, this, &MainWindow::onButton2Clicked);
-    connect(button3, &QPushButton::clicked, this, &MainWindow::onButton3Clicked);
-    connect(button4, &QPushButton::clicked, this, &MainWindow::onButton4Clicked);
-
     // Connect consoleField returnPressed signal to slot
     connect(consoleField, &QLineEdit::returnPressed, this, &MainWindow::onConsoleFieldInput);
 
@@ -94,14 +91,32 @@ MainWindow::~MainWindow()
 
 void MainWindow::onButton1Clicked()
 {
-    loadTextFile();
-    console->append("Load button clicked");
+    int currentIndex = tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        UVSim *currentSim = uvsimMap.value(currentIndex, nullptr);
+        QTextEdit *currentTextViewer = textViewerMap.value(currentIndex, nullptr);
+
+        if (currentSim && currentTextViewer) {
+            loadTextFile(currentSim, currentTextViewer);
+            console->append("Load button clicked");
+        }
+    }
+
 }
 
 void MainWindow::onButton2Clicked()
 {
-    console->append("Execute button clicked");
-    run();
+
+    int currentIndex = tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        UVSim *currentSim = uvsimMap.value(currentIndex, nullptr);
+        QTextEdit *currentConsole = consoleMap.value(currentIndex, nullptr); // Assuming consoleMap holds QTextEdit for consoles
+
+        if (currentSim && currentConsole) {
+            run(currentSim, currentConsole);
+            console->append("Execute button clicked");
+        }
+    }
 }
 
 void MainWindow::onButton3Clicked()
@@ -112,8 +127,20 @@ void MainWindow::onButton3Clicked()
 
 void MainWindow::onButton4Clicked()
 {
-    console->clear();
-    console->append("Console cleared");
+    int currentIndex = tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QTextEdit *currentConsole = consoleMap.value(currentIndex, nullptr); // Assuming consoleMap holds QTextEdit for consoles
+
+        if (currentConsole) {
+            currentConsole->clear();
+            currentConsole->append("Console cleared");
+        } else {
+            // Handle the case where the console is not found
+            qDebug() << "Error: Console widget not found for the current tab.";
+        }
+    } else {
+        qDebug() << "Error: No current tab index.";
+    }
 }
 
 void MainWindow::onConsoleFieldInput()
@@ -123,10 +150,13 @@ void MainWindow::onConsoleFieldInput()
     inputLoop.exit();
 }
 
-void MainWindow::loadTextFile()
+void MainWindow::loadTextFile(UVSim *simulator, QTextEdit *textViewer)
 {
+    if (!simulator || !textViewer) return; // Safety check
+
     textViewer->clear();
-    simulator.clearMemory();
+    simulator->clearMemory(); // Ensure you have this method in UVSim
+
     QString filepath = QFileDialog::getOpenFileName(this, "Open Text File", "", "Text Files (*.txt)");
     if (!filepath.isEmpty())
     {
@@ -172,7 +202,7 @@ void MainWindow::loadTextFile()
                 }
 
                 textViewer->append(line);
-                simulator.setMemory(i++, line.toInt());
+                simulator->setMemory(i++, line.toInt());
             }
             QStringList lines = textViewer->toPlainText().split('\n');
             if (lines.size() >= 250) {
@@ -181,7 +211,7 @@ void MainWindow::loadTextFile()
             file.close();
         }
     }
-    setTextFileTitle(filepath);
+    setTextFileTitle(filepath); // If this function depends on the current tab, ensure it handles per-tab titles correctly
 }
 
 void MainWindow::saveTextFile()
@@ -237,14 +267,16 @@ int MainWindow::getUserInput() {
     return userInput;
 }
 
-void MainWindow::run() {
-    simulator.setAccumulator(0);
-    simulator.setInstructionPointer(0);
-    simulator.setHalted(false);
+void MainWindow::run(UVSim *simulator, QTextEdit *console) {
+    if (!simulator || !console) return; // Safety check
 
-    while (!simulator.isHalted()) {
-        int instruction = simulator.fetch(simulator.getInstructionPointer());
-        simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
+    simulator->setAccumulator(0);
+    simulator->setInstructionPointer(0);
+    simulator->setHalted(false);
+
+    while (!simulator->isHalted()) {
+        int instruction = simulator->fetch(simulator->getInstructionPointer());
+        simulator->setInstructionPointer(simulator->getInstructionPointer() + 1);
 
         int opcode = instruction / 1000; //YIELDS first two numbers
         int operand = instruction % 1000; //YIELDS last two numbers
@@ -255,13 +287,13 @@ void MainWindow::run() {
             break;
         case 10: // READ
             console->append("Enter an integer below: ");
-            simulator.setMemory(operand, getUserInput());
+            simulator->setMemory(operand, getUserInput());
             break;
         case 11: // WRITE
-            console->append(QString("Output of location %1: %2").arg(operand).arg(simulator.getMemoryAdd(operand)));
+            console->append(QString("Output of location %1: %2").arg(operand).arg(simulator->getMemoryAdd(operand)));
             break;
         default:
-            simulator.execute(instruction);
+            simulator->execute(instruction);
         }
     }
     console->append("Simulator halted.");
@@ -398,6 +430,10 @@ void MainWindow::createTab()
     // Set console to read-only for output part
     console->setReadOnly(true);
     textViewer->setReadOnly(false);
+
+    uvsimMap[newTabIndex] = newUVSim;
+    textViewerMap[newTabIndex] = textViewer;
+    consoleMap[newTabIndex] = console;
 
     // Connect
     connect(button1, &QPushButton::clicked, this, &MainWindow::onButton1Clicked);
