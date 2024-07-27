@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     , defaultSecondaryColor("#FFFFFF")
     , currentPrimaryColor(defaultPrimaryColor)
     , currentSecondaryColor(defaultSecondaryColor)
+    , userInput(0)
 {
     ui->setupUi(this);
 
@@ -111,6 +112,7 @@ void MainWindow::createTab()
     console->setReadOnly(true);
     textViewer->setReadOnly(false);
 
+    // QMAPS
     uvsimMap[newTabIndex] = newUVSim;
     textViewerMap[newTabIndex] = textViewer;
     consoleMap[newTabIndex] = console;
@@ -152,8 +154,8 @@ void MainWindow::onButton2Clicked(int tabIndex)
     QTextEdit *currentConsole = consoleMap.value(tabIndex, nullptr);
 
     if (currentSim && currentConsole) {
-        run(currentSim, currentConsole);
         currentConsole->append("Execute button clicked");
+        run(currentSim, currentConsole);
     }
 }
 
@@ -179,7 +181,16 @@ void MainWindow::onConsoleFieldInput(int tabIndex)
 {
     QLineEdit *currentConsoleField = consoleFieldMap.value(tabIndex, nullptr);
     if (currentConsoleField) {
-        userInput = currentConsoleField->text().toInt();
+        bool ok;
+        int userInput = currentConsoleField->text().toInt(&ok);
+        if (!ok) {
+            QMessageBox::critical(this, "Console Field Input Error", "Please enter a valid integer.");
+            currentConsoleField->clear();
+            return;
+        }
+
+        this->userInput = userInput; // Update the member variable
+
         currentConsoleField->clear();
         inputLoop.exit();
     }
@@ -278,20 +289,35 @@ void MainWindow::setTextFileTitle(QString title)
     QMainWindow::setWindowTitle(title);
 }
 
-int MainWindow::getUserInput() {
+int MainWindow::getUserInput()
+{
     while (true) {
         inputLoop.exec();
 
+        QString inputStr = QString::number(userInput);
         QRegularExpression pattern("^[+-]?\\d{1,6}$");
-        if (!pattern.match(QString::number(userInput)).hasMatch()) {
-            QMessageBox::critical(this, "Error", "User input is invalid: " + QString::number(userInput));
-            consoleField->clear();
-        }
-        else {
+        QRegularExpressionMatch match = pattern.match(inputStr);
+
+        if (!match.hasMatch()) {
+            QMessageBox::critical(this, "Error", "User input is invalid: " + inputStr);
+            // Clear input field in the current tab
+            int currentIndex = tabWidget->currentIndex();
+            QLineEdit *currentConsoleField = consoleFieldMap.value(currentIndex, nullptr);
+            if (currentConsoleField) {
+                currentConsoleField->clear();
+            }
+        } else {
             break;
         }
     }
-    console->insertPlainText(QString::number(userInput));
+
+    // Append validated input to console
+    int currentIndex = tabWidget->currentIndex();
+    QTextEdit *currentConsole = consoleMap.value(currentIndex, nullptr);
+    if (currentConsole) {
+        currentConsole->append(QString::number(userInput));
+    }
+
     return userInput;
 }
 
