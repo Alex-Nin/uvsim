@@ -38,13 +38,7 @@ private slots:
     void setDefaultColors();
     void changeColors();
     void onTabChanged(int index);
-    void applyColors(const QColor &primary, const QColor &secondary);
     // Buttons and LineEdit
-    void loadTextFile(UVSim *simulator, QTextEdit *textViewer);
-    void saveTextFile(int tabIndex);
-    void setTextFileTitle(QString title);
-    void run(UVSim *simulator, QTextEdit *console);
-    int getUserInput();
 
     // Tab-related
     void addNewTab();
@@ -67,8 +61,7 @@ private:
     // Toolbar for Colors
     QToolBar *colorToolbar;
     QColor defaultPrimaryColor, defaultSecondaryColor, currentPrimaryColor, currentSecondaryColor;
-<<<<<<< HEAD
-=======
+
     void applyColors(const QColor &primary, const QColor &secondary);
 
     // Buttons and LineEdit
@@ -77,7 +70,7 @@ private:
     void setTextFileTitle(QString title);
     void run(UVSim *simulator, QTextEdit *console);
     int getUserInput();
->>>>>>> 6e3adde6ef24c3ceb6bb714eb39fda9e07174e90
+
 
     // De-globalized
     QEventLoop inputLoop;
