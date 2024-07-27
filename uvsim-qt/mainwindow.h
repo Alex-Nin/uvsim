@@ -29,12 +29,12 @@ public:
     ~MainWindow();
 
 private slots:
-    void onButton1Clicked();
-    void onButton2Clicked();
-    void onButton3Clicked();
-    void onButton4Clicked();
-    void onTextViewerTextChanged();
-    void onConsoleFieldInput();
+    void onButton1Clicked(int tabIndex);
+    void onButton2Clicked(int tabIndex);
+    void onButton3Clicked(int tabIndex);
+    void onButton4Clicked(int tabIndex);
+    void onTextViewerTextChanged(int tabIndex);
+    void onConsoleFieldInput(int tabIndex);
     void setDefaultColors();
     void changeColors();
     void onTabChanged(int index);
@@ -52,10 +52,10 @@ private:
 
     // Tabs
     QTabWidget *tabWidget;
-    std::vector<UVSim*> uvsimList;
     QMap<int, UVSim*> uvsimMap; // Maps tab index to UVSim instances
-    QMap<int, QTextEdit*> textViewerMap; // Maps tab index to QTextEdit for textViewer
-    QMap<int, QTextEdit*> consoleMap; // Maps tab index to QTextEdit for textViewer
+    QMap<int, QTextEdit*> textViewerMap, consoleMap;
+    QMap<int, QLineEdit*> consoleFieldMap;
+    QMap<int, QLabel*> statusLabelMap;
 
     void createTab();
     // Toolbar for Colors
@@ -65,7 +65,7 @@ private:
 
     // Buttons and LineEdit
     void loadTextFile(UVSim *simulator, QTextEdit *textViewer);
-    void saveTextFile();
+    void saveTextFile(int tabIndex);
     void setTextFileTitle(QString title);
     void run(UVSim *simulator, QTextEdit *console);
     int getUserInput();
