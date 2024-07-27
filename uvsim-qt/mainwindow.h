@@ -37,6 +37,7 @@ private slots:
     void onConsoleFieldInput();
     void setDefaultColors();
     void changeColors();
+    void onTabChanged(int index);
 
     // Tab-related
     void addNewTab();

@@ -42,6 +42,18 @@ MainWindow::MainWindow(QWidget *parent)
     // Set central widget to tabWidget
     setCentralWidget(tabWidget);
 
+    // Adding the "+" button to the tab bar
+    QPushButton *addTabButton = new QPushButton("+", this);
+    addTabButton->setFixedSize(20, 20);
+    addTabButton->setFlat(true);
+    tabWidget->setCornerWidget(addTabButton, Qt::TopRightCorner);
+
+    // Connect "+" button signal to slot to create a new tab
+    connect(addTabButton, &QPushButton::clicked, this, &MainWindow::createTab);
+
+    // Connect to handle tab clicks
+    connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::onTabChanged);
+
     // Create the first tab
     createTab();
 
@@ -339,7 +351,15 @@ void MainWindow::createTab()
     // Create a QWidget to hold the UVSim interface (customize as needed)
     QWidget *tab = new QWidget();
     QVBoxLayout *tabLayout = new QVBoxLayout(tab);
-    tb = new QPushButton("+", this);
+
+    QTextEdit *console = new QTextEdit(tab);
+    QTextEdit *textViewer = new QTextEdit(tab);
+    QPushButton *button1 = new QPushButton("Load File", tab);
+    QPushButton *button2 = new QPushButton("Execute File", tab);
+    QPushButton *button3 = new QPushButton("Save As", tab);
+    QPushButton *button4 = new QPushButton("Clear Console", tab);
+    QLineEdit *consoleField = new QLineEdit(tab);
+    QLabel *statusLabel = new QLabel("Lines: 0 / 250", tab);
 
     // Button Layout
     QHBoxLayout *buttonLayout = new QHBoxLayout();
@@ -351,6 +371,7 @@ void MainWindow::createTab()
 
     // Combo text/console horizontal layout.
     QHBoxLayout *appLayout = new QHBoxLayout();
+
     // Console Layout
     QVBoxLayout *consoleLayout = new QVBoxLayout();
     consoleLayout->addWidget(console);
@@ -371,15 +392,19 @@ void MainWindow::createTab()
     tab->setLayout(tabLayout);
 
     // Add the tab to the QTabWidget
-    tabWidget->addTab(tab, tr("Simulator %1").arg(tabWidget->count() + 1));
-    tabWidget->tabBar()->setTabButton(0, QTabBar::RightSide, tb);
+    int newTabIndex = tabWidget->addTab(tab, tr("Simulator %1").arg(tabWidget->count() + 1));
+    tabWidget->setCurrentIndex(newTabIndex);
 
     // Set console to read-only for output part
     console->setReadOnly(true);
     textViewer->setReadOnly(false);
 
     // Connect
-    connect(tb, &QPushButton::clicked, this, &MainWindow::addNewTab);
+    connect(button1, &QPushButton::clicked, this, &MainWindow::onButton1Clicked);
+    connect(button2, &QPushButton::clicked, this, &MainWindow::onButton2Clicked);
+    connect(button3, &QPushButton::clicked, this, &MainWindow::onButton3Clicked);
+    connect(button4, &QPushButton::clicked, this, &MainWindow::onButton4Clicked);
+
     // Store the UVSim object
     uvsimList.push_back(newUVSim);
 }
@@ -387,4 +412,13 @@ void MainWindow::createTab()
 void MainWindow::addNewTab()
 {
     createTab();
+}
+
+void MainWindow::onTabChanged(int index)
+{
+    if (index == -1) {
+        // Handle when there are no tabs or something else specific
+        return;
+    }
+    // Handle the tab change, such as updating UI or state based on the selected tab
 }
