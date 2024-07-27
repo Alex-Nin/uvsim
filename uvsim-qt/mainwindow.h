@@ -64,7 +64,7 @@ private:
     void applyColors(const QColor &primary, const QColor &secondary);
 
     // Buttons and LineEdit
-    void loadTextFile(UVSim *simulator, QTextEdit *textViewer);
+    void loadTextFile(UVSim *simulator, QTextEdit *textViewer, QTextEdit *consoleMap);
     void saveTextFile(int tabIndex);
     void setTextFileTitle(QString title);
     void run(UVSim *simulator, QTextEdit *console);
