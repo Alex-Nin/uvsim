@@ -141,9 +141,10 @@ void MainWindow::onButton1Clicked(int tabIndex)
 {
     UVSim *currentSim = uvsimMap.value(tabIndex, nullptr);
     QTextEdit *currentTextViewer = textViewerMap.value(tabIndex, nullptr);
+    QTextEdit *currentConsole = consoleMap.value(tabIndex, nullptr);
 
     if (currentSim && currentTextViewer) {
-        loadTextFile(currentSim, currentTextViewer);
+        loadTextFile(currentSim, currentTextViewer, currentConsole);
         consoleMap[tabIndex]->append("Load button clicked");
     }
 }
@@ -196,7 +197,7 @@ void MainWindow::onConsoleFieldInput(int tabIndex)
     }
 }
 
-void MainWindow::loadTextFile(UVSim *simulator, QTextEdit *textViewer)
+void MainWindow::loadTextFile(UVSim *simulator, QTextEdit *textViewer, QTextEdit *console)
 {
     if (!simulator || !textViewer) return; // Safety check
 
@@ -252,7 +253,7 @@ void MainWindow::loadTextFile(UVSim *simulator, QTextEdit *textViewer)
             }
             QStringList lines = textViewer->toPlainText().split('\n');
             if (lines.size() >= 250) {
-                console->append("Warning: Exceeded line limit! Operations beyond line 250 will not be processed.");
+                console->append("Warning: Exceeded line limit! Operations beyond line 250 will not be processed."); /* remove line */
             }
             file.close();
         }
