@@ -223,3 +223,11 @@ This document provides a detailed outline of each class in the UVSim project.
 - **getUserInput**
     - **Description**: Retrieves user input from the input field.
     - **Post-conditions**: Returns the user input from the text viewer.
+
+- **createTab**
+    - **Description**: Creates a new tab in the GUI.
+    - **Post-conditions**: A new tab is added to the GUI.
+
+- **onTabChanged**
+    - **Description**: Event handler for changing tabs in the GUI.
+    - **Post-conditions**: The tab is changed.

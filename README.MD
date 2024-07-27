@@ -26,6 +26,7 @@ The GUI features buttons for loading and executing files, entering input, cleari
 - **Editor**: A text area where users can write or modify instructions. Users can input any valid BasicML instructions here. However, if the user wants to save the changes, then they must save instructions as a file.
 - **Enter data here**: An input field for users to provide necessary data when prompted by the program during execution.
 - **Lines**: Displays the current set of loaded or edited instructions, aiding in tracking changes and inputs.
+- **Simulator number**: Displays the simulator currently being viewed and its instructions and output.
 
 ## Prerequisites
 - C++ Compiler (g++ or clang)
@@ -64,6 +65,13 @@ To compile and run UVSim, follow these steps:
     - **Editor**: Edit the instructions in the Editor text area (must be valid BasicML instructions).
     - **Save Changes**: Save the changes by clicking the *Save As* button.
     - **Run Modified Program**: Click the *Execute File* button to run the modified program (can run without saving).
+
+6. Changing Simulator
+    - **Simulator Number**: Click the simulator number to switch between simulators.
+    - **View Instructions**: View the instructions and output of the selected simulator.
+    - **Run Program**: Click the *Execute File* button to run the selected simulator.
+    - **Save Changes**: Save the changes by clicking the *Save As* button.
+    - **Clear Output**: Clear the output by clicking the *Clear Output* button.
 
 ## Unit Tests
 To run the unit tests, follow these steps:
