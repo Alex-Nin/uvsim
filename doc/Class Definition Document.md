@@ -28,6 +28,10 @@ This document provides a detailed outline of each class in the UVSim project.
     - **Pre-conditions**: Index must be within the range of the memory vector.
     - **Post-conditions**: The memory at the given index is updated.
 
+- **clearMemory**
+    - **Description**: Clears the memory of the simulator, setting all cells to zero.
+    - **Post-conditions**: All memory cells are set to zero.
+
 - **getAccumulator**
     - **Description**: Accesses the current value of the accumulator.
     - **Output**: `int` - The current value of the accumulator.
@@ -49,6 +53,11 @@ This document provides a detailed outline of each class in the UVSim project.
 - **getInstructionPointer**
     - **Description**: Retrieves the current position of the instruction pointer, which indicates the next instruction to execute.
     - **Output**: `int` - Current value of the instruction pointer.
+
+- **setInstructionPointer**
+    - **Description**: Sets the instruction pointer to a specified value, used for testing or initialization.
+    - **Input**: `ip` - New value for the instruction pointer.
+    - **Post-conditions**: The instruction pointer is updated to the new value.
 
 - **run**
     - **Description**: Initiates the simulation, executing loaded instructions until halted.
@@ -157,3 +166,60 @@ This document provides a detailed outline of each class in the UVSim project.
     - **Description**: Prompts the user to enter a file name for loading a program.
     - **Output**: `std::string` - Name of the file input by the user.
     - **Post-conditions**: Returns the name of the file entered by the user, to be used for loading a program.
+
+### Class: `MainWindow`
+**Purpose**: Provides a GUI for the UVSim, allowing users to interact with the simulator.
+
+#### Methods
+
+- **onButton1Clicked**
+    - **Description**: Event handler for the "Load File" button, loading a file into the simulator.
+    - **Post-conditions**: The file is loaded into the simulator.
+
+- **onButton2Clicked**
+    - **Description**: Event handler for the "Execute File" button, executing the loaded file.
+    - **Pre-conditions**: A file must be loaded into memory.
+    - **Post-conditions**: The program is executed.
+
+- **onButton3Clicked**
+    - **Description**: Event handler for the "Save As" button, saving the current instructions to a file.
+    - **Post-conditions**: The instructions are saved to a file.
+
+- **onButton4Clicked**
+    - **Description**: Event handler for the "Clear Output" button, clearing the output area.
+    - **Post-conditions**: The output area is cleared.
+
+- **setDefaultColors**
+    - **Description**: Sets the default colors for the GUI components.
+    - **Post-conditions**: The colors of the GUI components are set to default values.
+
+- **changeColors**
+    - **Description**: Changes the colors of the GUI components based on user choice.
+    - **Post-conditions**: The colors of the GUI components are updated.
+
+- **onTextViewerTextChanged**
+    - **Description**: Event handler for the text viewer, limiting the number of lines that can be entered.
+    - **Post-conditions**: The number of lines is limited.
+
+- **loadTextFile**
+    - **Description**: Loads the content of a text file into the text viewer.
+    - **Input**: `filename` - Path to the file to load.
+    - **Post-conditions**: The content of the file is loaded into the text viewer.
+
+- **saveTextFile**
+    - **Description**: Saves the content of the text viewer to a file.
+    - **Input**: `filename` - Path to the file to save.
+    - **Post-conditions**: The content of the text viewer is saved to the file.
+
+- **setTextFileTitle**
+    - **Description**: Sets the title of the program.
+    - **Post-conditions**: The title of the program is set.
+
+- **run**
+    - **Description**: Initiates the simulation, executing loaded instructions until halted.
+    - **Pre-conditions**: A program must be loaded into memory.
+    - **Post-conditions**: Executes the program until completion or halt.
+
+- **getUserInput**
+    - **Description**: Retrieves user input from the input field.
+    - **Post-conditions**: Returns the user input from the text viewer.

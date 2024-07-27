@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTabWidget>
 #include <QTextEdit>
 #include <QLineEdit>
 #include <QPushButton>
@@ -11,6 +12,7 @@
 #include <QLabel>
 
 #include "../uvsim.h"
+#include "qeventloop.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,42 +29,53 @@ public:
     ~MainWindow();
 
 private slots:
-    void onButton1Clicked();
-    void onButton2Clicked();
-    void onButton3Clicked();
-    void onButton4Clicked();
+    void onButton1Clicked(int tabIndex);
+    void onButton2Clicked(int tabIndex);
+    void onButton3Clicked(int tabIndex);
+    void onButton4Clicked(int tabIndex);
+    void onTextViewerTextChanged(int tabIndex);
+    void onConsoleFieldInput(int tabIndex);
     void setDefaultColors();
     void changeColors();
-    void onTextViewerTextChanged();
-    void onConsoleFieldInput();
+    void onTabChanged(int index);
+    // Buttons and LineEdit
+    void loadTextFile(UVSim *simulator, QTextEdit *textViewer, QTextEdit *consoleMap);
+    void saveTextFile(int tabIndex);
+    void setTextFileTitle(QString title);
+    void run(UVSim *simulator, QTextEdit *console);
+    int getUserInput();
+    void applyColors(const QColor &primary, const QColor &secondary);
+
+    // Tab-related
+    void addNewTab();
 
 private:
     Ui::MainWindow *ui;
 
-    QTextEdit *console;
-    QPushButton *button1, *button2, *button3, *button4;
-    QTextEdit *textViewer;
-    QLabel *statusLabel;
-    QLabel *consoleLabel;
-    QLabel *editorLabel;
+    QTextEdit *console, *textViewer;
+    QPushButton *button1, *button2, *button3, *button4, *tb;
+    QLabel *statusLabel, *consoleLabel, *editorLabel;
     QLineEdit *consoleField;
-    QToolBar *toolbar;
 
-    QColor defaultPrimaryColor;
-    QColor defaultSecondaryColor;
-    QColor currentPrimaryColor;
-    QColor currentSecondaryColor;
+    // Tabs
+    QTabWidget *tabWidget;
+    QMap<int, UVSim*> uvsimMap; // Maps tab index to UVSim instances
+    QMap<int, QTextEdit*> textViewerMap, consoleMap;
+    QMap<int, QLineEdit*> consoleFieldMap;
+    QMap<int, QLabel*> statusLabelMap;
 
-    int fieldOutput;
-    void applyColors(const QColor &primary, const QColor &secondary);
+    // Toolbar for Colors
+    QToolBar *colorToolbar;
+    QColor defaultPrimaryColor, defaultSecondaryColor, currentPrimaryColor, currentSecondaryColor;
 
-    void loadTextFile();
-    void saveTextFile();
-    void setTextFileTitle(QString title);
-    void run();
-    int getUserInput();
 
-    bool waitingForInput;
-    int inputOperand;
+
+
+
+    // De-globalized
+    QEventLoop inputLoop;
+    int userInput;
+
+    void createTab();
 };
 #endif // MAINWINDOW_H

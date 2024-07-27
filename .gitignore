@@ -1,3 +1,4 @@
+uvsim-qt/build/
 *.exe
 *.out
 .idea
@@ -1196,3 +1197,4 @@ build/uvsim-qt_autogen/include_RelWithDebInfo/EWIEGA46WW/moc_mainwindow.cpp.d
 build/uvsim-qt_autogen/include_Release/ui_mainwindow.h
 build/uvsim-qt_autogen/include_Release/EWIEGA46WW/moc_mainwindow.cpp
 build/uvsim-qt_autogen/include_Release/EWIEGA46WW/moc_mainwindow.cpp.d
+build/.cmake/api/v1/reply/index-2024-07-26T23-03-53-0959.json

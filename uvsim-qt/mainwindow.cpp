@@ -5,14 +5,15 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QMessageBox>
+#include <QRegularExpression>
+#include <QColorDialog>
+#include <QTabBar>
 
 #include "../uvsim.h"
 #include "../uvsimIO.h"
 
-UVSim simulator;
-QEventLoop inputLoop;
-int userInput;
-
+// Inside MainWindow constructor
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -20,68 +21,115 @@ MainWindow::MainWindow(QWidget *parent)
     , defaultSecondaryColor("#FFFFFF")
     , currentPrimaryColor(defaultPrimaryColor)
     , currentSecondaryColor(defaultSecondaryColor)
+    , userInput(0)
 {
     ui->setupUi(this);
-    bool waitingForInput = false;
 
-    // Create widgets
-    textViewer = new QTextEdit(this);
-    button1 = new QPushButton("Load File", this);
-    button2 = new QPushButton("Execute File", this);
-    button3 = new QPushButton("Save As", this);
-    button4 = new QPushButton("Clear output", this);
-    console = new QTextEdit(this);
+    // Create main components
+    tabWidget = new QTabWidget(this);
+    setCentralWidget(tabWidget);
 
-    consoleField = new QLineEdit(this);
-    consoleField->setPlaceholderText("Enter integer here...");
+    // Adding the "+" button to the tab bar
+    QPushButton *addTabButton = new QPushButton("+", this);
+    addTabButton->setFixedSize(20, 20);
+    addTabButton->setFlat(true);
+    tabWidget->setCornerWidget(addTabButton, Qt::TopRightCorner);
 
-    statusLabel = new QLabel("Lines: 0 / 100");
-    consoleLabel = new QLabel("Console");
-    editorLabel = new QLabel("Editor");
+    // Connect "+" button signal to slot to create a new tab
+    connect(addTabButton, &QPushButton::clicked, this, &MainWindow::createTab);
 
-    //Toolbar for Colors
-    toolbar = addToolBar("Toolbar");
+    // Connect to handle tab clicks
+    connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::onTabChanged);
+
+    // Create the first tab
+    createTab();
+
+    // Toolbar for Colors
+    colorToolbar = addToolBar("Toolbar");
     QAction *viewDefaultColors = new QAction("Set Default Colors", this);
     QAction *changeColorsAction = new QAction("Change Colors", this);
-    toolbar->addAction(viewDefaultColors);
-    toolbar->addAction(changeColorsAction);
+    colorToolbar->addAction(viewDefaultColors);
+    colorToolbar->addAction(changeColorsAction);
     connect(viewDefaultColors, &QAction::triggered, this, &MainWindow::setDefaultColors);
     connect(changeColorsAction, &QAction::triggered, this, &MainWindow::changeColors);
+
+    applyColors(defaultPrimaryColor, defaultSecondaryColor);
+}
+
+void MainWindow::createTab()
+{
+    // Create a new UVSim object
+    UVSim *newUVSim = new UVSim();
+
+    // Create a QWidget to hold the UVSim interface (customize as needed)
+    QWidget *tab = new QWidget();
+    QVBoxLayout *tabLayout = new QVBoxLayout(tab);
+
+    QTextEdit *console = new QTextEdit(tab);
+    QTextEdit *textViewer = new QTextEdit(tab);
+    QPushButton *button1 = new QPushButton("Load File", tab);
+    QPushButton *button2 = new QPushButton("Execute File", tab);
+    QPushButton *button3 = new QPushButton("Save As", tab);
+    QPushButton *button4 = new QPushButton("Clear Console", tab);
+    QLineEdit *consoleField = new QLineEdit(tab);
+    QLabel *statusLabel = new QLabel("Lines: 0 / 250", tab);
+
+    // Button Layout
+    QHBoxLayout *buttonLayout = new QHBoxLayout();
+    buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button2);
+    buttonLayout->addWidget(button3);
+    buttonLayout->addWidget(button4);
+    tabLayout->addLayout(buttonLayout);
+
+    // Combo text/console horizontal layout.
+    QHBoxLayout *appLayout = new QHBoxLayout();
+
+    // Console Layout
+    QVBoxLayout *consoleLayout = new QVBoxLayout();
+    consoleLayout->addWidget(console);
+    consoleLayout->addWidget(consoleField);
+    consoleField->setPlaceholderText("Enter integer here...");
+    appLayout->addLayout(consoleLayout);
+
+    // textViewerLayout
+    QVBoxLayout *textViewerLayout = new QVBoxLayout();
+    textViewerLayout->addWidget(textViewer);
+    textViewerLayout->addWidget(statusLabel);
+    appLayout->addLayout(textViewerLayout);
+
+    // Combine
+    tabLayout->addLayout(appLayout);
+
+    // Set layout to tab
+    tab->setLayout(tabLayout);
+
+    // Add the tab to the QTabWidget
+    int newTabIndex = tabWidget->addTab(tab, tr("Simulator %1").arg(tabWidget->count() + 1));
+    tabWidget->setCurrentIndex(newTabIndex);
 
     // Set console to read-only for output part
     console->setReadOnly(true);
     textViewer->setReadOnly(false);
 
-    // Connect buttons to slots
-    connect(button1, &QPushButton::clicked, this, &MainWindow::onButton1Clicked);
-    connect(button2, &QPushButton::clicked, this, &MainWindow::onButton2Clicked);
-    connect(button3, &QPushButton::clicked, this, &MainWindow::onButton3Clicked);
-    connect(button4, &QPushButton::clicked, this, &MainWindow::onButton4Clicked);
+    // QMAPS
+    uvsimMap[newTabIndex] = newUVSim;
+    textViewerMap[newTabIndex] = textViewer;
+    consoleMap[newTabIndex] = console;
+    consoleFieldMap[newTabIndex] = consoleField;
+    statusLabelMap[newTabIndex] = statusLabel;
 
-    // Connect consoleField returnPressed signal to slot
-    connect(consoleField, &QLineEdit::returnPressed, this, &MainWindow::onConsoleFieldInput);
+    // Connect signals and slots within the tab's context
+    connect(button1, &QPushButton::clicked, [this, newTabIndex]() { onButton1Clicked(newTabIndex); });
+    connect(button2, &QPushButton::clicked, [this, newTabIndex]() { onButton2Clicked(newTabIndex); });
+    connect(button3, &QPushButton::clicked, [this, newTabIndex]() { onButton3Clicked(newTabIndex); });
+    connect(button4, &QPushButton::clicked, [this, newTabIndex]() { onButton4Clicked(newTabIndex); });
 
-    // Connect user input
-    connect(textViewer, &QTextEdit::textChanged, this, &MainWindow::onTextViewerTextChanged);
+    // Connect text viewer changes
+    connect(textViewer, &QTextEdit::textChanged, [this, newTabIndex]() { onTextViewerTextChanged(newTabIndex); });
 
-    // Layout setup
-    QGridLayout *layout = new QGridLayout;
-    layout->addWidget(button1, 0, 0);
-    layout->addWidget(button2, 0, 1);
-    layout->addWidget(button3, 0, 2);
-    layout->addWidget(button4, 0, 3);
-    layout->addWidget(consoleLabel, 1, 0, 1, 2);
-    layout->addWidget(editorLabel, 1, 2, 1, 2);
-    layout->addWidget(console, 2, 0, 8, 2); // Span 0 rows, 2 columns
-    layout->addWidget(textViewer, 2, 2, 8, 2); // Span 0 rows, 2 columns
-    layout->addWidget(consoleField, 10, 0, 1, 2);
-    layout->addWidget(statusLabel, 10, 2, 1, 2);
-
-    QWidget *centralWidget = new QWidget(this);
-    centralWidget->setLayout(layout);
-    setCentralWidget(centralWidget);
-
-    applyColors(defaultPrimaryColor, defaultSecondaryColor); //Goes after centralWidget to ensure color layout upon openning
+    // Connect console field input
+    connect(consoleField, &QLineEdit::returnPressed, [this, newTabIndex]() { onConsoleFieldInput(newTabIndex); });
 }
 
 MainWindow::~MainWindow()
@@ -89,41 +137,73 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onButton1Clicked()
+void MainWindow::onButton1Clicked(int tabIndex)
 {
-    loadTextFile();
-    console->append("Load button clicked");
+    UVSim *currentSim = uvsimMap.value(tabIndex, nullptr);
+    QTextEdit *currentTextViewer = textViewerMap.value(tabIndex, nullptr);
+    QTextEdit *currentConsole = consoleMap.value(tabIndex, nullptr);
+
+    if (currentSim && currentTextViewer) {
+        loadTextFile(currentSim, currentTextViewer, currentConsole);
+        consoleMap[tabIndex]->append("Load button clicked");
+    }
 }
 
-void MainWindow::onButton2Clicked()
+void MainWindow::onButton2Clicked(int tabIndex)
 {
-    console->append("Execute button clicked");
-    run();
+    UVSim *currentSim = uvsimMap.value(tabIndex, nullptr);
+    QTextEdit *currentConsole = consoleMap.value(tabIndex, nullptr);
+
+    if (currentSim && currentConsole) {
+        currentConsole->append("Execute button clicked");
+        run(currentSim, currentConsole);
+    }
 }
 
-void MainWindow::onButton3Clicked()
+void MainWindow::onButton3Clicked(int tabIndex)
 {
-    saveTextFile();
-    console->append("Save button clicked");
+    saveTextFile(tabIndex);
+    consoleMap[tabIndex]->append("Save button clicked");
 }
 
-void MainWindow::onButton4Clicked()
+void MainWindow::onButton4Clicked(int tabIndex)
 {
-    console->clear();
-    console->append("Console cleared");
+    QTextEdit *currentConsole = consoleMap.value(tabIndex, nullptr);
+
+    if (currentConsole) {
+        currentConsole->clear();
+        currentConsole->append("Console cleared");
+    } else {
+        qDebug() << "Error: Console widget not found for the current tab.";
+    }
 }
 
-void MainWindow::onConsoleFieldInput()
+void MainWindow::onConsoleFieldInput(int tabIndex)
 {
-    userInput = consoleField->text().toInt();
-    consoleField->clear();
-    inputLoop.exit();
+    QLineEdit *currentConsoleField = consoleFieldMap.value(tabIndex, nullptr);
+    if (currentConsoleField) {
+        bool ok;
+        int userInput = currentConsoleField->text().toInt(&ok);
+        if (!ok) {
+            QMessageBox::critical(this, "Console Field Input Error", "Please enter a valid integer.");
+            currentConsoleField->clear();
+            return;
+        }
+
+        this->userInput = userInput; // Update the member variable
+
+        currentConsoleField->clear();
+        inputLoop.exit();
+    }
 }
 
-void MainWindow::loadTextFile()
+void MainWindow::loadTextFile(UVSim *simulator, QTextEdit *textViewer, QTextEdit *console)
 {
+    if (!simulator || !textViewer) return; // Safety check
+
     textViewer->clear();
-    simulator.clearMemory();
+    simulator->clearMemory(); // Ensure you have this method in UVSim
+
     QString filepath = QFileDialog::getOpenFileName(this, "Open Text File", "", "Text Files (*.txt)");
     if (!filepath.isEmpty())
     {
@@ -132,91 +212,146 @@ void MainWindow::loadTextFile()
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QTextStream in(&file);
+            bool isFourDigit = false;
+            bool isSixDigit = false;
+
             while (!in.atEnd()) {
-                QString temp = in.readLine();
-                textViewer->append(temp);
-                simulator.setMemory(i++, temp.toInt());
+                QString line = in.readLine();
+
+                QRegularExpression regex(R"([+-](\d{4}|\d{6}))");
+                if (!regex.match(line).hasMatch()) {
+                    QMessageBox::critical(this, "Error", "File contains invalid format.");
+                    return;
+                }
+
+                if (line.length() == 5) {
+                    isFourDigit = true;
+                    if (isSixDigit) {
+                        QMessageBox::critical(this, "Error", "File contains both 4-digit and 6-digit numbers.");
+                        return;
+                    }
+
+                    QStringList instructionList = {"10", "11", "20", "21", "30", "31", "32", "33", "40", "41", "42", "43"};
+                    if (instructionList.contains(line.mid(1, 2))) {
+                        line.insert(1, "0");
+                        line.insert(4, "0");
+                    }
+                    else {
+                        line.insert(1, "00");
+                    }
+                }
+                else if (line.length() == 7) {
+                    isSixDigit = true;
+                    if (isFourDigit) {
+                        QMessageBox::critical(this, "Error", "File contains both 4-digit and 6-digit numbers.");
+                        return;
+                    }
+                }
+
+                textViewer->append(line);
+                simulator->setMemory(i++, line.toInt());
+            }
+            QStringList lines = textViewer->toPlainText().split('\n');
+            if (lines.size() >= 250) {
+                console->append("Warning: Exceeded line limit! Operations beyond line 250 will not be processed."); /* remove line */
             }
             file.close();
         }
     }
-    this->setTextFileTitle(filepath);
+    setTextFileTitle(filepath); // If this function depends on the current tab, ensure it handles per-tab titles correctly
 }
 
-void MainWindow::saveTextFile()
+void MainWindow::saveTextFile(int tabIndex)
 {
-    QString fileName = QFileDialog::getSaveFileName(
-        nullptr,
-        "Select File",
-        "",
-        "Text Files (*.txt);"
-        );
+    QTextEdit *currentTextViewer = textViewerMap.value(tabIndex, nullptr);
 
-    QFile file(fileName);
-    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    if (!currentTextViewer) return; // Safety check
 
-    QTextStream out(&file);
-    std::vector<int> memory = simulator.getMemory();
-
-    int lastIndex = -1;
-    for (int i = 0; i < memory.size(); ++i) {
-        if (memory[i] != 0) {
-            lastIndex = i;
+    QString filepath = QFileDialog::getSaveFileName(this, "Save Text File", "", "Text Files (*.txt)");
+    if (!filepath.isEmpty())
+    {
+        QFile file(filepath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+            QTextStream out(&file);
+            out << currentTextViewer->toPlainText();
+            file.close();
+        }
+        else
+        {
+            QMessageBox::critical(this, "Error", "File cannot be saved.");
         }
     }
-
-    for (int i = 0; i <= lastIndex; ++i) {
-        if (memory[i] > 0) {
-            out << "+";
-        }
-        else if (memory[i] == 0) {
-            out << "+000";
-        }
-        out <<memory[i] << '\n';
-    }
-
-    file.close();
 }
+
 void MainWindow::setTextFileTitle(QString title)
 {
     title.append(" - UVSim");
     QMainWindow::setWindowTitle(title);
 }
 
-int MainWindow::getUserInput() {
-    inputLoop.exec();
-    console->insertPlainText(QString::number(userInput));
+int MainWindow::getUserInput()
+{
+    while (true) {
+        inputLoop.exec();
+
+        QString inputStr = QString::number(userInput);
+        QRegularExpression pattern("^[+-]?\\d{1,6}$");
+        QRegularExpressionMatch match = pattern.match(inputStr);
+
+        if (!match.hasMatch()) {
+            QMessageBox::critical(this, "Error", "User input is invalid: " + inputStr);
+            // Clear input field in the current tab
+            int currentIndex = tabWidget->currentIndex();
+            QLineEdit *currentConsoleField = consoleFieldMap.value(currentIndex, nullptr);
+            if (currentConsoleField) {
+                currentConsoleField->clear();
+            }
+        } else {
+            break;
+        }
+    }
+
+    // Append validated input to console
+    int currentIndex = tabWidget->currentIndex();
+    QTextEdit *currentConsole = consoleMap.value(currentIndex, nullptr);
+    if (currentConsole) {
+        currentConsole->append(QString::number(userInput));
+    }
+
     return userInput;
 }
 
-void MainWindow::run() {
-    simulator.setAccumulator(0);
-    simulator.setInstructionPointer(0);
-    simulator.setHalted(false);
+void MainWindow::run(UVSim *simulator, QTextEdit *console) {
+    if (!simulator || !console) return; // Safety check
 
-    while (!simulator.isHalted()) {
-        int instruction = simulator.fetch(simulator.getInstructionPointer());
-        simulator.setInstructionPointer(simulator.getInstructionPointer() + 1);
+    simulator->setAccumulator(0);
+    simulator->setInstructionPointer(0);
+    simulator->setHalted(false);
 
-        int opcode = instruction / 100; //YIELDS first two numbers
-        int operand = instruction % 100; //YIELDS last two numbers
+    while (!simulator->isHalted()) {
+        int instruction = simulator->fetch(simulator->getInstructionPointer());
+        simulator->setInstructionPointer(simulator->getInstructionPointer() + 1);
+
+        int opcode = instruction / 1000; //YIELDS first two numbers
+        int operand = instruction % 1000; //YIELDS last two numbers
 
         switch (opcode) {
-            case 0:
-                // Do nothing.
-                break;
-            case 10: // READ
-                console->append("Enter an integer below: ");
-                simulator.setMemory(operand, getUserInput());
-                break;
-            case 11: // WRITE
-                console->append(QString("Output of location %1: %2").arg(operand).arg(simulator.getMemoryAdd(operand)));
-                break;
-            default:
-                simulator.execute(instruction);
+        case 0:
+            // Do nothing.
+            break;
+        case 10: // READ
+            console->append("Enter an integer below: ");
+            simulator->setMemory(operand, getUserInput());
+            break;
+        case 11: // WRITE
+            console->append(QString("Output of location %1: %2").arg(operand).arg(simulator->getMemoryAdd(operand)));
+            break;
+        default:
+            simulator->execute(instruction);
         }
     }
-        console->append("Simulator halted.");
+    console->append("Simulator halted.");
 }
 
 void MainWindow::setDefaultColors()
@@ -228,54 +363,56 @@ void MainWindow::setDefaultColors()
 
 void MainWindow::changeColors()
 {
-    QColor newPrimaryColor = QColorDialog::getColor(currentPrimaryColor, this, "Select Primary Color");
-    if (newPrimaryColor.isValid())
-    {
-        currentPrimaryColor = newPrimaryColor;
+    QColor primaryColor = QColorDialog::getColor(currentPrimaryColor, this, "Select Primary Color");
+    if (primaryColor.isValid()) {
+        currentPrimaryColor = primaryColor;
     }
 
-    QColor newSecondaryColor = QColorDialog::getColor(currentSecondaryColor, this, "Select Secondary Color");
-    if (newSecondaryColor.isValid())
-    {
-        currentSecondaryColor = newSecondaryColor;
+    QColor secondaryColor = QColorDialog::getColor(currentSecondaryColor, this, "Select Secondary Color");
+    if (secondaryColor.isValid()) {
+        currentSecondaryColor = secondaryColor;
     }
 
     applyColors(currentPrimaryColor, currentSecondaryColor);
 }
 
-void MainWindow::applyColors(const QColor &primary, const QColor &secondary)
+void MainWindow::applyColors(const QColor &primaryColor, const QColor &secondaryColor)
 {
-    QPalette palette = centralWidget()->palette();
+    QPalette palette = qApp->palette();
+    palette.setColor(QPalette::Window, primaryColor);
+    palette.setColor(QPalette::WindowText, secondaryColor);
+    qApp->setPalette(palette);
 
-    palette.setColor(QPalette::Window, primary);
-    palette.setColor(QPalette::Button, secondary);
-    QString buttonStyle = QString(
-        "QPushButton {background-color: %1; color: %2}"
-        ).arg(secondary.name(), primary.name());
-    button1->setStyleSheet(buttonStyle);
-    button2->setStyleSheet(buttonStyle);
-    button3->setStyleSheet(buttonStyle);
-    button4->setStyleSheet(buttonStyle);
-    statusLabel->setStyleSheet(QString("QLabel {color: %2}").arg(secondary.name()));
-    centralWidget()->setPalette(palette);
-    centralWidget()->setAutoFillBackground(true);
+    currentPrimaryColor = primaryColor;
+    currentSecondaryColor = secondaryColor;
 }
 
-void MainWindow::onTextViewerTextChanged()
+void MainWindow::onTextViewerTextChanged(int tabIndex)
 {
     static bool isUpdating = false;
     if (isUpdating) return;
 
     isUpdating = true;
-    simulator.clearMemory();
+
+    UVSim *simulator = uvsimMap.value(tabIndex, nullptr);
+    QTextEdit *textViewer = textViewerMap.value(tabIndex, nullptr);
+    QLabel *statusLabel = statusLabelMap.value(tabIndex, nullptr); // Assuming you have a statusLabelMap for each tab
+
+    if (!simulator || !textViewer || !statusLabel) {
+        isUpdating = false;
+        return; // Safety check
+    }
+
+    simulator->clearMemory();
 
     QStringList lines = textViewer->toPlainText().split('\n');
     int lineCount = lines.size();
 
-    // Only keep first 100 lines
-    if (lineCount > 100) {
-        QString trimmedText = lines.mid(0, 100).join('\n');
+    // Only keep first 250 lines
+    if (lineCount > 250) {
+        QString trimmedText = lines.mid(0, 250).join('\n');
         textViewer->setPlainText(trimmedText);
+
         // Move the cursor to the end of the text
         QTextCursor cursor = textViewer->textCursor();
         cursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
@@ -285,12 +422,26 @@ void MainWindow::onTextViewerTextChanged()
         lineCount = lines.size();
     }
 
-    statusLabel->setText(QString("Lines: %1 / 100").arg(lineCount));
+    statusLabel->setText(QString("Lines: %1 / 250").arg(lineCount));
 
     for (int i = 0; i < lineCount; ++i) {
         int value = lines[i].toInt();
-        simulator.setMemory(i, value);
+        simulator->setMemory(i, value);
     }
 
     isUpdating = false;
+}
+
+void MainWindow::addNewTab()
+{
+    createTab();
+}
+
+void MainWindow::onTabChanged(int index)
+{
+    if (index == -1) {
+        // Handle when there are no tabs or something else specific
+        return;
+    }
+    // Handle the tab change, such as updating UI or state based on the selected tab
 }
