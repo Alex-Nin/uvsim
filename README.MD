@@ -41,11 +41,11 @@ To compile and run UVSim, follow these steps:
    cd uvsim
    ```
 2. Locate CMakeLists.txt file
-Windows
+- Windows
 ```bash
 C:/your-clone-location/uvsim/uvsim-qt
 ```
-Mac
+- Mac
 ```bash
 /Users/your-clone-location/uvsim/uvsim-qt
 ```
