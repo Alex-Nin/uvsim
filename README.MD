@@ -37,9 +37,18 @@ To compile and run UVSim, follow these steps:
 
 1. Clone this repository or download the source code.
    ```bash
-   git clone https://github.com/DavidADeLeo/CS2450
-   cd CS2450
+   git clone https://github.com/Alex-Nin/uvsim
+   cd uvsim
    ```
+2. Locate CMakeLists.txt file
+Windows
+```bash
+C:/your-clone-location/uvsim/uvsim-qt
+```
+Mac
+```bash
+/Users/your-clone-location/uvsim/uvsim-qt
+```
 2. Load CMakeLists.txt in QT Creator.
 3. Click on the green play button to compile and run the program.
 
